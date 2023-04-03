@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Lucky Day{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h1>Your Lucky Day Could Be</h1>
+        <div class="waviy">
+            {% for char in luckyDay|split('') %}
+                <span style="--i:{{loop.index}}">{{ char }}</span>
+            {% endfor %}
+        </div>
+        <img class="image" src="{{ asset('img/luckyday.gif') }}" alt="lucky day">
+    </div>
+{% endblock %}
