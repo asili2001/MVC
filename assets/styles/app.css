@@ -1,172 +1,212 @@
 @import url(https://fonts.googleapis.com/css2?family=Arimo&display=swap);
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 100%;
-    font-family: Arimo,sans-serif
+  font-size: 100%;
+  font-family: Arimo, sans-serif;
 }
 
 body {
-    background: #fff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  background: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-body,html,main {
-    height: 100%
+body, html, main {
+  height: 100%;
 }
 
 a {
-    text-decoration: none;
-    color: #2c2c2c;
-    font-weight: bolder;
-    font-size: 1.2em
+  text-decoration: none;
+  color: #2c2c2c;
+  font-weight: bolder;
+  font-size: 1.2em;
 }
 
 header {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 nav {
-    height: 100px;
-    width: 100%;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    box-shadow: 0 0 10px #000
+  height: 100px;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 0 10px #000;
 }
-
-nav ul {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    gap: 15px
+nav > ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
 }
 
 .btn {
-    min-height: 50px;
-    width: 200px;
-    border: 0;
-    box-shadow: 3px 5px 7px 0 #232323;
-    font-size: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  min-height: 50px;
+  width: 200px;
+  border: 0;
+  box-shadow: 3px 5px 7px 0 #232323;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
-
-.github {
-    background: linear-gradient(45deg,#005dff,#6800ff);
-    color: #fff;
+.btn .github {
+  background: linear-gradient(45deg, #005dff, #6800ff);
+  color: #fff;
 }
 
 .waviy {
-    position: relative;
+  position: relative;
 }
-
 .waviy > span {
-    position: relative;
-    display: inline-block;
-    font-size: 40px;
-    color: #1d1d1d;
-    text-transform: uppercase;
-    animation: flip 2s infinite;
-    animation-delay: calc(.2s * var(--i))
+  position: relative;
+  display: inline-block;
+  font-size: 40px;
+  color: #1d1d1d;
+  text-transform: uppercase;
+  animation: flip 2s infinite;
+  animation-delay: calc(0.2s * var(--i));
 }
 
 .round {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 .content {
-    width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2em;
+  width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
 }
-
-@media (max-width: 800px) {
-    .content {
-        width: 100%;
-    }
-}
-
-.content .me-box {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
-    gap: 2em;
-    justify-content: center;
-}
-
-.content .me-box > .text {
-    width: 20em;
-    font-size: 1.3em;
-    line-height: 1.3em;
-    font-family: sans-serif;
-}
-
-.content .me-box > .image {
-    width: 15em;
-    height: 15em;
-    overflow: hidden;
-}
-
-.content .me-box > .image > img {
-    height: 100%;
+@media screen and (max-width: 800px) {
+  .content.content {
     width: 100%;
-    object-fit: cover;
+  }
+}
+.content .me-box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  gap: 2em;
+  justify-content: center;
+}
+.content .me-box > .text {
+  width: 20em;
+  font-size: 1.3em;
+  line-height: 1.3em;
+  font-family: sans-serif;
+}
+.content .me-box > .image {
+  width: 15em;
+  height: 15em;
+  overflow: hidden;
+}
+.content .me-box > .image > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .report {
-    width: 100%;
+  width: 100%;
 }
-
-.report > .btns {
-    display: flex;
-    gap: 1em;
-    flex-wrap: wrap;
-    margin: 1em;
+.report .btns {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  margin: 1em;
 }
-
 .report .report-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
-
-.report .report-list > .item{
-    min-height: 500px;
-    padding: 1em;
-    background-color: #fff9d9;
+.report .report-list .item {
+  min-height: 500px;
+  padding: 1em;
+  background-color: #fff9d9;
 }
-
-.report .report-list > .item > h1{
-    text-align: center;
+.report .report-list .item > h1 {
+  text-align: center;
 }
 
 .footer {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #e8e8e8;
-    margin-top: auto;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e8e8e8;
+  margin-top: auto;
 }
 
-
+.card-deck {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+.card-deck .card {
+  height: 20em;
+  width: 15em;
+  display: flex;
+  justify-content: space-between;
+  background: antiquewhite;
+  padding: 0.5em;
+}
+.card-deck .card .card-left img, .card-deck .card .card-right img {
+  height: 1.5em;
+}
+.card-deck .card .card-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-deck .card .card-middle {
+  width: 100%;
+  padding: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  font-size: 5em;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.card-deck .card .card-middle > img {
+  width: 100%;
+}
+.card-deck .card .card-middle img.symbol {
+  width: 2.5rem;
+}
+.card-deck .card .card-right {
+  display: flex;
+  align-content: flex-end;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card-deck .card .card-right > h2 {
+  transform: rotate(180deg);
+}
+.card-deck .card.hearts, .card-deck .card.diamonds {
+  color: #ff2c5e;
+}
 
 @keyframes flip {
-    0%,80% {
-      transform: rotateY(360deg) 
-    }
+  0%, 80% {
+    transform: rotateY(360deg);
+  }
 }
+
+/*# sourceMappingURL=app.css.map */

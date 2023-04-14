@@ -17,6 +17,10 @@
         "dev-server": "encore dev-server",
         "dev": "encore dev",
         "watch": "encore dev --watch",
+        "sass-watch": "sass --watch assets/styles/app.scss assets/styles/app.css",
         "build": "encore production --progress"
+    },
+    "dependencies": {
+        "sass": "^1.62.0"
     }
 }

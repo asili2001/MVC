@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Kortlek!{% endblock %}
+
+{% block body %}
+    <div class="content">
+        I spelkort har jag skapat 4 olika klasser.
+        <ul>
+            <li>Card: bas klass för kort</li>
+            <li>CardGraphic: en kort klass som ärver från bas klassen Card. meningen med den är att visa bild för figurerna i kortet.</li>
+            <li>DeckOfCards: skapar alla kort(52 st). Använder sig av Card klassen för att skapa korten(composition)</li>
+            <li>CardHand: En hand med kort. Används när man delar kort till spelare</li>
+        </ul>
+        <img src="{{ asset("img/playing-cards/UML.svg") }}">
+        <a href="/card/deck?jokers=true&reset=true" class="btn">Nya kortlek med Jokers</a>
+        <a href="/card/deck?reset=true" class="btn">Nya kortlek utan Jokers</a>
+    </div>
+{% endblock %}

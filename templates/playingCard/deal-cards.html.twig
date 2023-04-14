@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Dela kort!{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h2>Totalt: {{ cardsNr }} kort</h2>
+        <div class="card-deck">
+        {% for name,hand in players %}
+                <div class="info-card">
+                    <h1>{{name}}</h1>
+                    <div class="card-deck">
+                        {% for card in hand.getCards() %}
+                            <div class="card {{ card.getSymbol() }}">
+                                <div class="card-left">
+                                    <h2>{{ card.getName() }}</h2>
+                                    <img src="{{ asset("img/playing-cards/" ~ card.getRepresentation()) }}">
+                                </div>
+                                <div class="card-middle">
+                                    {% if card.getName() == "A" %}
+                                        <h1>A</h1>
+                                    {% elseif card.getName() == "J" %}
+                                        <img src="{{ asset("img/playing-cards/jack.svg") }}" class="image">
+                                    {% elseif card.getName() == "Q" %}
+                                        <img src="{{ asset("img/playing-cards/queen.svg") }}" class="image">
+                                    {% elseif card.getName() == "K" %}
+                                        <img src="{{ asset("img/playing-cards/king.svg") }}" class="image">
+                                    {% elseif card.getName() == "joker" %}
+                                        <img src="{{ asset("img/playing-cards/joker.svg") }}" class="image">
+                                    {% else %}
+                                        {% for k in range(1, card.getName()) %}
+                                            <img src="{{ asset("img/playing-cards/" ~ card.getRepresentation()) }}" class="symbol">
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="card-right">
+                                    <img src="{{ asset("img/playing-cards/" ~ card.getRepresentation()) }}">
+                                    <h2>{{ card.getName() }}</h2>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}
