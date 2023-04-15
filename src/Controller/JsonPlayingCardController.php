@@ -17,7 +17,7 @@ class JsonPlayingCardController extends AbstractController
     #[Route('/api', name: "playingCardHomeJson")]
     public function home(): Response
     {
-        return $this->render('playingCard/home.html.twig');
+        return $this->render('api.html.twig');
     }
     #[Route('/api/deck', name: 'jsonDeck')]
     public function cardDeckJson(): Response
@@ -35,7 +35,7 @@ class JsonPlayingCardController extends AbstractController
             ];
         }
         $statusCode = 200;
-        $res = $this->JsonReturner($cardData, $statusCode, "Success");
+        $res = $this->ArrReturner($cardData, $statusCode, "Success");
 
         $response = new JsonResponse($res, $statusCode);
         $response->setEncodingOptions(
@@ -61,7 +61,7 @@ class JsonPlayingCardController extends AbstractController
         }
 
         $statusCode = 200;
-        $res = $this->JsonReturner($cardData, $statusCode, "Success");
+        $res = $this->ArrReturner($cardData, $statusCode, "Success");
         $response = new JsonResponse($res, $statusCode);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
@@ -90,7 +90,7 @@ class JsonPlayingCardController extends AbstractController
             $errorMessage = $e->getMessage();
             $statusCode = 404;
         }
-        $res = $this->JsonReturner($cardData, $statusCode, $errorMessage);
+        $res = $this->ArrReturner($cardData, $statusCode, $errorMessage);
 
         $response = new JsonResponse($res, $statusCode);
         $response->setEncodingOptions(
@@ -120,7 +120,7 @@ class JsonPlayingCardController extends AbstractController
             $errorMessage = $e->getMessage();
             $statusCode = 404;
         }
-        $res = $this->JsonReturner($cardData, $statusCode, $errorMessage);
+        $res = $this->ArrReturner($cardData, $statusCode, $errorMessage);
 
         $response = new JsonResponse($res, $statusCode);
         $response->setEncodingOptions(
@@ -160,7 +160,7 @@ class JsonPlayingCardController extends AbstractController
             $errorMessage = $e->getMessage();
             $statusCode = 500;
         }
-        $res = $this->JsonReturner($playerData, $statusCode, $errorMessage);
+        $res = $this->ArrReturner($playerData, $statusCode, $errorMessage);
 
         $response = new JsonResponse($res, $statusCode);
         $response->setEncodingOptions(

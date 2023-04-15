@@ -4,8 +4,16 @@
 
 {% block body %}
     <div class="content">
-        Api
-        <a href="/api/quote" class="btn">Random Quote</a>
-        <a href="/card/deck?reset=true" class="btn">Nya kortlek utan Jokers</a>
+        <h1>Api</h1>
+        <ul>
+            <li>'/api/quote' - Random Quote</li>
+            <li>'/api/deck' - Visa kortlek</li>
+            <li>'/api/deck?reset=true' - Nya kortlek utan Jokers</li>
+            <li>'/api/deck?reset=true&jokers=true' - Nya kortlek med Jokers</li>
+            <li>'/api/deck/shuffle' - Shuffle kort</li>
+            <li>'/api/deck/draw' - Dra ett kort</li>
+            <li>'/api/deck/draw/{nrOfCards}' - Dra flera kort</li>
+            <li>'/api/deck/deal/{nrOfPlayers}/{nrOfCards}' - Dela ett antal kort med flera spelare</li>
+        </ul>
     </div>
 {% endblock %}
