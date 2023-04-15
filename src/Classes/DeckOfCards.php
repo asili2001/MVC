@@ -2,6 +2,7 @@
 
 namespace App\Classes;
 
+use App\CustomExceptions\EmptyDeckException;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
 class DeckOfCards
@@ -66,12 +67,13 @@ class DeckOfCards
     public function drawCard($nrOfCards = 1)
     {
         if ($nrOfCards > count($this->deck)) {
-            throw new Exception('There are not enaugh cards');
+            throw new EmptyDeckException('There are not enaugh cards');
         }
         $result = [];
         for ($i=1; $i<=$nrOfCards; $i++) {
-            $cardToDraw = random_int(0, count($this->deck));
+            $cardToDraw = random_int(0, count($this->deck) - 1);
             $result[] = $this->deck[$cardToDraw];
+
             array_splice($this->deck, $cardToDraw, 1);
         }
 
@@ -84,7 +86,7 @@ class DeckOfCards
     {
         $result = [];
         if ($nrOfCards > count($this->deck)) {
-            throw new Exception('There are not enaugh cards');
+            throw new EmptyDeckException('There are not enaugh cards');
         }
         if ($nrOfCards < 1) {
             throw new Exception('The number of cards cannot be zero or lower');
