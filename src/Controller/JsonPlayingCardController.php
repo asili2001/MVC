@@ -8,6 +8,7 @@ use App\Traits\Returner;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -20,9 +21,14 @@ class JsonPlayingCardController extends AbstractController
         return $this->render('api.html.twig');
     }
     #[Route('/api/deck', name: 'jsonDeck')]
-    public function cardDeckJson(): Response
+    public function cardDeckJson(Request $request): Response
     {
-        $deck = new DeckOfCards((isset($_GET["jokers"]) && $_GET["jokers"] != "false"));
+        $session = $request->getSession();
+        $jokersQuery = $request->query->get("jokers");
+        $deck = new DeckOfCards($session, "playingCards");
+        if (isset($jokersQuery) && $jokersQuery != "false") {
+            $deck->hasJokers();
+        }
         $deck->sortCards();
 
         $cards = $deck->getCards();
@@ -35,7 +41,7 @@ class JsonPlayingCardController extends AbstractController
             ];
         }
         $statusCode = 200;
-        $res = $this->ArrReturner($cardData, $statusCode, "Success");
+        $res = $this->arrReturner(false, $cardData, $statusCode, "Success");
 
         $response = new JsonResponse($res, $statusCode);
         $response->setEncodingOptions(
@@ -46,11 +52,14 @@ class JsonPlayingCardController extends AbstractController
     }
 
     #[Route('/api/deck/shuffle', name: "playingCardDeckShuffledJson")]
-    public function shuffleDeckJson(): Response
+    public function shuffleDeckJson(Request $request): Response
     {
-        $deck = new DeckOfCards(true);
+        $session = $request->getSession();
+        $deck = new DeckOfCards($session, "playingCards");
 
-        $cards = $deck->shuffleCards();
+        // shuffle
+        $deck->shuffleCards();
+        $cards = $deck->getCards();
 
         $cardData = array();
         foreach ($cards as $card) {
@@ -61,7 +70,7 @@ class JsonPlayingCardController extends AbstractController
         }
 
         $statusCode = 200;
-        $res = $this->ArrReturner($cardData, $statusCode, "Success");
+        $res = $this->arrReturner(false, $cardData, $statusCode, "Success");
         $response = new JsonResponse($res, $statusCode);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
@@ -71,9 +80,10 @@ class JsonPlayingCardController extends AbstractController
     }
 
     #[Route('/api/deck/draw', name: "playingCardDeckDrawOneJson")]
-    public function drawCardJson(): Response
+    public function drawCardJson(Request $request): Response
     {
-        $deck = new DeckOfCards(true);
+        $session = $request->getSession();
+        $deck = new DeckOfCards($session, "playingCards");
         $cardData = array();
         $errorMessage = "";
         $statusCode = 200;
@@ -90,7 +100,7 @@ class JsonPlayingCardController extends AbstractController
             $errorMessage = $e->getMessage();
             $statusCode = 404;
         }
-        $res = $this->ArrReturner($cardData, $statusCode, $errorMessage);
+        $res = $this->arrReturner(false, $cardData, $statusCode, $errorMessage);
 
         $response = new JsonResponse($res, $statusCode);
         $response->setEncodingOptions(
@@ -101,9 +111,10 @@ class JsonPlayingCardController extends AbstractController
     }
 
     #[Route('/api/deck/draw/{nrOfCards}', name: "playingCardDeckDrawMultipleJson")]
-    public function drawCardsJson(int $nrOfCards): Response
+    public function drawCardsJson(Request $request, int $nrOfCards): Response
     {
-        $deck = new DeckOfCards(true);
+        $session = $request->getSession();
+        $deck = new DeckOfCards($session, "playingCards");
         $cardData = array();
         $errorMessage = "";
         $statusCode = 200;
@@ -120,7 +131,7 @@ class JsonPlayingCardController extends AbstractController
             $errorMessage = $e->getMessage();
             $statusCode = 404;
         }
-        $res = $this->ArrReturner($cardData, $statusCode, $errorMessage);
+        $res = $this->arrReturner(false, $cardData, $statusCode, $errorMessage);
 
         $response = new JsonResponse($res, $statusCode);
         $response->setEncodingOptions(
@@ -131,9 +142,10 @@ class JsonPlayingCardController extends AbstractController
     }
 
     #[Route('/api/deck/deal/{nrOfPlayers}/{nrOfCards}', name: "playingCardDeckDealCardsJson")]
-    public function dealCardsJson(int $nrOfPlayers, int $nrOfCards): Response
+    public function dealCardsJson(Request $request, int $nrOfPlayers, int $nrOfCards): Response
     {
-        $deck = new DeckOfCards(true);
+        $session = $request->getSession();
+        $deck = new DeckOfCards($session, "playingCards");
         $playerData = array();
         $errorMessage = "";
         $statusCode = 200;
@@ -160,7 +172,7 @@ class JsonPlayingCardController extends AbstractController
             $errorMessage = $e->getMessage();
             $statusCode = 500;
         }
-        $res = $this->ArrReturner($playerData, $statusCode, $errorMessage);
+        $res = $this->arrReturner(false, $playerData, $statusCode, $errorMessage);
 
         $response = new JsonResponse($res, $statusCode);
         $response->setEncodingOptions(
@@ -168,11 +180,5 @@ class JsonPlayingCardController extends AbstractController
         );
 
         return $response;
-
-        // $data = [
-        //     "players" => $deck->dealCards($nrOfPlayers, $nrOfCards),
-        //     "cardsNr" => count($deck->getCards()),
-        // ];
-        // return $this->render('playingCard/deal-cards.html.twig', $data);
     }
 }

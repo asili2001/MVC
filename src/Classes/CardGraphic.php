@@ -4,6 +4,9 @@ namespace App\Classes;
 
 class CardGraphic extends Card
 {
+    /**
+     * @var array<string> $representation
+    */
     private $representation = [
         "hearts" => "hearts.svg",
         "diamonds" => "diamonds.svg",
@@ -11,7 +14,7 @@ class CardGraphic extends Card
         "clubs" => "clubs.svg",
         "joker" => "joker.svg",
     ];
-    public function __construct($name, $symbol)
+    public function __construct(string $name, string $symbol)
     {
         parent::__construct($name, $symbol);
     }

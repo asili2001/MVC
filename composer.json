@@ -1,4 +1,6 @@
 {
+    "name": "ahai22/report",
+    "description": "MVC course",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
@@ -97,6 +99,12 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "phpmd": "tools/phpmd/vendor/bin/phpmd . text phpmd.xml || true",
+        "phpstan": "tools/phpstan/vendor/bin/phpstan || true",
+        "lint": [
+            "@phpmd",
+            "@phpstan"
         ]
     },
     "conflict": {

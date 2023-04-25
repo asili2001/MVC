@@ -7,6 +7,10 @@
         <h2>Totalt: {{ cardsNr }} kort</h2>
         <div class="card-deck">
         {% for card in deck %}
+            {% if card.isHidden() %}
+                <div class="card hidden-card">
+                </div>
+            {% else %}
                 <div class="card {{ card.getSymbol() }}">
                     <div class="card-left">
                         <h2>{{ card.getName() }}</h2>
@@ -34,6 +38,7 @@
                         <h2>{{ card.getName() }}</h2>
                     </div>
                 </div>
+            {% endif %}
         {% endfor %}
         </div>
     </div>

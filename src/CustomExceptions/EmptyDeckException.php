@@ -6,10 +6,13 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 
 class EmptyDeckException extends Exception
 {
-    public function errorMessage()
+    public function errorMessage(): string|null
     {
         //error message
-        $errorMsg = $this->getMessage() ?? "The deck is empty";
-        return $errorMsg;
+        if (!$this->getMessage()) {
+            return "The deck is empty";
+        }
+
+        return $this->getMessage();
     }
 }

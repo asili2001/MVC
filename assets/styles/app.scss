@@ -173,59 +173,174 @@ nav {
     flex-wrap: wrap;
     gap: 1em;
 
-    .card {
-        height: 20em;
-        width: 15em;
+}
+.card {
+    height: 20em;
+    width: 15em;
+    display: flex;
+    justify-content: space-between;
+    background: antiquewhite;
+    padding: 0.5em;
+    border-radius: 0.5em;
+
+    &.hidden-card {
+        background-image: url("../../public/img/playing-cards/playing-card-back.svg");
+        background-size: 100%;
+        background-color: #ffbf6b;
+    }
+
+    .card-left, .card-right {
+        img {
+            height: 1.5em;
+        }
+    }
+
+    .card-left {
         display: flex;
-        justify-content: space-between;
-        background: antiquewhite;
-        padding: 0.5em;
-    
-        .card-left, .card-right {
-            img {
-                height: 1.5em;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-middle {
+        width: 100%;
+        padding: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        font-size: 5em;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        > img {
+            width: 100%;
+        }
+
+        img.symbol {
+            width: 2.5rem;
+        }
+    }
+
+    .card-right {
+        display: flex;
+        align-content: flex-end;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        > h2 {
+            transform: rotate(180deg);
+        }
+    }
+
+    &.hearts, &.diamonds {
+        color: #ff2c5e;
+    }
+}
+
+.blackjack-playground {
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background: linear-gradient(45deg, #4CAF50, #009688);
+    border-radius: 2em;
+
+    .dealer, .player {
+        display: flex;
+        flex-direction: row;
+        height: 40%;
+        overflow: hidden;
+        justify-content: center;
+
+        .cards-hand {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .card {
+                height: 12em;
+                width: 9em;
+                margin-left: 5em;
+                position: relative;
+                box-shadow: 0 0 5px black;
+                .card-middle img.symbol {
+                    width: 1rem;
+                }
+                .card-left img, .card-right img {
+                    height: 1em;
+                }
+
+                &:nth-child(even) {
+                    transform: rotate(5deg)
+                }
+                &:nth-child(odd) {
+                    transform: rotate(-5deg)
+                }
+
+                &:not(:first-child) {
+                    margin-left: -100px;
+                }
             }
         }
-    
-        .card-left {
+
+        .info {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5em;
+            font-size: 1.5em;
+
+            .counter {
+                height: 50px;
+                width: 50px;
+                background-color: #ffffff45;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 1em;
+
+        .btn {
+            display: flex;
+            gap: 0.5em;
+
+            > i {
+                font-size: 1.5em;
+            }
+        }
+        .message {
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-    
-        .card-middle {
-            width: 100%;
-            padding: 0.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            font-size: 5em;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-    
-            > img {
-                width: 100%;
+            gap: 0.5em;
+            padding: 0.5em;
+            box-shadow: inset 0px 20px 20px 0px #000000;
+            
+            &.dealer {
+                background: linear-gradient(90deg, #ff0000, white);
             }
-    
-            img.symbol {
-                width: 2.5rem;
+            &.push {
+                background: linear-gradient(90deg, #00d0ff, white);
             }
-        }
-    
-        .card-right {
-            display: flex;
-            align-content: flex-end;
-            flex-wrap: wrap;
-            justify-content: center;
-    
-            > h2 {
-                transform: rotate(180deg);
+            &.player {
+                background: linear-gradient(90deg, #33ff00, white);
             }
-        }
-    
-        &.hearts, &.diamonds {
-            color: #ff2c5e;
         }
     }
 }

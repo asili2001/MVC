@@ -157,23 +157,30 @@ nav > ul {
   flex-wrap: wrap;
   gap: 1em;
 }
-.card-deck .card {
+
+.card {
   height: 20em;
   width: 15em;
   display: flex;
   justify-content: space-between;
   background: antiquewhite;
   padding: 0.5em;
+  border-radius: 0.5em;
 }
-.card-deck .card .card-left img, .card-deck .card .card-right img {
+.card.hidden-card {
+  background-image: url("../../public/img/playing-cards/playing-card-back.svg");
+  background-size: 100%;
+  background-color: #ffbf6b;
+}
+.card .card-left img, .card .card-right img {
   height: 1.5em;
 }
-.card-deck .card .card-left {
+.card .card-left {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.card-deck .card .card-middle {
+.card .card-middle {
   width: 100%;
   padding: 0.5rem;
   display: flex;
@@ -184,23 +191,121 @@ nav > ul {
   justify-content: center;
   align-items: center;
 }
-.card-deck .card .card-middle > img {
+.card .card-middle > img {
   width: 100%;
 }
-.card-deck .card .card-middle img.symbol {
+.card .card-middle img.symbol {
   width: 2.5rem;
 }
-.card-deck .card .card-right {
+.card .card-right {
   display: flex;
   align-content: flex-end;
   flex-wrap: wrap;
   justify-content: center;
 }
-.card-deck .card .card-right > h2 {
+.card .card-right > h2 {
   transform: rotate(180deg);
 }
-.card-deck .card.hearts, .card-deck .card.diamonds {
+.card.hearts, .card.diamonds {
   color: #ff2c5e;
+}
+
+.blackjack-playground {
+  height: 70vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background: linear-gradient(45deg, #4CAF50, #009688);
+  border-radius: 2em;
+}
+.blackjack-playground .dealer, .blackjack-playground .player {
+  display: flex;
+  flex-direction: row;
+  height: 40%;
+  overflow: hidden;
+  justify-content: center;
+}
+.blackjack-playground .dealer .cards-hand, .blackjack-playground .player .cards-hand {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.blackjack-playground .dealer .cards-hand .card, .blackjack-playground .player .cards-hand .card {
+  height: 12em;
+  width: 9em;
+  margin-left: 5em;
+  position: relative;
+  box-shadow: 0 0 5px black;
+}
+.blackjack-playground .dealer .cards-hand .card .card-middle img.symbol, .blackjack-playground .player .cards-hand .card .card-middle img.symbol {
+  width: 1rem;
+}
+.blackjack-playground .dealer .cards-hand .card .card-left img, .blackjack-playground .dealer .cards-hand .card .card-right img, .blackjack-playground .player .cards-hand .card .card-left img, .blackjack-playground .player .cards-hand .card .card-right img {
+  height: 1em;
+}
+.blackjack-playground .dealer .cards-hand .card:nth-child(even), .blackjack-playground .player .cards-hand .card:nth-child(even) {
+  transform: rotate(5deg);
+}
+.blackjack-playground .dealer .cards-hand .card:nth-child(odd), .blackjack-playground .player .cards-hand .card:nth-child(odd) {
+  transform: rotate(-5deg);
+}
+.blackjack-playground .dealer .cards-hand .card:not(:first-child), .blackjack-playground .player .cards-hand .card:not(:first-child) {
+  margin-left: -100px;
+}
+.blackjack-playground .dealer .info, .blackjack-playground .player .info {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  font-size: 1.5em;
+}
+.blackjack-playground .dealer .info .counter, .blackjack-playground .player .info .counter {
+  height: 50px;
+  width: 50px;
+  background-color: rgba(255, 255, 255, 0.2705882353);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.blackjack-playground .buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1em;
+}
+.blackjack-playground .buttons .btn {
+  display: flex;
+  gap: 0.5em;
+}
+.blackjack-playground .buttons .btn > i {
+  font-size: 1.5em;
+}
+.blackjack-playground .buttons .message {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em;
+  box-shadow: inset 0px 20px 20px 0px #000000;
+}
+.blackjack-playground .buttons .message.dealer {
+  background: linear-gradient(90deg, #ff0000, white);
+}
+.blackjack-playground .buttons .message.push {
+  background: linear-gradient(90deg, #00d0ff, white);
+}
+.blackjack-playground .buttons .message.player {
+  background: linear-gradient(90deg, #33ff00, white);
 }
 
 @keyframes flip {

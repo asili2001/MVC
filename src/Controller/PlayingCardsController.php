@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Classes\DeckOfCards;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -16,12 +17,18 @@ class PlayingCardsController extends AbstractController
     }
 
     #[Route('/card/deck', name: "playingCardDeck")]
-    public function cardsDeck(): Response
+    public function cardsDeck(Request $request): Response
     {
-        if (isset($_GET["reset"]) && $_GET["reset"] != "false") {
-            session_destroy();
+        $session = $request->getSession();
+        $resetQuery = $request->query->get("reset");
+        $jokersQuery = $request->query->get("jokers");
+        if (isset($resetQuery) && $resetQuery != "false") {
+            $session->remove("playingCards");
         }
-        $deck = new DeckOfCards((isset($_GET["jokers"]) && $_GET["jokers"] != "false"));
+        $deck = new DeckOfCards($session, "playingCards");
+        if (isset($jokersQuery) && $jokersQuery != "false") {
+            $deck->hasJokers();
+        }
         $deck->sortCards();
 
         $data = [
@@ -31,21 +38,23 @@ class PlayingCardsController extends AbstractController
         return $this->render('playingCard/deck.html.twig', $data);
     }
     #[Route('/card/deck/shuffle', name: "playingCardDeckShuffled")]
-    public function shuffleDeck(): Response
+    public function shuffleDeck(Request $request): Response
     {
-        $deck = new DeckOfCards(true);
-
+        $session = $request->getSession();
+        $deck = new DeckOfCards($session, "playingCards");
+        $deck->shuffleCards();
         $data = [
-            "deck" => $deck->shuffleCards(),
+            "deck" => $deck->getCards(),
             "cardsNr" => count($deck->getCards()),
         ];
         return $this->render('playingCard/deck.html.twig', $data);
     }
 
     #[Route('/card/deck/draw', name: "playingCardDeckDrawOne")]
-    public function drawCard(): Response
+    public function drawCard(Request $request): Response
     {
-        $deck = new DeckOfCards(true);
+        $session = $request->getSession();
+        $deck = new DeckOfCards($session, "playingCards");
 
         $data = [
             "deck" => $deck->drawCard(),
@@ -55,9 +64,10 @@ class PlayingCardsController extends AbstractController
     }
 
     #[Route('/card/deck/draw/{nrOfCards}', name: "playingCardDeckDrawMultiple")]
-    public function drawCards(int $nrOfCards): Response
+    public function drawCards(Request $request, int $nrOfCards): Response
     {
-        $deck = new DeckOfCards(true);
+        $session = $request->getSession();
+        $deck = new DeckOfCards($session, "playingCards");
 
         $data = [
             "deck" => $deck->drawCard($nrOfCards),
@@ -67,9 +77,10 @@ class PlayingCardsController extends AbstractController
     }
 
     #[Route('/card/deck/deal/{nrOfPlayers}/{nrOfCards}', name: "playingCardDeckDealCards")]
-    public function dealCards(int $nrOfPlayers, int $nrOfCards): Response
+    public function dealCards(Request $request, int $nrOfPlayers, int $nrOfCards): Response
     {
-        $deck = new DeckOfCards(true);
+        $session = $request->getSession();
+        $deck = new DeckOfCards($session, "playingCards");
 
         $data = [
             "players" => $deck->dealCards($nrOfPlayers, $nrOfCards),
