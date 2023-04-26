@@ -10,7 +10,7 @@
                 <div class="cards-hand">
                     {% for card in dealerHand.getCards() %}
                         {% if card.isHidden() %}
-                            <div class="card hidden-card"></div>
+                            <div class="card hidden-card" style="background-image: url({{asset('img/playing-cards/playing-card-back.svg')}});"></div>
                         {% else %}
                             <div class="card {{ card.getSymbol() }}">
                                 <div class="card-left">
@@ -49,8 +49,8 @@
             </div>
             <div class="buttons">
             {% if not winner %}
-                <a href="/game/play/hit" class="btn"><i class="fa-regular fa-square-plus"></i> Hit</a>
-                <a href="/game/play/stand" class="btn"><i class="fa-solid fa-hand"></i> Stand</a>
+                <a href="{{path('cardGameHit')}}" class="btn"><i class="fa-regular fa-square-plus"></i> Hit</a>
+                <a href="{{path('cardGameStand')}}" class="btn"><i class="fa-solid fa-hand"></i> Stand</a>
             {% else %}
                 <div class="message {{ winner }}">
                     {% if winner == "player" %}
@@ -60,7 +60,7 @@
                     {% elseif winner == "push" %}
                         <h1>PUSH!</h1>
                     {% endif %}
-                    <a href="/game/play/new" class="btn"><i class="fa-solid fa-refresh"></i> New Game</a>
+                    <a href="{{path('cardGameReset')}}" class="btn"><i class="fa-solid fa-refresh"></i> New Game</a>
                 </div>
             {% endif %}
             </div>

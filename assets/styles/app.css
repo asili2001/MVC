@@ -1,317 +1,333 @@
 @import url(https://fonts.googleapis.com/css2?family=Arimo&display=swap);
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-  font-size: 100%;
-  font-family: Arimo, sans-serif;
+    font-size: 100%;
+    font-family: Arimo, sans-serif;
 }
 
 body {
-  background: #fff;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    background: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-body, html, main {
-  height: 100%;
+body,
+html,
+main {
+    height: 100%;
 }
 
 a {
-  text-decoration: none;
-  color: #2c2c2c;
-  font-weight: bolder;
-  font-size: 1.2em;
+    text-decoration: none;
+    color: #2c2c2c;
+    font-weight: bolder;
+    font-size: 1.2em;
 }
 
 header {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 nav {
-  height: 100px;
-  width: 100%;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  box-shadow: 0 0 10px #000;
+    height: 100px;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 0 10px #000;
 }
 nav > ul {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
 }
 
 .btn {
-  min-height: 50px;
-  width: 200px;
-  border: 0;
-  box-shadow: 3px 5px 7px 0 #232323;
-  font-size: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+    min-height: 50px;
+    width: 200px;
+    border: 0;
+    box-shadow: 3px 5px 7px 0 #232323;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 .btn .github {
-  background: linear-gradient(45deg, #005dff, #6800ff);
-  color: #fff;
+    background: linear-gradient(45deg, #005dff, #6800ff);
+    color: #fff;
 }
 
 .waviy {
-  position: relative;
+    position: relative;
 }
 .waviy > span {
-  position: relative;
-  display: inline-block;
-  font-size: 40px;
-  color: #1d1d1d;
-  text-transform: uppercase;
-  animation: flip 2s infinite;
-  animation-delay: calc(0.2s * var(--i));
+    position: relative;
+    display: inline-block;
+    font-size: 40px;
+    color: #1d1d1d;
+    text-transform: uppercase;
+    animation: flip 2s infinite;
+    animation-delay: calc(0.2s * var(--i));
 }
 
 .round {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 
 .content {
-  width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2em;
+    width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
 }
 @media screen and (max-width: 800px) {
-  .content.content {
-    width: 100%;
-  }
+    .content.content {
+        width: 100%;
+    }
 }
 .content .me-box {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: center;
-  gap: 2em;
-  justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    gap: 2em;
+    justify-content: center;
 }
 .content .me-box > .text {
-  width: 20em;
-  font-size: 1.3em;
-  line-height: 1.3em;
-  font-family: sans-serif;
+    width: 20em;
+    font-size: 1.3em;
+    line-height: 1.3em;
+    font-family: sans-serif;
 }
 .content .me-box > .image {
-  width: 15em;
-  height: 15em;
-  overflow: hidden;
+    width: 15em;
+    height: 15em;
+    overflow: hidden;
 }
 .content .me-box > .image > img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .report {
-  width: 100%;
+    width: 100%;
 }
 .report .btns {
-  display: flex;
-  gap: 1em;
-  flex-wrap: wrap;
-  margin: 1em;
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    margin: 1em;
 }
 .report .report-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
 .report .report-list .item {
-  min-height: 500px;
-  padding: 1em;
-  background-color: #fff9d9;
+    min-height: 500px;
+    padding: 1em;
+    background-color: #fff9d9;
 }
 .report .report-list .item > h1 {
-  text-align: center;
+    text-align: center;
 }
 
 .footer {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #e8e8e8;
-  margin-top: auto;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e8e8e8;
+    margin-top: auto;
 }
 
 .card-deck {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
 }
 
 .card {
-  height: 20em;
-  width: 15em;
-  display: flex;
-  justify-content: space-between;
-  background: antiquewhite;
-  padding: 0.5em;
-  border-radius: 0.5em;
+    height: 20em;
+    width: 15em;
+    display: flex;
+    justify-content: space-between;
+    background: antiquewhite;
+    padding: 0.5em;
+    border-radius: 0.5em;
 }
 .card.hidden-card {
-  background-image: url("../../public/img/playing-cards/playing-card-back.svg");
-  background-size: 100%;
-  background-color: #ffbf6b;
+    background-size: 100%;
+    background-color: #ffbf6b;
 }
-.card .card-left img, .card .card-right img {
-  height: 1.5em;
+.card .card-left img,
+.card .card-right img {
+    height: 1.5em;
 }
 .card .card-left {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .card .card-middle {
-  width: 100%;
-  padding: 0.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  font-size: 5em;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    padding: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    font-size: 5em;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 .card .card-middle > img {
-  width: 100%;
+    width: 100%;
 }
 .card .card-middle img.symbol {
-  width: 2.5rem;
+    width: 2.5rem;
 }
 .card .card-right {
-  display: flex;
-  align-content: flex-end;
-  flex-wrap: wrap;
-  justify-content: center;
+    display: flex;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 .card .card-right > h2 {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
-.card.hearts, .card.diamonds {
-  color: #ff2c5e;
+.card.hearts,
+.card.diamonds {
+    color: #ff2c5e;
 }
 
 .blackjack-playground {
-  height: 70vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  background: linear-gradient(45deg, #4CAF50, #009688);
-  border-radius: 2em;
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background: linear-gradient(45deg, #4caf50, #009688);
+    border-radius: 2em;
 }
-.blackjack-playground .dealer, .blackjack-playground .player {
-  display: flex;
-  flex-direction: row;
-  height: 40%;
-  overflow: hidden;
-  justify-content: center;
+.blackjack-playground .dealer,
+.blackjack-playground .player {
+    display: flex;
+    flex-direction: row;
+    height: 40%;
+    overflow: hidden;
+    justify-content: center;
 }
-.blackjack-playground .dealer .cards-hand, .blackjack-playground .player .cards-hand {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.blackjack-playground .dealer .cards-hand,
+.blackjack-playground .player .cards-hand {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
-.blackjack-playground .dealer .cards-hand .card, .blackjack-playground .player .cards-hand .card {
-  height: 12em;
-  width: 9em;
-  margin-left: 5em;
-  position: relative;
-  box-shadow: 0 0 5px black;
+.blackjack-playground .dealer .cards-hand .card,
+.blackjack-playground .player .cards-hand .card {
+    height: 12em;
+    width: 9em;
+    margin-left: 5em;
+    position: relative;
+    box-shadow: 0 0 5px black;
 }
-.blackjack-playground .dealer .cards-hand .card .card-middle img.symbol, .blackjack-playground .player .cards-hand .card .card-middle img.symbol {
-  width: 1rem;
+.blackjack-playground .dealer .cards-hand .card .card-middle img.symbol,
+.blackjack-playground .player .cards-hand .card .card-middle img.symbol {
+    width: 1rem;
 }
-.blackjack-playground .dealer .cards-hand .card .card-left img, .blackjack-playground .dealer .cards-hand .card .card-right img, .blackjack-playground .player .cards-hand .card .card-left img, .blackjack-playground .player .cards-hand .card .card-right img {
-  height: 1em;
+.blackjack-playground .dealer .cards-hand .card .card-left img,
+.blackjack-playground .dealer .cards-hand .card .card-right img,
+.blackjack-playground .player .cards-hand .card .card-left img,
+.blackjack-playground .player .cards-hand .card .card-right img {
+    height: 1em;
 }
-.blackjack-playground .dealer .cards-hand .card:nth-child(even), .blackjack-playground .player .cards-hand .card:nth-child(even) {
-  transform: rotate(5deg);
+.blackjack-playground .dealer .cards-hand .card:nth-child(even),
+.blackjack-playground .player .cards-hand .card:nth-child(even) {
+    transform: rotate(5deg);
 }
-.blackjack-playground .dealer .cards-hand .card:nth-child(odd), .blackjack-playground .player .cards-hand .card:nth-child(odd) {
-  transform: rotate(-5deg);
+.blackjack-playground .dealer .cards-hand .card:nth-child(odd),
+.blackjack-playground .player .cards-hand .card:nth-child(odd) {
+    transform: rotate(-5deg);
 }
-.blackjack-playground .dealer .cards-hand .card:not(:first-child), .blackjack-playground .player .cards-hand .card:not(:first-child) {
-  margin-left: -100px;
+.blackjack-playground .dealer .cards-hand .card:not(:first-child),
+.blackjack-playground .player .cards-hand .card:not(:first-child) {
+    margin-left: -100px;
 }
-.blackjack-playground .dealer .info, .blackjack-playground .player .info {
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5em;
-  font-size: 1.5em;
+.blackjack-playground .dealer .info,
+.blackjack-playground .player .info {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    font-size: 1.5em;
 }
-.blackjack-playground .dealer .info .counter, .blackjack-playground .player .info .counter {
-  height: 50px;
-  width: 50px;
-  background-color: rgba(255, 255, 255, 0.2705882353);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.blackjack-playground .dealer .info .counter,
+.blackjack-playground .player .info .counter {
+    height: 50px;
+    width: 50px;
+    background-color: rgba(255, 255, 255, 0.2705882353);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .blackjack-playground .buttons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1em;
 }
 .blackjack-playground .buttons .btn {
-  display: flex;
-  gap: 0.5em;
+    display: flex;
+    gap: 0.5em;
 }
 .blackjack-playground .buttons .btn > i {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 .blackjack-playground .buttons .message {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5em;
-  padding: 0.5em;
-  box-shadow: inset 0px 20px 20px 0px #000000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em;
+    box-shadow: inset 0px 20px 20px 0px #000000;
 }
 .blackjack-playground .buttons .message.dealer {
-  background: linear-gradient(90deg, #ff0000, white);
+    background: linear-gradient(90deg, #ff0000, white);
 }
 .blackjack-playground .buttons .message.push {
-  background: linear-gradient(90deg, #00d0ff, white);
+    background: linear-gradient(90deg, #00d0ff, white);
 }
 .blackjack-playground .buttons .message.player {
-  background: linear-gradient(90deg, #33ff00, white);
+    background: linear-gradient(90deg, #33ff00, white);
 }
 
 @keyframes flip {
-  0%, 80% {
-    transform: rotateY(360deg);
-  }
+    0%,
+    80% {
+        transform: rotateY(360deg);
+    }
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -8,7 +8,7 @@
 
 html {
     font-size: 100%;
-    font-family: Arimo,sans-serif
+    font-family: Arimo, sans-serif;
 }
 
 body {
@@ -18,15 +18,17 @@ body {
     flex-direction: column;
 }
 
-body,html,main {
-    height: 100%
+body,
+html,
+main {
+    height: 100%;
 }
 
 a {
     text-decoration: none;
     color: #2c2c2c;
     font-weight: bolder;
-    font-size: 1.2em
+    font-size: 1.2em;
 }
 
 header {
@@ -42,14 +44,13 @@ nav {
     padding: 20px;
     box-shadow: 0 0 10px #000;
 
-    >ul {
+    > ul {
         list-style: none;
         display: flex;
         flex-direction: row;
-        gap: 15px
+        gap: 15px;
     }
 }
-
 
 .btn {
     min-height: 50px;
@@ -64,23 +65,22 @@ nav {
     text-align: center;
 
     .github {
-        background: linear-gradient(45deg,#005dff,#6800ff);
+        background: linear-gradient(45deg, #005dff, #6800ff);
         color: #fff;
     }
-    
 }
 
 .waviy {
     position: relative;
 
-    >span {
+    > span {
         position: relative;
         display: inline-block;
         font-size: 40px;
         color: #1d1d1d;
         text-transform: uppercase;
         animation: flip 2s infinite;
-        animation-delay: calc(.2s * var(--i))
+        animation-delay: calc(0.2s * var(--i));
     }
 }
 
@@ -110,19 +110,19 @@ nav {
         gap: 2em;
         justify-content: center;
 
-        >.text {
+        > .text {
             width: 20em;
             font-size: 1.3em;
             line-height: 1.3em;
             font-family: sans-serif;
         }
 
-        >.image {
+        > .image {
             width: 15em;
             height: 15em;
             overflow: hidden;
 
-            >img {
+            > img {
                 height: 100%;
                 width: 100%;
                 object-fit: cover;
@@ -130,7 +130,6 @@ nav {
         }
     }
 }
-
 
 .report {
     width: 100%;
@@ -147,12 +146,12 @@ nav {
         flex-direction: column;
         gap: 1em;
 
-        .item{
+        .item {
             min-height: 500px;
             padding: 1em;
             background-color: #fff9d9;
 
-            > h1{
+            > h1 {
                 text-align: center;
             }
         }
@@ -172,7 +171,6 @@ nav {
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
-
 }
 .card {
     height: 20em;
@@ -189,7 +187,8 @@ nav {
         background-color: #ffbf6b;
     }
 
-    .card-left, .card-right {
+    .card-left,
+    .card-right {
         img {
             height: 1.5em;
         }
@@ -232,7 +231,8 @@ nav {
         }
     }
 
-    &.hearts, &.diamonds {
+    &.hearts,
+    &.diamonds {
         color: #ff2c5e;
     }
 }
@@ -244,10 +244,11 @@ nav {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
-    background: linear-gradient(45deg, #4CAF50, #009688);
+    background: linear-gradient(45deg, #4caf50, #009688);
     border-radius: 2em;
 
-    .dealer, .player {
+    .dealer,
+    .player {
         display: flex;
         flex-direction: row;
         height: 40%;
@@ -270,15 +271,16 @@ nav {
                 .card-middle img.symbol {
                     width: 1rem;
                 }
-                .card-left img, .card-right img {
+                .card-left img,
+                .card-right img {
                     height: 1em;
                 }
 
                 &:nth-child(even) {
-                    transform: rotate(5deg)
+                    transform: rotate(5deg);
                 }
                 &:nth-child(odd) {
-                    transform: rotate(-5deg)
+                    transform: rotate(-5deg);
                 }
 
                 &:not(:first-child) {
@@ -331,7 +333,7 @@ nav {
             gap: 0.5em;
             padding: 0.5em;
             box-shadow: inset 0px 20px 20px 0px #000000;
-            
+
             &.dealer {
                 background: linear-gradient(90deg, #ff0000, white);
             }
@@ -345,9 +347,9 @@ nav {
     }
 }
 
-
 @keyframes flip {
-    0%,80% {
-      transform: rotateY(360deg) 
+    0%,
+    80% {
+        transform: rotateY(360deg);
     }
 }
