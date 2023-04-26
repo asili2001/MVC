@@ -5,6 +5,21 @@
 {% block body %}
     <div class="content">
         <h1>Välkommen till BlackJack</h1>
+        <a href="game/doc" class="btn">Doc</a>
+            <div class="information-box">
+            Blackjack är ett kortspel där spelaren försöker få en hand med ett totalt värde så nära 21 som möjligt utan att gå över detta värde. Korten har olika värden där nummerkorten har sitt påtryckta värde, ess räknas som 1 eller 11 och klädda kort (knekt, dam, kung) räknas som 10.
+            <br><br>
+            Spelet börjar med att spelaren och dealern får två kort var. Spelaren kan se båda sina kort men bara ett av dealerns kort är synligt. Sedan måste spelaren fatta beslut om att ta fler kort eller stanna med de kort han eller hon redan har.
+            <br><br>
+            Hit: Spelaren tar ytterligare ett kort för att öka värdet på sin hand. Spelaren kan ta flera kort så länge handen inte överstiger 21.
+            <br><br>
+            Stand: Spelaren väljer att inte ta fler kort och står med den hand han eller hon redan har.
+            <br><br>
+            Push: Om spelaren och dealern har samma värde på sina händer så blir spelet en push och insatsen återbetalas till spelaren.
+            <br><br>
+            Om spelaren tar ett eller flera kort och handen totalt överstiger 21 så kallas detta för "bust" och spelaren förlorar insatsen. Om spelaren står på en hand som är närmare 21 än dealerns hand, eller om dealern går över 21, vinner spelaren.
+            </div>
         <a href="game/play" class="btn">Starta Spelet</a>
+
     </div>
 {% endblock %}

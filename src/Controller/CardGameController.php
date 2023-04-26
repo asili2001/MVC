@@ -17,8 +17,13 @@ class CardGameController extends AbstractController
     {
         return $this->render('game/home.html.twig');
     }
+    #[Route('/game/doc', name: 'cardGameDoc')]
+    public function cardGameDoc(): Response
+    {
+        return $this->render('game/doc.html.twig');
+    }
 
-    #[Route('/game/play', name: 'cardGame')]
+    #[Route('/game/play', name: 'cardGamePlay')]
     public function cardGameStart(Request $request): Response
     {
         $cardGameFuncs = new CardGameFuncs();
@@ -31,7 +36,7 @@ class CardGameController extends AbstractController
     {
         $cardGameFuncs = new CardGameFuncs();
         $cardGameFuncs->reset($request);
-        return $this->redirectToRoute("cardGame");
+        return $this->redirectToRoute("cardGamePlay");
     }
 
     #[Route('/game/play/hit', name: 'cardGameHit')]
@@ -39,13 +44,13 @@ class CardGameController extends AbstractController
     {
         $cardGameFuncs = new CardGameFuncs();
         $cardGameFuncs->hit($request);
-        return $this->redirect("/game/play");
+        return $this->redirectToRoute("cardGamePlay");
     }
     #[Route('/game/play/stand', name: 'cardGameStand')]
     public function cardGameStand(Request $request): Response
     {
         $cardGameFuncs = new CardGameFuncs();
         $cardGameFuncs->stand($request);
-        return $this->redirect("/game/play");
+        return $this->redirectToRoute("cardGamePlay");
     }
 }

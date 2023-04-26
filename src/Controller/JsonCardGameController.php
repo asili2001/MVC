@@ -15,13 +15,13 @@ class JsonCardGameController extends AbstractController
 {
     use Returner;
     #[Route('/api/game', name: "cardGameJson")]
-    public function cardGameHome(): Response
+    public function cardGameJson(): Response
     {
         return $this->redirectToRoute("cardGamePlayJson");
     }
 
     #[Route('api/game/play', name: 'cardGamePlayJson')]
-    public function cardGamePlay(Request $request): Response
+    public function cardGamePlayJson(Request $request): Response
     {
         $cardGameFuncs = new CardGameFuncs();
         $data = $cardGameFuncs->startGame($request);
@@ -71,7 +71,7 @@ class JsonCardGameController extends AbstractController
     }
 
     #[Route('/api/game/play/new', name: 'cardGameResetJson')]
-    public function cardGameReset(Request $request): Response
+    public function cardGameResetJson(Request $request): Response
     {
         $cardGameFuncs = new CardGameFuncs();
         $cardGameFuncs->reset($request);
@@ -79,14 +79,14 @@ class JsonCardGameController extends AbstractController
     }
 
     #[Route('/api/game/play/hit', name: 'cardGameHitJson')]
-    public function cardGameHit(Request $request): Response
+    public function cardGameHitJson(Request $request): Response
     {
         $cardGameFuncs = new CardGameFuncs();
         $cardGameFuncs->hit($request);
         return $this->redirectToRoute("cardGamePlayJson");
     }
     #[Route('/api/game/play/stand', name: 'cardGameStandJson')]
-    public function cardGameStand(Request $request): Response
+    public function cardGameStandJson(Request $request): Response
     {
         $cardGameFuncs = new CardGameFuncs();
         $cardGameFuncs->stand($request);

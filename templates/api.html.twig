@@ -4,16 +4,29 @@
 
 {% block body %}
     <div class="content">
-        <h1>Api</h1>
-        <ul>
-            <li>'/api/quote' - Random Quote</li>
-            <li>'/api/deck' - Visa kortlek</li>
-            <li>'/api/deck?reset=true' - Nya kortlek utan Jokers</li>
-            <li>'/api/deck?reset=true&jokers=true' - Nya kortlek med Jokers</li>
-            <li>'/api/deck/shuffle' - Shuffle kort</li>
-            <li>'/api/deck/draw' - Dra ett kort</li>
-            <li>'/api/deck/draw/{nrOfCards}' - Dra flera kort</li>
-            <li>'/api/deck/deal/{nrOfPlayers}/{nrOfCards}' - Dela ett antal kort med flera spelare</li>
-        </ul>
+        <div style="display: flex;flex-direction: column;gap: 2em;">
+            <h1>Api</h1>
+            <h3>Quote</h3>
+            <ul>
+                <li>'/api/quote' - Random Quote</li>
+            </ul>
+            <h3>Playing cards</h3>
+            <ul>
+                <li>'/api/deck' - Visa kortlek</li>
+                <li>'/api/deck?reset=true' - Nya kortlek utan Jokers</li>
+                <li>'/api/deck?reset=true&jokers=true' - Nya kortlek med Jokers</li>
+                <li>'/api/deck/shuffle' - Shuffle kort</li>
+                <li>'/api/deck/draw' - Dra ett kort</li>
+                <li>'/api/deck/draw/{nrOfCards}' - Dra flera kort</li>
+                <li>'/api/deck/deal/{nrOfPlayers}/{nrOfCards}' - Dela ett antal kort med flera spelare</li>
+            </ul>
+            <h3>BlackJack</h3>
+            <ul>
+                <li>'/api/game/play' - starta spelet</li>
+                <li>'/api/game/play/hit - dra ny kort</li>
+                <li>'/api/game/play/stand' - Inga fler kort</li>
+                <li>'/api/game/play/new' - Starta om spelet</li>
+            </ul>
+        </div>
     </div>
 {% endblock %}
