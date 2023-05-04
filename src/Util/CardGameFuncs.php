@@ -1,15 +1,12 @@
 <?php
 
-namespace App\Classes;
+namespace App\Util;
 
 use App\Classes\BlackJackHand;
 use App\Classes\DeckOfCards;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
-class CardGameFuncs extends AbstractController
+trait CardGameFuncs
 {
     /**
      * Check if game is already started by checking session data.

@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use App\Classes\BlackJackHand;
-use App\Classes\CardGameFuncs;
-use App\Traits\Returner;
+use App\Util\CardGameFuncs;
+use App\Util\Returner;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class JsonCardGameController extends AbstractController
 {
     use Returner;
+    use CardGameFuncs;
     #[Route('/api/game', name: "cardGameJson")]
     public function cardGameJson(): Response
     {
@@ -23,8 +24,7 @@ class JsonCardGameController extends AbstractController
     #[Route('api/game/play', name: 'cardGamePlayJson')]
     public function cardGamePlayJson(Request $request): Response
     {
-        $cardGameFuncs = new CardGameFuncs();
-        $data = $cardGameFuncs->startGame($request);
+        $data = $this->startGame($request);
         /**
          * @var BlackJackHand $dealerHand
          */
@@ -73,23 +73,20 @@ class JsonCardGameController extends AbstractController
     #[Route('/api/game/play/new', name: 'cardGameResetJson')]
     public function cardGameResetJson(Request $request): Response
     {
-        $cardGameFuncs = new CardGameFuncs();
-        $cardGameFuncs->reset($request);
+        $this->reset($request);
         return $this->redirectToRoute("cardGamePlayJson");
     }
 
     #[Route('/api/game/play/hit', name: 'cardGameHitJson')]
     public function cardGameHitJson(Request $request): Response
     {
-        $cardGameFuncs = new CardGameFuncs();
-        $cardGameFuncs->hit($request);
+        $this->hit($request);
         return $this->redirectToRoute("cardGamePlayJson");
     }
     #[Route('/api/game/play/stand', name: 'cardGameStandJson')]
     public function cardGameStandJson(Request $request): Response
     {
-        $cardGameFuncs = new CardGameFuncs();
-        $cardGameFuncs->stand($request);
+        $this->stand($request);
         return $this->redirectToRoute("cardGamePlayJson");
     }
 }

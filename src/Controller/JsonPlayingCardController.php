@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Classes\DeckOfCards;
 use App\CustomExceptions\EmptyDeckException;
-use App\Traits\Returner;
+use App\Util\Returner;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
