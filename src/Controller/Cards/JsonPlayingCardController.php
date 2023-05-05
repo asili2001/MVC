@@ -2,7 +2,6 @@
 
 namespace App\Controller\Cards;
 
-use App\Classes\BlackJackGame\BlackJackHand;
 use App\Classes\Cards\Card;
 use App\Classes\Cards\DeckOfCards;
 use App\CustomExceptions\EmptyDeckException;
