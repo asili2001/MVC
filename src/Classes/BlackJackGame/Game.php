@@ -3,7 +3,6 @@
 namespace App\Classes\BlackJackGame;
 
 use App\Classes\Cards\DeckOfCards;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * The Game class is the primary component or "core" of the blackjack game,
