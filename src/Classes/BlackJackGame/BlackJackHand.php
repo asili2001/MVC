@@ -1,7 +1,15 @@
 <?php
 
-namespace App\Classes;
+namespace App\Classes\BlackJackGame;
 
+use App\Classes\Cards\CardHand;
+use App\Classes\Cards\Card;
+
+/**
+ * BlackJackHand is a type of CardHand Class thathas the
+ * capability of tallying up points according to the
+ * specific regulations of the game of blackjack.
+ */
 class BlackJackHand extends CardHand
 {
     /**
@@ -28,6 +36,7 @@ class BlackJackHand extends CardHand
         "K" => 10
     ];
     /**
+     * Creates a hand using the CardHand class
      * @param array<Card> $cards
     */
     public function __construct(array $cards = [])

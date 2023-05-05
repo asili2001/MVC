@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\BlackJackGame;
 
-use App\Classes\BlackJackHand;
-use App\Util\CardGameFuncs;
+use App\Classes\BlackJackGame as BlackJackGame;
+
 use App\Util\Returner;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,7 +14,23 @@ use Symfony\Component\Routing\Annotation\Route;
 class JsonCardGameController extends AbstractController
 {
     use Returner;
-    use CardGameFuncs;
+
+    /**
+     * @var BlackJackGame\Game $blackJackGame
+     */
+    private $blackJackGame;
+    private function gameInit(Request $request): void
+    {
+        $session = $request->getSession();
+        /**
+         * @var array<mixed> $gameSession
+         */
+        $gameSession = $session->get("blackjack", []);
+
+        $this->blackJackGame = new BlackJackGame\Game($gameSession);
+        $session->set("blackjack", $this->blackJackGame->getGameData());
+    }
+
     #[Route('/api/game', name: "cardGameJson")]
     public function cardGameJson(): Response
     {
@@ -24,14 +40,17 @@ class JsonCardGameController extends AbstractController
     #[Route('api/game/play', name: 'cardGamePlayJson')]
     public function cardGamePlayJson(Request $request): Response
     {
-        $data = $this->startGame($request);
+        $session = $request->getSession();
+        $this->gameInit($request);
+        $session->set("blackjack", $this->blackJackGame->getGameData());
+        $data = $this->blackJackGame->getGameData();
         /**
-         * @var BlackJackHand $dealerHand
+         * @var BlackJackGame\BlackJackHand $dealerHand
          */
         $dealerHand = $data['dealerHand'];
 
         /**
-         * @var BlackJackHand $playerHand
+         * @var BlackJackGame\BlackJackHand $playerHand
          */
         $playerHand = $data['playerHand'];
         /**
@@ -60,33 +79,38 @@ class JsonCardGameController extends AbstractController
         ];
         $statusCode = 200;
         $res = $this->arrReturner(false, $finalData, $statusCode, "Success");
-        // print_r($data);
 
         $response = new JsonResponse($res, $statusCode);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
-
         return $response;
     }
 
     #[Route('/api/game/play/new', name: 'cardGameResetJson')]
     public function cardGameResetJson(Request $request): Response
     {
-        $this->reset($request);
+        $request->getSession()->remove("blackjack");
         return $this->redirectToRoute("cardGamePlayJson");
     }
 
     #[Route('/api/game/play/hit', name: 'cardGameHitJson')]
     public function cardGameHitJson(Request $request): Response
     {
-        $this->hit($request);
+        $this->gameInit($request);
+        $this->blackJackGame->hit();
+        $session = $request->getSession();
+        $session->set("blackjack", $this->blackJackGame->getGameData());
+        print_r($this->blackJackGame->getGameData());
         return $this->redirectToRoute("cardGamePlayJson");
     }
     #[Route('/api/game/play/stand', name: 'cardGameStandJson')]
     public function cardGameStandJson(Request $request): Response
     {
-        $this->stand($request);
+        $this->gameInit($request);
+        $this->blackJackGame->stand();
+        $session = $request->getSession();
+        $session->set("blackjack", $this->blackJackGame->getGameData());
         return $this->redirectToRoute("cardGamePlayJson");
     }
 }

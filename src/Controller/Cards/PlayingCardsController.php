@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Cards;
 
-use App\Classes\DeckOfCards;
+use App\Classes\Cards\Card;
+use App\Classes\Cards\DeckOfCards;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,7 +26,11 @@ class PlayingCardsController extends AbstractController
         if (isset($resetQuery) && $resetQuery != "false") {
             $session->remove("playingCards");
         }
-        $deck = new DeckOfCards($session, "playingCards");
+        /**
+         * @var array<Card> $playingCardsSession
+         */
+        $playingCardsSession = $session->get("playingCards");
+        $deck = new DeckOfCards($playingCardsSession);
         if (isset($jokersQuery) && $jokersQuery != "false") {
             $deck->hasJokers();
         }
@@ -41,7 +46,11 @@ class PlayingCardsController extends AbstractController
     public function shuffleDeck(Request $request): Response
     {
         $session = $request->getSession();
-        $deck = new DeckOfCards($session, "playingCards");
+        /**
+         * @var array<Card> $playingCardsSession
+         */
+        $playingCardsSession = $session->get("playingCards");
+        $deck = new DeckOfCards($playingCardsSession);
         $deck->shuffleCards();
         $data = [
             "deck" => $deck->getCards(),
@@ -54,7 +63,11 @@ class PlayingCardsController extends AbstractController
     public function drawCard(Request $request): Response
     {
         $session = $request->getSession();
-        $deck = new DeckOfCards($session, "playingCards");
+        /**
+         * @var array<Card> $playingCardsSession
+         */
+        $playingCardsSession = $session->get("playingCards");
+        $deck = new DeckOfCards($playingCardsSession);
 
         $data = [
             "deck" => $deck->drawCard(),
@@ -67,7 +80,11 @@ class PlayingCardsController extends AbstractController
     public function drawCards(Request $request, int $nrOfCards): Response
     {
         $session = $request->getSession();
-        $deck = new DeckOfCards($session, "playingCards");
+        /**
+         * @var array<Card> $playingCardsSession
+         */
+        $playingCardsSession = $session->get("playingCards");
+        $deck = new DeckOfCards($playingCardsSession);
 
         $data = [
             "deck" => $deck->drawCard($nrOfCards),
@@ -80,7 +97,11 @@ class PlayingCardsController extends AbstractController
     public function dealCards(Request $request, int $nrOfPlayers, int $nrOfCards): Response
     {
         $session = $request->getSession();
-        $deck = new DeckOfCards($session, "playingCards");
+        /**
+         * @var array<Card> $playingCardsSession
+         */
+        $playingCardsSession = $session->get("playingCards");
+        $deck = new DeckOfCards($playingCardsSession);
 
         $data = [
             "players" => $deck->dealCards($nrOfPlayers, $nrOfCards),

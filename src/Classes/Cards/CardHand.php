@@ -1,17 +1,20 @@
 <?php
 
-namespace App\Classes;
+namespace App\Classes\Cards;
 
 use Symfony\Component\Config\Definition\Exception\Exception;
 
 class CardHand
 {
     /**
+     * The hand of cards
      * @var array<Card> $hand
     */
     private $hand = [];
 
     /**
+     * This constructor method initializes the hand state by
+     * using provided cards data or of just leaving it empty
      * @param array<Card> $cards
     */
     public function __construct(array $cards = [])
@@ -53,12 +56,12 @@ class CardHand
     }
 
     /**
-     * Removes and returns a card from the player's hand at the specified index.
-     *
-     * @param int $index The index of the card to remove.
-     * @return array<Card>|Card The removed card, either as an array or a Card object.
-     * @throws Exception if the card is not found in the hand.
-    */
+     This method removes and returns a card from the player's hand at the specified index.
+     It throws an exception if the card is not found in the hand.
+     @param int $index The index of the card to remove.
+     @return Card|array<Card> The removed card as a Card object, or an array of Cards if multiple cards were drawn.
+     @throws Exception If the card is not found in the hand.
+     */
     public function drawCard(int $index): array | Card
     {
         if (!isset($this->hand[$index])) {

@@ -1,49 +1,48 @@
 <?php
 
-namespace App\Classes;
+namespace App\Classes\Cards;
 
 use App\CustomExceptions\EmptyDeckException;
 use Symfony\Component\Config\Definition\Exception\Exception;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class DeckOfCards
 {
     /**
+     * The cards that will be existed
      * @var array<string|int> $cards
      */
     private array $cards = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
 
     /**
+     * The symbols that will be existed
      * @var array<string> $symbols
      */
     private array $symbols = ["hearts", "diamonds", "spades", "clubs"];
 
     /**
+     * The deck that card will be stored in
      * @var array<Card|CardGraphic> $deck
      */
     private array $deck = array();
-    private string $sessionName = "";
-    private SessionInterface $session;
     private bool $jokers = false;
-    public function __construct(SessionInterface $session, string $sessionName)
+
+    /**
+     * This constructor method initializes the DeckOfCards state by
+     * either using provided cards data or generating a new set.
+     * @param array<Card> $deck
+    */
+    public function __construct(array $deck = array())
     {
-        $this->session = $session;
-        $this->sessionName = $sessionName;
-        /**
-         * @var array<Card>|null $deckSession
-         */
-        $deckSession = $this->session->get($sessionName);
-        if (!isset($deckSession)) {
+        if (count($deck) < 1) {
             $this->resetCards();
         }
-        if (isset($deckSession)) {
-            $this->deck = $deckSession;
+        if (count($deck) > 0) {
+            $this->deck = $deck;
         }
     }
 
     /**
      * Adds joker cards to the deck.
-     *
     */
     public function hasJokers(): void
     {
@@ -68,17 +67,6 @@ class DeckOfCards
                 $this->deck[] = new CardGraphic(strval($this->cards[$iCa]), strval($this->symbols[$iSy]));
             }
         }
-
-        $this->saveToSession();
-    }
-
-    /**
-     * Saves the deck to the session
-     *
-    */
-    private function saveToSession(): void
-    {
-        $this->session->set($this->sessionName, $this->deck);
     }
 
     /**
@@ -98,7 +86,6 @@ class DeckOfCards
     public function shuffleCards(): void
     {
         shuffle($this->deck);
-        $this->saveToSession();
     }
 
     /**
@@ -125,7 +112,6 @@ class DeckOfCards
         $result = array_merge($result, $this->deck);
 
         $this->deck = $result;
-        $this->saveToSession();
     }
 
     /**
@@ -151,7 +137,6 @@ class DeckOfCards
             array_splice($this->deck, $cardToDraw, 1);
         }
 
-        $this->saveToSession();
         return $result;
 
     }

@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Cards;
 
-use App\Classes\DeckOfCards;
+use App\Classes\BlackJackGame\BlackJackHand;
+use App\Classes\Cards\Card;
+use App\Classes\Cards\DeckOfCards;
 use App\CustomExceptions\EmptyDeckException;
 use App\Util\Returner;
 use Exception;
@@ -25,7 +27,11 @@ class JsonPlayingCardController extends AbstractController
     {
         $session = $request->getSession();
         $jokersQuery = $request->query->get("jokers");
-        $deck = new DeckOfCards($session, "playingCards");
+        /**
+         * @var array<Card> $playingCardsSession
+         */
+        $playingCardsSession = $session->get("playingCards");
+        $deck = new DeckOfCards($playingCardsSession);
         if (isset($jokersQuery) && $jokersQuery != "false") {
             $deck->hasJokers();
         }
@@ -55,7 +61,11 @@ class JsonPlayingCardController extends AbstractController
     public function shuffleDeckJson(Request $request): Response
     {
         $session = $request->getSession();
-        $deck = new DeckOfCards($session, "playingCards");
+        /**
+         * @var array<Card> $playingCardsSession
+         */
+        $playingCardsSession = $session->get("playingCards");
+        $deck = new DeckOfCards($playingCardsSession);
 
         // shuffle
         $deck->shuffleCards();
@@ -83,7 +93,11 @@ class JsonPlayingCardController extends AbstractController
     public function drawCardJson(Request $request): Response
     {
         $session = $request->getSession();
-        $deck = new DeckOfCards($session, "playingCards");
+        /**
+         * @var array<Card> $playingCardsSession
+         */
+        $playingCardsSession = $session->get("playingCards");
+        $deck = new DeckOfCards($playingCardsSession);
         $cardData = array();
         $errorMessage = "";
         $statusCode = 200;
@@ -114,7 +128,11 @@ class JsonPlayingCardController extends AbstractController
     public function drawCardsJson(Request $request, int $nrOfCards): Response
     {
         $session = $request->getSession();
-        $deck = new DeckOfCards($session, "playingCards");
+        /**
+         * @var array<Card> $playingCardsSession
+         */
+        $playingCardsSession = $session->get("playingCards");
+        $deck = new DeckOfCards($playingCardsSession);
         $cardData = array();
         $errorMessage = "";
         $statusCode = 200;
@@ -145,7 +163,11 @@ class JsonPlayingCardController extends AbstractController
     public function dealCardsJson(Request $request, int $nrOfPlayers, int $nrOfCards): Response
     {
         $session = $request->getSession();
-        $deck = new DeckOfCards($session, "playingCards");
+        /**
+         * @var array<Card> $playingCardsSession
+         */
+        $playingCardsSession = $session->get("playingCards");
+        $deck = new DeckOfCards($playingCardsSession);
         $playerData = array();
         $errorMessage = "";
         $statusCode = 200;
