@@ -12,6 +12,7 @@ class DeckOfCards
      * @var array<string|int> $cards
      */
     private array $cards = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
+    
 
     /**
      * The symbols that will be existed
@@ -64,7 +65,7 @@ class DeckOfCards
         $countCards = count($this->cards);
         for ($iSy=0; $iSy < $countsymbols; $iSy++) {
             for ($iCa=0; $iCa < $countCards; $iCa++) {
-                $this->deck[] = new CardGraphic(strval($this->cards[$iCa]), strval($this->symbols[$iSy]));
+                $this->deck[] = new CardGraphic($this->cards[$iCa], $this->symbols[$iSy]);
             }
         }
     }

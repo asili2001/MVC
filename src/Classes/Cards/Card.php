@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Classes\Cards;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class Card
 {
@@ -29,7 +30,9 @@ class Card
         if (in_array($name, $this->allowedNames) && in_array($symbol, $this->allowedSymbols)) {
             $this->name = $name;
             $this->symbol = $symbol;
+            return;
         }
+        throw new Exception('This card is not allowed');
     }
 
     /**
