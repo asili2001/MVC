@@ -9,7 +9,7 @@ class CardTest extends TestCase
    /**
     *  Constuct object and verify that the object has the expected properties.
     */
-    public function testCreateCard()
+    public function testCreateCard(): void
     {
         $cardName = "5";
         $cardSymbol = "hearts";
@@ -29,7 +29,7 @@ class CardTest extends TestCase
     /**
      * getting name of card
      */
-    public function testGetName()
+    public function testGetName(): void
     {
         $card = new Card("2", "diamonds");
         $this->assertEquals($card->getName(), "2");
@@ -38,7 +38,7 @@ class CardTest extends TestCase
     /**
      * getting name of card
      */
-    public function testSymbol()
+    public function testSymbol(): void
     {
         $card = new Card("2", "diamonds");
         $this->assertEquals($card->getSymbol(), "diamonds");
@@ -47,7 +47,7 @@ class CardTest extends TestCase
     /**
      * Test hide card
      */
-    public function testHideCard()
+    public function testHideCard(): void
     {
         $card = new Card("2", "diamonds");
         $this->assertFalse($card->isHidden());

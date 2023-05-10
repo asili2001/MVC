@@ -13,7 +13,7 @@ class CardHandTest extends TestCase
     /**
     *  Constuct object and verify that the object has the expected properties.
     */
-    public function testCreateCardHand()
+    public function testCreateCardHand(): void
     {
         // test empty hand
         $hand = new CardHand();
@@ -28,7 +28,7 @@ class CardHandTest extends TestCase
     }
 
     // test get cards from hand
-    public function testGetCards()
+    public function testGetCards(): void
     {
         $hand = new CardHand();
         $card = new Card("4", "diamonds");
@@ -43,7 +43,7 @@ class CardHandTest extends TestCase
 
     }
     // test drawCard
-    public function testDrawCard()
+    public function testDrawCard(): void
     {
         $hand = new CardHand();
         $card = new Card("4", "diamonds");

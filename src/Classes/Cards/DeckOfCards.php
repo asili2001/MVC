@@ -65,7 +65,7 @@ class DeckOfCards
         $countCards = count($this->cards);
         for ($iSy=0; $iSy < $countsymbols; $iSy++) {
             for ($iCa=0; $iCa < $countCards; $iCa++) {
-                $this->deck[] = new CardGraphic($this->cards[$iCa], $this->symbols[$iSy]);
+                $this->deck[] = new CardGraphic(strval($this->cards[$iCa]), $this->symbols[$iSy]);
             }
         }
     }
@@ -129,13 +129,12 @@ class DeckOfCards
         }
         $result = [];
         for ($i=1; $i<=$nrOfCards; $i++) {
-            // if (empty($this->deck)) {
-            //     throw new EmptyDeckException('The deck is empty');
-            // }
-            $cardToDraw = random_int(0, count($this->deck) - 1);
-            $result[] = $this->deck[$cardToDraw];
-
-            array_splice($this->deck, $cardToDraw, 1);
+            if (!empty($this->deck)) {
+                $cardToDraw = random_int(0, count($this->deck) - 1);
+                $result[] = $this->deck[$cardToDraw];
+    
+                array_splice($this->deck, $cardToDraw, 1);
+            }
         }
 
         return $result;

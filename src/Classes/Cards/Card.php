@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Classes\Cards;
+
 use Symfony\Component\Config\Definition\Exception\Exception;
 
 class Card

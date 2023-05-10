@@ -29,7 +29,7 @@ class JsonPlayingCardController extends AbstractController
         /**
          * @var array<Card> $playingCardsSession
          */
-        $playingCardsSession = $session->get("playingCards");
+        $playingCardsSession = $session->get("playingCards") ?? array();
         $deck = new DeckOfCards($playingCardsSession);
         if (isset($jokersQuery) && $jokersQuery != "false") {
             $deck->hasJokers();
@@ -47,12 +47,12 @@ class JsonPlayingCardController extends AbstractController
         }
         $statusCode = 200;
         $res = $this->arrReturner(false, $cardData, $statusCode, "Success");
-
+        
         $response = new JsonResponse($res, $statusCode);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
-
+        $session->set("playingCards", $deck->getCards());
         return $response;
     }
 
@@ -63,7 +63,7 @@ class JsonPlayingCardController extends AbstractController
         /**
          * @var array<Card> $playingCardsSession
          */
-        $playingCardsSession = $session->get("playingCards");
+        $playingCardsSession = $session->get("playingCards") ?? array();
         $deck = new DeckOfCards($playingCardsSession);
 
         // shuffle
@@ -84,7 +84,7 @@ class JsonPlayingCardController extends AbstractController
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
-
+        $session->set("playingCards", $deck->getCards());
         return $response;
     }
 
@@ -95,7 +95,7 @@ class JsonPlayingCardController extends AbstractController
         /**
          * @var array<Card> $playingCardsSession
          */
-        $playingCardsSession = $session->get("playingCards");
+        $playingCardsSession = $session->get("playingCards") ?? array();
         $deck = new DeckOfCards($playingCardsSession);
         $cardData = array();
         $errorMessage = "";
@@ -119,7 +119,7 @@ class JsonPlayingCardController extends AbstractController
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
-
+        $session->set("playingCards", $deck->getCards());
         return $response;
     }
 
@@ -130,7 +130,7 @@ class JsonPlayingCardController extends AbstractController
         /**
          * @var array<Card> $playingCardsSession
          */
-        $playingCardsSession = $session->get("playingCards");
+        $playingCardsSession = $session->get("playingCards") ?? array();
         $deck = new DeckOfCards($playingCardsSession);
         $cardData = array();
         $errorMessage = "";
@@ -154,7 +154,7 @@ class JsonPlayingCardController extends AbstractController
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
-
+        $session->set("playingCards", $deck->getCards());
         return $response;
     }
 
@@ -165,7 +165,7 @@ class JsonPlayingCardController extends AbstractController
         /**
          * @var array<Card> $playingCardsSession
          */
-        $playingCardsSession = $session->get("playingCards");
+        $playingCardsSession = $session->get("playingCards") ?? array();
         $deck = new DeckOfCards($playingCardsSession);
         $playerData = array();
         $errorMessage = "";
@@ -199,7 +199,7 @@ class JsonPlayingCardController extends AbstractController
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
-
+        $session->set("playingCards", $deck->getCards());
         return $response;
     }
 }

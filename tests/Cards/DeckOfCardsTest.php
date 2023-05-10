@@ -10,7 +10,7 @@ class DeckOfCardsTest extends TestCase
     /**
      * Construct Object and verify that the object has the expected values
      */
-    public function testCreateDeckOfCard()
+    public function testCreateDeckOfCard(): void
     {
         // deck with no payload
         $deck = new DeckOfCards();
@@ -27,7 +27,7 @@ class DeckOfCardsTest extends TestCase
      * test add jokers to the deck
      * reset the deck
      */
-    public function testAddJokersAndResetDeck()
+    public function testAddJokersAndResetDeck(): void
     {
         $deck = new DeckOfCards();
         // check total of cards without jokers
@@ -41,38 +41,38 @@ class DeckOfCardsTest extends TestCase
     /**
      * test shuffle deck
      */
-    public function testShuffleDeck()
+    public function testShuffleDeck(): void
     {
         $deck = new DeckOfCards();
         // check if the first card is A
-        $this->assertEquals(($deck->getCards()[0])->getName(), "A");
+        $this->assertTrue(($deck->getCards()[0])->getName() === "A" && ($deck->getCards()[51])->getName() === "K");
         // shuffle
         $deck->shuffleCards();
         // check if the first card is not A
-        $this->assertNotEquals(($deck->getCards()[0])->getName(), "A");
+        $this->assertFalse(($deck->getCards()[0])->getName() === "A" && ($deck->getCards()[51])->getName() === "K");
     }
 
     /**
      * test sort deck
      */
-    public function testSortDeck()
+    public function testSortDeck(): void
     {
         $deck = new DeckOfCards();
         // shuffle
         $deck->shuffleCards();
         // check if the first card is A
-        $this->assertNotEquals(($deck->getCards()[0])->getName(), "A");
+        $this->assertFalse(($deck->getCards()[0])->getName() === "A" && ($deck->getCards()[51])->getName() === "K");
         // sort
         $deck->sortCards();
         // check if the first card is A
-        $this->assertEquals(($deck->getCards()[0])->getName(), "A");
+        $this->assertTrue(($deck->getCards()[0])->getName() === "A" && ($deck->getCards()[51])->getName() === "K");
 
     }
 
     /**
      * test deaw card
      */
-    public function testDrawCard()
+    public function testDrawCard(): void
     {
         $deck = new DeckOfCards();
         // check total of cards is 52
@@ -83,6 +83,44 @@ class DeckOfCardsTest extends TestCase
         // test draw more cards then what there is
         $this->expectException(EmptyDeckException::class);
         $deck->drawCard(55);
+
+    }
+
+    /**
+     * test deal cards
+     */
+    public function testDealCards(): void
+    {
+        $deck = new DeckOfCards();
+        // check total of cards is 52
+        $this->assertEquals(count($deck->getCards()), 52);
+        $dealRes = $deck->dealCards(2, 10);
+        // check if every player got 5 cards
+        $this->assertEquals(count($dealRes['player 1']->getCards()), 5);
+        $this->assertEquals(count($dealRes['player 2']->getCards()), 5);
+        // check total of cards is 42
+        $this->assertEquals(count($deck->getCards()), 42);
+        // test deal more cards then what there is
+        $deck = new DeckOfCards();
+        $this->expectException(EmptyDeckException::class);
+        $dealRes = $deck->dealCards(2, 60);
+
+    }
+    
+    public function testDealThreeCardsToZeroPlayers(): void
+    {
+        // test deal one card to 0 players
+        $deck = new DeckOfCards();
+        $this->expectException(Exception::class);
+        $deck->dealCards(0, 3);
+
+    }
+    public function testDealZeroCardsToThreePlayers(): void
+    {
+        // test deal one card to 0 players
+        $deck = new DeckOfCards();
+        $this->expectException(Exception::class);
+        $deck->dealCards(3, 0);
 
     }
 }

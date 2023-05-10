@@ -9,7 +9,7 @@ class CardGraphicTest extends TestCase
     /**
     *  Constuct object and verify that the object has the expected properties.
     */
-    public function testCreateCard()
+    public function testCreateCard(): void
     {
         // creating card
         $card = new Card("4", "hearts");
@@ -19,7 +19,7 @@ class CardGraphicTest extends TestCase
     /**
      * Getting representation of a card
      */
-    public function testGetRepresentation()
+    public function testGetRepresentation(): void
     {
         $card = new CardGraphic("4", "hearts");
         $this->assertEquals($card->getRepresentation(), "hearts.svg");
