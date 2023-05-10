@@ -29,10 +29,11 @@ class PlayingCardsController extends AbstractController
         /**
          * @var array<Card> $playingCardsSession
          */
-        $playingCardsSession = $session->get("playingCards");
+        $playingCardsSession = $session->get("playingCards")["deck"] ?? array();
         $deck = new DeckOfCards($playingCardsSession);
         if (isset($jokersQuery) && $jokersQuery != "false") {
             $deck->hasJokers();
+            $deck->resetCards();
         }
         $deck->sortCards();
 
@@ -40,6 +41,7 @@ class PlayingCardsController extends AbstractController
             "deck" => $deck->getCards(),
             "cardsNr" => count($deck->getCards()),
         ];
+        $session->set("playingCards", $data);
         return $this->render('playingCard/deck.html.twig', $data);
     }
     #[Route('/card/deck/shuffle', name: "playingCardDeckShuffled")]
@@ -49,7 +51,7 @@ class PlayingCardsController extends AbstractController
         /**
          * @var array<Card> $playingCardsSession
          */
-        $playingCardsSession = $session->get("playingCards");
+        $playingCardsSession = $session->get("playingCards")["deck"] ?? array();
         $deck = new DeckOfCards($playingCardsSession);
         $deck->shuffleCards();
         $data = [
@@ -66,13 +68,14 @@ class PlayingCardsController extends AbstractController
         /**
          * @var array<Card> $playingCardsSession
          */
-        $playingCardsSession = $session->get("playingCards");
+        $playingCardsSession = $session->get("playingCards")["deck"] ?? array();
         $deck = new DeckOfCards($playingCardsSession);
 
         $data = [
             "deck" => $deck->drawCard(),
             "cardsNr" => count($deck->getCards()),
         ];
+        $session->set("playingCards", ["deck" => $deck->getCards(), "cardsNr" => count($deck->getCards())]);
         return $this->render('playingCard/deck.html.twig', $data);
     }
 
@@ -83,13 +86,17 @@ class PlayingCardsController extends AbstractController
         /**
          * @var array<Card> $playingCardsSession
          */
-        $playingCardsSession = $session->get("playingCards");
+        $playingCardsSession = $session->get("playingCards")["deck"] ?? array();
         $deck = new DeckOfCards($playingCardsSession);
 
         $data = [
             "deck" => $deck->drawCard($nrOfCards),
             "cardsNr" => count($deck->getCards()),
         ];
+        $session->set("playingCards", [
+            "deck" => $deck->getCards(),
+            "cardsNr" => count($deck->getCards())
+        ]);
         return $this->render('playingCard/deck.html.twig', $data);
     }
 
@@ -100,13 +107,17 @@ class PlayingCardsController extends AbstractController
         /**
          * @var array<Card> $playingCardsSession
          */
-        $playingCardsSession = $session->get("playingCards");
+        $playingCardsSession = $session->get("playingCards")['deck'] ?? array();
         $deck = new DeckOfCards($playingCardsSession);
 
         $data = [
             "players" => $deck->dealCards($nrOfPlayers, $nrOfCards),
             "cardsNr" => count($deck->getCards()),
         ];
+        $session->set("playingCards", [
+            "deck" => $deck->getCards(),
+            "cardsNr" => count($deck->getCards())
+        ]);
         return $this->render('playingCard/deal-cards.html.twig', $data);
     }
 }

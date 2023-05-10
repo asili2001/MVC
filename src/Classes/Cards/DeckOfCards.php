@@ -129,9 +129,9 @@ class DeckOfCards
         }
         $result = [];
         for ($i=1; $i<=$nrOfCards; $i++) {
-            if (empty($this->deck)) {
-                throw new EmptyDeckException('The deck is empty');
-            }
+            // if (empty($this->deck)) {
+            //     throw new EmptyDeckException('The deck is empty');
+            // }
             $cardToDraw = random_int(0, count($this->deck) - 1);
             $result[] = $this->deck[$cardToDraw];
 
