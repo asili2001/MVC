@@ -14,7 +14,7 @@
         <p>{{book.about}}</p>
     </div>
     <img src="https://barcodeapi.org/api/{{book.isbn}}" alt="ISBN">
-    <a href="/library/update/{{book.id}}" class="btn">Edit Book</a>
-    <a href="/library/delete/{{book.id}}" class="btn">Delete Book</a>
+    <a href="../update/{{book.id}}" class="btn">Edit Book</a>
+    <a href="../delete/{{book.id}}" class="btn">Delete Book</a>
 </div>
 {% endblock %}

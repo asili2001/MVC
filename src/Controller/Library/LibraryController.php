@@ -24,7 +24,7 @@ class LibraryController extends AbstractController
         ]);
     }
 
-    #[Route('/library/book/{bookId}', name: 'single_book')]
+    #[Route('/library/book/id/{bookId}', name: 'single_book')]
     public function singleBook(
         BooksRepository $booksRepository,
         int $bookId,
@@ -49,7 +49,7 @@ class LibraryController extends AbstractController
         return $this->redirectToRoute('app_library');
     }
 
-    #[Route('/library/create', name: 'book_create', methods: ['POST', 'GET'])]
+    #[Route('/library/book/create', name: 'book_create', methods: ['POST', 'GET'])]
     public function createBook(
         Request $request,
         ManagerRegistry $doctrine
@@ -78,7 +78,7 @@ class LibraryController extends AbstractController
         return $this->render('library/create-book.html.twig');
     }
 
-    #[Route('/library/update/{bookId}', name: 'book_update', methods: ['POST', 'GET'])]
+    #[Route('/library/book/update/{bookId}', name: 'book_update', methods: ['POST', 'GET'])]
     public function updateBook(
         Request $request,
         int $bookId,
@@ -121,7 +121,7 @@ class LibraryController extends AbstractController
             "book" => $book
         ]);
     }
-    #[Route('/library/delete/{bookId}', name: 'book_delete', methods: ['POST', 'GET'])]
+    #[Route('/library/book/delete/{bookId}', name: 'book_delete', methods: ['POST', 'GET'])]
     public function deleteBook(
         Request $request,
         int $bookId,

@@ -10,7 +10,7 @@
     <h2>Books:</h2>
     <ul class="book-list">
     {% for book in books %}
-    <a href="library/book/{{book.id}}">
+    <a href="library/book/id/{{book.id}}">
         <li>
             <h2>{{book.name}} by {{book.author}}</h2>
             <p>{{book.isbn}}</p>
