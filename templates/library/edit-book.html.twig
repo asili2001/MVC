@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Book!{% endblock %}
+
+{% block body %}
+
+<div class="content">
+    <h1>Edit "{{book.name}}"</h1>
+    <form method="post">
+        <input type="text" name="name" placeholder="Name..." class="btn" value="{{book.name}}">
+        <input type="text" name="author" placeholder="Author..." class="btn" value="{{book.author}}">
+        <input type="number" name="isbn" placeholder="ISBN..." class="btn" value="{{book.isbn}}">
+        <input type="text" name="about" placeholder="About..." class="btn" value="{{book.about}}">
+        <input type="submit" value="Edit" class="btn">
+    </form>
+
+</div>
+{% endblock %}

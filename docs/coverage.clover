@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1683680326">
-  <project timestamp="1683680326">
+<coverage generated="1685667356">
+  <project timestamp="1685667356">
     <file name="/home/asili/dbwebb-kurser/mvc/me/report/src/Classes/BlackJackGame/BlackJackHand.php">
       <class name="App\Classes\BlackJackGame\BlackJackHand" namespace="global">
         <metrics complexity="9" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="13" coveredelements="13"/>
@@ -16,7 +16,7 @@
       <line num="63" type="stmt" count="3"/>
       <line num="66" type="stmt" count="3"/>
       <line num="67" type="stmt" count="3"/>
-      <line num="68" type="stmt" count="2"/>
+      <line num="68" type="stmt" count="3"/>
       <line num="71" type="stmt" count="3"/>
       <metrics loc="74" ncloc="51" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="13" coveredelements="13"/>
     </file>
@@ -295,7 +295,7 @@
     </file>
     <file name="/home/asili/dbwebb-kurser/mvc/me/report/src/Controller/Cards/JsonPlayingCardController.php">
       <class name="App\Controller\Cards\JsonPlayingCardController" namespace="global">
-        <metrics complexity="18" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="109" coveredstatements="0" elements="115" coveredelements="0"/>
+        <metrics complexity="18" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="114" coveredstatements="0" elements="120" coveredelements="0"/>
       </class>
       <line num="19" type="method" name="home" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="22" type="stmt" count="0"/>
@@ -320,6 +320,7 @@
       <line num="52" type="stmt" count="0"/>
       <line num="53" type="stmt" count="0"/>
       <line num="54" type="stmt" count="0"/>
+      <line num="55" type="stmt" count="0"/>
       <line num="56" type="stmt" count="0"/>
       <line num="59" type="method" name="shuffleDeckJson" visibility="public" complexity="2" crap="6" count="0"/>
       <line num="62" type="stmt" count="0"/>
@@ -339,6 +340,7 @@
       <line num="84" type="stmt" count="0"/>
       <line num="85" type="stmt" count="0"/>
       <line num="86" type="stmt" count="0"/>
+      <line num="87" type="stmt" count="0"/>
       <line num="88" type="stmt" count="0"/>
       <line num="91" type="method" name="drawCardJson" visibility="public" complexity="3" crap="12" count="0"/>
       <line num="94" type="stmt" count="0"/>
@@ -361,6 +363,7 @@
       <line num="119" type="stmt" count="0"/>
       <line num="120" type="stmt" count="0"/>
       <line num="121" type="stmt" count="0"/>
+      <line num="122" type="stmt" count="0"/>
       <line num="123" type="stmt" count="0"/>
       <line num="126" type="method" name="drawCardsJson" visibility="public" complexity="3" crap="12" count="0"/>
       <line num="129" type="stmt" count="0"/>
@@ -383,6 +386,7 @@
       <line num="154" type="stmt" count="0"/>
       <line num="155" type="stmt" count="0"/>
       <line num="156" type="stmt" count="0"/>
+      <line num="157" type="stmt" count="0"/>
       <line num="158" type="stmt" count="0"/>
       <line num="161" type="method" name="dealCardsJson" visibility="public" complexity="5" crap="30" count="0"/>
       <line num="164" type="stmt" count="0"/>
@@ -411,8 +415,9 @@
       <line num="199" type="stmt" count="0"/>
       <line num="200" type="stmt" count="0"/>
       <line num="201" type="stmt" count="0"/>
+      <line num="202" type="stmt" count="0"/>
       <line num="203" type="stmt" count="0"/>
-      <metrics loc="206" ncloc="190" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="109" coveredstatements="0" elements="115" coveredelements="0"/>
+      <metrics loc="206" ncloc="190" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="114" coveredstatements="0" elements="120" coveredelements="0"/>
     </file>
     <file name="/home/asili/dbwebb-kurser/mvc/me/report/src/Controller/Cards/PlayingCardsController.php">
       <class name="App\Controller\Cards\PlayingCardsController" namespace="global">
@@ -480,6 +485,137 @@
       <line num="115" type="stmt" count="0"/>
       <metrics loc="118" ncloc="103" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="54" coveredstatements="0" elements="60" coveredelements="0"/>
     </file>
+    <file name="/home/asili/dbwebb-kurser/mvc/me/report/src/Controller/Library/JsonLibraryController.php">
+      <class name="App\Controller\Library\JsonLibraryController" namespace="global">
+        <metrics complexity="4" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="0" elements="37" coveredelements="0"/>
+      </class>
+      <line num="18" type="method" name="jsonBooks" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="22" type="stmt" count="0"/>
+      <line num="24" type="stmt" count="0"/>
+      <line num="25" type="stmt" count="0"/>
+      <line num="26" type="stmt" count="0"/>
+      <line num="27" type="stmt" count="0"/>
+      <line num="28" type="stmt" count="0"/>
+      <line num="29" type="stmt" count="0"/>
+      <line num="30" type="stmt" count="0"/>
+      <line num="31" type="stmt" count="0"/>
+      <line num="32" type="stmt" count="0"/>
+      <line num="35" type="stmt" count="0"/>
+      <line num="37" type="stmt" count="0"/>
+      <line num="38" type="stmt" count="0"/>
+      <line num="39" type="stmt" count="0"/>
+      <line num="40" type="stmt" count="0"/>
+      <line num="42" type="stmt" count="0"/>
+      <line num="45" type="method" name="jsonSingleBook" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="51" type="stmt" count="0"/>
+      <line num="53" type="stmt" count="0"/>
+      <line num="54" type="stmt" count="0"/>
+      <line num="55" type="stmt" count="0"/>
+      <line num="56" type="stmt" count="0"/>
+      <line num="59" type="stmt" count="0"/>
+      <line num="60" type="stmt" count="0"/>
+      <line num="61" type="stmt" count="0"/>
+      <line num="62" type="stmt" count="0"/>
+      <line num="63" type="stmt" count="0"/>
+      <line num="64" type="stmt" count="0"/>
+      <line num="65" type="stmt" count="0"/>
+      <line num="66" type="stmt" count="0"/>
+      <line num="68" type="stmt" count="0"/>
+      <line num="70" type="stmt" count="0"/>
+      <line num="71" type="stmt" count="0"/>
+      <line num="72" type="stmt" count="0"/>
+      <line num="73" type="stmt" count="0"/>
+      <line num="75" type="stmt" count="0"/>
+      <metrics loc="78" ncloc="78" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="0" elements="37" coveredelements="0"/>
+    </file>
+    <file name="/home/asili/dbwebb-kurser/mvc/me/report/src/Controller/Library/LibraryController.php">
+      <class name="App\Controller\Library\LibraryController" namespace="global">
+        <metrics complexity="15" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="66" coveredstatements="0" elements="72" coveredelements="0"/>
+      </class>
+      <line num="17" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="21" type="stmt" count="0"/>
+      <line num="22" type="stmt" count="0"/>
+      <line num="23" type="stmt" count="0"/>
+      <line num="24" type="stmt" count="0"/>
+      <line num="27" type="method" name="singleBook" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="33" type="stmt" count="0"/>
+      <line num="34" type="stmt" count="0"/>
+      <line num="35" type="stmt" count="0"/>
+      <line num="36" type="stmt" count="0"/>
+      <line num="38" type="method" name="resetLibrary" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="42" type="stmt" count="0"/>
+      <line num="43" type="stmt" count="0"/>
+      <line num="44" type="stmt" count="0"/>
+      <line num="46" type="stmt" count="0"/>
+      <line num="47" type="stmt" count="0"/>
+      <line num="49" type="stmt" count="0"/>
+      <line num="52" type="method" name="createBook" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="57" type="stmt" count="0"/>
+      <line num="58" type="stmt" count="0"/>
+      <line num="59" type="stmt" count="0"/>
+      <line num="60" type="stmt" count="0"/>
+      <line num="61" type="stmt" count="0"/>
+      <line num="63" type="stmt" count="0"/>
+      <line num="65" type="stmt" count="0"/>
+      <line num="66" type="stmt" count="0"/>
+      <line num="67" type="stmt" count="0"/>
+      <line num="68" type="stmt" count="0"/>
+      <line num="69" type="stmt" count="0"/>
+      <line num="71" type="stmt" count="0"/>
+      <line num="73" type="stmt" count="0"/>
+      <line num="75" type="stmt" count="0"/>
+      <line num="78" type="stmt" count="0"/>
+      <line num="81" type="method" name="updateBook" visibility="public" complexity="7" crap="56" count="0"/>
+      <line num="87" type="stmt" count="0"/>
+      <line num="88" type="stmt" count="0"/>
+      <line num="90" type="stmt" count="0"/>
+      <line num="91" type="stmt" count="0"/>
+      <line num="92" type="stmt" count="0"/>
+      <line num="93" type="stmt" count="0"/>
+      <line num="95" type="stmt" count="0"/>
+      <line num="96" type="stmt" count="0"/>
+      <line num="97" type="stmt" count="0"/>
+      <line num="98" type="stmt" count="0"/>
+      <line num="99" type="stmt" count="0"/>
+      <line num="102" type="stmt" count="0"/>
+      <line num="103" type="stmt" count="0"/>
+      <line num="105" type="stmt" count="0"/>
+      <line num="106" type="stmt" count="0"/>
+      <line num="108" type="stmt" count="0"/>
+      <line num="109" type="stmt" count="0"/>
+      <line num="111" type="stmt" count="0"/>
+      <line num="112" type="stmt" count="0"/>
+      <line num="114" type="stmt" count="0"/>
+      <line num="117" type="stmt" count="0"/>
+      <line num="120" type="stmt" count="0"/>
+      <line num="121" type="stmt" count="0"/>
+      <line num="122" type="stmt" count="0"/>
+      <line num="124" type="method" name="deleteBook" visibility="public" complexity="3" crap="12" count="0"/>
+      <line num="130" type="stmt" count="0"/>
+      <line num="131" type="stmt" count="0"/>
+      <line num="133" type="stmt" count="0"/>
+      <line num="134" type="stmt" count="0"/>
+      <line num="135" type="stmt" count="0"/>
+      <line num="136" type="stmt" count="0"/>
+      <line num="138" type="stmt" count="0"/>
+      <line num="139" type="stmt" count="0"/>
+      <line num="140" type="stmt" count="0"/>
+      <line num="142" type="stmt" count="0"/>
+      <line num="145" type="stmt" count="0"/>
+      <line num="146" type="stmt" count="0"/>
+      <line num="147" type="stmt" count="0"/>
+      <metrics loc="150" ncloc="150" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="66" coveredstatements="0" elements="72" coveredelements="0"/>
+    </file>
+    <file name="/home/asili/dbwebb-kurser/mvc/me/report/src/Controller/LibraryBooksController.php">
+      <class name="App\Controller\LibraryBooksController" namespace="global">
+        <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
+      </class>
+      <line num="11" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="14" type="stmt" count="0"/>
+      <line num="15" type="stmt" count="0"/>
+      <line num="16" type="stmt" count="0"/>
+      <metrics loc="19" ncloc="19" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
+    </file>
     <file name="/home/asili/dbwebb-kurser/mvc/me/report/src/Controller/Lucky/LuckyController.php">
       <class name="App\Controller\Lucky\LuckyController" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="7" coveredelements="0"/>
@@ -539,11 +675,55 @@
       <line num="16" type="stmt" count="0"/>
       <metrics loc="19" ncloc="18" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
     </file>
+    <file name="/home/asili/dbwebb-kurser/mvc/me/report/src/Entity/Books.php">
+      <class name="App\Entity\Books" namespace="global">
+        <metrics complexity="9" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="22" coveredelements="0"/>
+      </class>
+      <line num="31" type="method" name="getId" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="33" type="stmt" count="0"/>
+      <line num="36" type="method" name="getName" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="38" type="stmt" count="0"/>
+      <line num="41" type="method" name="setName" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="43" type="stmt" count="0"/>
+      <line num="45" type="stmt" count="0"/>
+      <line num="48" type="method" name="getIsbn" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="50" type="stmt" count="0"/>
+      <line num="53" type="method" name="setIsbn" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="55" type="stmt" count="0"/>
+      <line num="57" type="stmt" count="0"/>
+      <line num="60" type="method" name="getAuthor" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="62" type="stmt" count="0"/>
+      <line num="65" type="method" name="setAuthor" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="67" type="stmt" count="0"/>
+      <line num="69" type="stmt" count="0"/>
+      <line num="72" type="method" name="getAbout" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="74" type="stmt" count="0"/>
+      <line num="77" type="method" name="setAbout" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="79" type="stmt" count="0"/>
+      <line num="81" type="stmt" count="0"/>
+      <metrics loc="84" ncloc="84" classes="1" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="22" coveredelements="0"/>
+    </file>
     <file name="/home/asili/dbwebb-kurser/mvc/me/report/src/Kernel.php">
       <class name="App\Kernel" namespace="global">
         <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </class>
       <metrics loc="12" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/home/asili/dbwebb-kurser/mvc/me/report/src/Repository/BooksRepository.php">
+      <class name="App\Repository\BooksRepository" namespace="global">
+        <metrics complexity="5" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="10" coveredelements="0"/>
+      </class>
+      <line num="19" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="21" type="stmt" count="0"/>
+      <line num="24" type="method" name="save" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="26" type="stmt" count="0"/>
+      <line num="28" type="stmt" count="0"/>
+      <line num="29" type="stmt" count="0"/>
+      <line num="33" type="method" name="remove" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="35" type="stmt" count="0"/>
+      <line num="37" type="stmt" count="0"/>
+      <line num="38" type="stmt" count="0"/>
+      <metrics loc="67" ncloc="36" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="10" coveredelements="0"/>
     </file>
     <file name="/home/asili/dbwebb-kurser/mvc/me/report/src/Util/Returner.php">
       <class name="App\Util\Returner" namespace="global">
@@ -560,6 +740,6 @@
       <line num="28" type="stmt" count="0"/>
       <metrics loc="31" ncloc="22" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="9" coveredelements="0"/>
     </file>
-    <metrics files="16" loc="1246" ncloc="996" classes="15" methods="58" coveredmethods="25" conditionals="0" coveredconditionals="0" statements="405" coveredstatements="135" elements="463" coveredelements="160"/>
+    <metrics files="21" loc="1644" ncloc="1363" classes="20" methods="79" coveredmethods="25" conditionals="0" coveredconditionals="0" statements="534" coveredstatements="135" elements="613" coveredelements="160"/>
   </project>
 </coverage>

@@ -12,7 +12,7 @@ class DeckOfCards
      * @var array<string|int> $cards
      */
     private array $cards = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
-    
+
 
     /**
      * The symbols that will be existed
@@ -132,7 +132,7 @@ class DeckOfCards
             if (!empty($this->deck)) {
                 $cardToDraw = random_int(0, count($this->deck) - 1);
                 $result[] = $this->deck[$cardToDraw];
-    
+
                 array_splice($this->deck, $cardToDraw, 1);
             }
         }

@@ -52,6 +52,20 @@ nav {
     }
 }
 
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+
+    input.btn {
+        width: 100%;
+        text-align: left;
+        padding: 0 1rem;
+    }
+}
+
 .btn {
     min-height: 50px;
     width: 200px;
@@ -240,10 +254,6 @@ nav {
 .blackjack-playground {
     height: 70vh;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
     background: linear-gradient(45deg, #4caf50, #009688);
     border-radius: 2em;
 
@@ -344,6 +354,24 @@ nav {
                 background: linear-gradient(90deg, #33ff00, white);
             }
         }
+    }
+}
+
+.book-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+
+    li {
+        height: 4rem;
+        display: flex;
+        flex-direction: row;
+        padding: 0 1rem;
+        background-color: #efefef;
+        align-items: center;
+        justify-content: space-between;
     }
 }
 

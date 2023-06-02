@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Book!{% endblock %}
+
+{% block body %}
+
+<div class="content">
+    <h1>New Book</h1>
+    <form method="post">
+        <input type="text" name="name" placeholder="Name..." class="btn">
+        <input type="text" name="author" placeholder="Author..." class="btn">
+        <input type="number" name="isbn" placeholder="ISBN..." class="btn">
+        <input type="text" name="about" placeholder="About..." class="btn">
+        <input type="submit" value="Add" class="btn">
+    </form>
+
+</div>
+{% endblock %}

@@ -47,7 +47,7 @@ class JsonPlayingCardController extends AbstractController
         }
         $statusCode = 200;
         $res = $this->arrReturner(false, $cardData, $statusCode, "Success");
-        
+
         $response = new JsonResponse($res, $statusCode);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
