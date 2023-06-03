@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1685667356">
-  <project timestamp="1685667356">
+<coverage generated="1685828151">
+  <project timestamp="1685828151">
     <file name="/home/asili/dbwebb-kurser/mvc/me/report/src/Classes/BlackJackGame/BlackJackHand.php">
       <class name="App\Classes\BlackJackGame\BlackJackHand" namespace="global">
         <metrics complexity="9" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="13" coveredelements="13"/>
