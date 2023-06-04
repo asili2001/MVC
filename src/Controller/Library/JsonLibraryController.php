@@ -45,8 +45,7 @@ class JsonLibraryController extends AbstractController
     #[Route('/api/library/book/{isbn}', name: 'json_single_book')]
     public function jsonSingleBook(
         BooksRepository $booksRepository,
-        int $isbn,
-        Request $request
+        int $isbn
     ): Response {
         $book = $booksRepository->findOneBy(['isbn' => $isbn]);
 

@@ -27,8 +27,7 @@ class LibraryController extends AbstractController
     #[Route('/library/book/id/{bookId}', name: 'single_book')]
     public function singleBook(
         BooksRepository $booksRepository,
-        int $bookId,
-        Request $request
+        int $bookId
     ): Response {
         $book = $booksRepository->find($bookId);
         return $this->render('library/book.html.twig', [

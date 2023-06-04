@@ -21,6 +21,7 @@ class JsonPlayingCardController extends AbstractController
     {
         return $this->render('api.html.twig');
     }
+
     #[Route('/api/deck', name: 'jsonDeck')]
     public function cardDeckJson(Request $request): Response
     {
@@ -173,7 +174,6 @@ class JsonPlayingCardController extends AbstractController
 
         try {
             $players = $deck->dealCards($nrOfPlayers, $nrOfCards);
-            $cards = array();
             foreach ($players as $key => $hand) {
                 $cards = $hand->getCards();
 

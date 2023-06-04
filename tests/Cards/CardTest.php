@@ -22,7 +22,7 @@ class CardTest extends TestCase
 
         // creating card with fake name and symbol
         $this->expectException(Exception::class);
-        $card = new Card($fakeCardName, $fakeCardSymbol);
+        new Card($fakeCardName, $fakeCardSymbol);
 
     }
 

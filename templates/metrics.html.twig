@@ -1,0 +1,123 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Metric Analys{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h1>Metric Analys</h1>
+        <div class="content" style="align-items: unset; width:100%;">
+            <h4>kodkvalitet och hur man kan jobba med “Clean code”.</h4>
+
+            <h2>Introduktion</h2>
+            <h4>De sex C:na och deras påverkande på kodens kvalitet.</h4>
+
+            <h4>Codestyle</h4>
+            <p>
+                Codestyle är helt enkelt riktlinjer för hur din kod ska se ut.
+                Det finns olika kodstiler som följs inom programmeringsgemenskapen.
+                Ett exempel på det är indentation som handlar om hur man formaterar och placerar mellanslag i koden.
+                Att följa en kodstil är en viktig praxis för att göra koden mer läsbar, enhetlig och lätt att underhålla.
+                Den underlättar också för de som vidare utvecklar koden.
+            </p>
+
+            <h4>Coverage</h4>
+            <p>
+                Coverage avser hur väl din kod är testad.
+                Det mäts i procent och indikerar i vilken utsträckning dina kodfunktioner har genomgått tester.
+                En 100% coverage betyder att alla funktioner i koden har testats.
+                Coverage är något viktigt för den ger en indikation på hur väl din kod är validerad och veriferad.
+                Det hjälper till att åtgerda och upptäckla buggar tidigt i utvecklingsprocessen.
+            </p>
+            
+            <h4>Complexity</h4>
+            <p>
+                Complexity är komplexiteten av koden.
+                Complexity påverkas av flera faktorer. Bland annat if satser, for loopar
+                och andra konstruktioner som gör koden komplex och svår att läsa samt felsökas.
+            </p>
+            <h4>Cohesion</h4>
+            <p>
+                Cohesion är hur väl och nära relaterade kompunent moduler i ett program är till varandra.
+                Det mäter graden av koppling och beroende mellan olika delar av koden som utför
+                liknande eller relaterade uppgifter.
+                En hög Cohesion betyder att kompunenterna inom en modul är starkt relaterade till varandra och 
+                arbetar tillsammans för att utföra en specifik uppgift.
+                En hög Cohision visar att koden är organiserad och strukuerad på ett sätt som främjar enkelhet.
+            </p>
+            <h4>Coupling</h4>
+            <p>
+                Coupling beskriver graden av beroende och koppling mellan olika moduler, klasser eller kompunenter i ett program.
+                Det mäter hur mycket en del av koden är beroende av eller är kopplad till en annan del av koden.
+                Hög koppling innebär att komponenterna eller modulerna är starkt beroende av varandra.
+                Förändringar i en komponent kan ha en direkt inverkan på andra komponenter,
+                vilket kan göra koden mer sårbar och svår att underhålla. 
+            </p>
+            <h4>CRAP</h4>
+            <p>
+                CRAP (Change Risk Anti-patterns) är en metod för att beräkna riskerna för förändringar i koden genom att
+                kombinera komplexitet och testtäckning.
+                CRAP-metoden använder två huvudsakliga faktorer för att bedöma risknivån för
+                kodförändringar: komplexitet och testtäckning. Komplexitet mäter hur invecklad och svårläst koden är,
+                medan testtäckning indikerar i vilken utsträckning koden har genomgått tester.
+            </p>
+
+            <h2>Phpmetrics</h2>
+            <img src="/img/metrics.jpg" alt="screenshot from PhpMetrics" />
+            Enligt PhpMetrics så har jag 6 Violations i min kod.
+            Jag har problem med:
+            DeckOfCards klassen: "App\Classes\Cards\DeckOfCards"
+            JsonPlayingCardController Controller klassen: "App\Controller\Cards\JsonPlayingCardController",
+            LibraryController Controller klassen: "App\Controller\Library\LibraryController".
+
+            Detta påverkas av flera faktorer som tillexempel Complexity och Codestyle.
+
+            <img src="/img/metrics2.jpg" alt="screenshot from PhpMetrics" />
+
+            Jag märker också att det finns 15 klasser som aldrig blev kallade från tests.
+            Detta beror på att jag har bara testat BlackJackGame och Cards klaserna och inte hunnit att testa alla kontroller klasser.
+
+            <h2>Scrutinizer</h2>
+            <img src="/img/scrutinizer.jpg" alt="screenshot from scrutinizer" />
+            Enligt Scrutinizer så har jag ett fel med Best Practice, 4 fel med Bug och 5 i Unused Code labels.
+
+            Vi tar en titt på best practice:
+            <img src="/img/scrutinizer1.jpg" alt="screenshot from scrutinizer" />
+            Då ser vi att jag har gjort ett litet mistag då jag skrev två likamed tecken istället för tre.
+            Skilnaden mellan de är att med tre likamed tecken kan man även kolla på typen av värdet man jämförar.
+
+            Vi kollar på Bug kategorin:
+            <img src="/img/scrutinizer2.jpg" alt="screenshot from scrutinizer" />
+            Vi ser att vi har 2 problem i .php-cs-fixer.dist.php. Denna filen är autogenererad av php-cs-fixer library. Jag tror inte vi kan göra något med den.
+            Vi kan dock se att det finns problem med både CardHand och CardHandTest.
+            CardHand har samma likamed tecken fel. medan CardHandTest har ett namespace conflicts error som kan lätt fixas.
+
+            Vi tar ett kik på Unused code:
+            <img src="/img/scrutinizer3.jpg" alt="screenshot from scrutinizer" />
+            Jag märker efter jag har gått igenom alla oanvända kod att jag har missat att rensa de koden jag implementerade och inte behöver längre.
+            De kan lätt lösas genom att helt enkelt rensa bort de.
+
+            <h3>scrutinizer Badges</h3>
+            <div>
+                <a href="https://scrutinizer-ci.com/g/asili2001/MVC/">
+                    <img src="https://scrutinizer-ci.com/g/asili2001/MVC/badges/quality-score.png?b=main">
+                </a>
+                <a href="https://scrutinizer-ci.com/g/asili2001/MVC/">
+                    <img src="https://scrutinizer-ci.com/g/asili2001/MVC/badges/coverage.png?b=main">
+                </a>
+                <a href="https://scrutinizer-ci.com/g/asili2001/MVC/inspections/5abb96bb-9f61-4a7a-b888-aae4257e4887/log">
+                    <img src="https://scrutinizer-ci.com/g/asili2001/MVC/badges/build.png?b=main">
+                </a>
+                <a href="https://scrutinizer-ci.com/code-intelligence">
+                    <img src="https://scrutinizer-ci.com/g/asili2001/MVC/badges/code-intelligence.svg?b=main">
+                </a>
+            </div>
+            Här ser vi att coverage är bara 26%. Som jag nämnde innan,
+            detta beror på att jag har bara hunnit med att testa klasserna och inte kontrollerna i appen.
+
+            <h2>Förbättringar</h2>
+            Jag tänker först att jag rensar bort den oanvända koden som inte har något syfte med att vara med.
+            Detta påverkar Codestyle och Cohesion.
+
+        </div>
+    </div>
+{% endblock %}

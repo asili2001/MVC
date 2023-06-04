@@ -103,7 +103,7 @@ class DeckOfCardsTest extends TestCase
         // test deal more cards then what there is
         $deck = new DeckOfCards();
         $this->expectException(EmptyDeckException::class);
-        $dealRes = $deck->dealCards(2, 60);
+        $deck->dealCards(2, 60);
 
     }
     
