@@ -34,7 +34,7 @@ class CardHand
     */
     public function getCards(?int $index = null): array
     {
-        if ($index == null) {
+        if ($index === null) {
             return $this->hand;
         }
 
