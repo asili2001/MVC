@@ -34,10 +34,10 @@ class DeckOfCards
     */
     public function __construct(array $deck = array())
     {
-        if (count($deck) < 1) {
+        if (empty($deck)) {
             $this->resetCards();
         }
-        if (count($deck) > 0) {
+        if (!empty($deck)) {
             $this->deck = $deck;
         }
     }
@@ -57,15 +57,15 @@ class DeckOfCards
     public function resetCards(): void
     {
         $this->deck = [];
+
         if ($this->jokers) {
             $this->deck[] = new CardGraphic("joker", "joker");
             $this->deck[] = new CardGraphic("joker", "joker");
         }
-        $countsymbols = count($this->symbols);
-        $countCards = count($this->cards);
-        for ($iSy=0; $iSy < $countsymbols; $iSy++) {
-            for ($iCa=0; $iCa < $countCards; $iCa++) {
-                $this->deck[] = new CardGraphic(strval($this->cards[$iCa]), $this->symbols[$iSy]);
+
+        foreach ($this->symbols as $symbol) {
+            foreach ($this->cards as $card) {
+                $this->deck[] = new CardGraphic(strval($card), $symbol);
             }
         }
     }
@@ -92,7 +92,7 @@ class DeckOfCards
     /**
      * Sorts the cards in the deck
      *
-    */
+    // */
     public function sortCards(): void
     {
         $result = [];
@@ -110,9 +110,7 @@ class DeckOfCards
                 }
             }
         }
-        $result = array_merge($result, $this->deck);
-
-        $this->deck = $result;
+        $this->deck = array_merge($result, $this->deck);
     }
 
     /**
@@ -120,25 +118,16 @@ class DeckOfCards
      *
      * @param int $nrOfCards number of cards to remove.
      * @return array<Card> The removed cards.
-     * @throws EmptyDeckException if there is not enaugh cards.
+     * @throws EmptyDeckException if there is not enough cards.
     */
     public function drawCard(int $nrOfCards = 1): array
     {
         if ($nrOfCards > count($this->deck)) {
-            throw new EmptyDeckException('There are not enaugh cards');
-        }
-        $result = [];
-        for ($i=1; $i<=$nrOfCards; $i++) {
-            if (!empty($this->deck)) {
-                $cardToDraw = random_int(0, count($this->deck) - 1);
-                $result[] = $this->deck[$cardToDraw];
-
-                array_splice($this->deck, $cardToDraw, 1);
-            }
+            throw new EmptyDeckException('There are not enough cards');
         }
 
+        $result = array_splice($this->deck, 0, $nrOfCards);
         return $result;
-
     }
 
     /**
@@ -147,15 +136,14 @@ class DeckOfCards
      * @param int $nrOfPlayers The players to deal the cards with.
      * @param int $nrOfCards The cards to be removed and dealed.
      * @return array<string, CardHand> The players and its cards.
-     * @throws EmptyDeckException if there are not enaugh cards
+     * @throws EmptyDeckException if there are not enough cards
      * @throws Exception if the number of cards cannot be zero or lower
      * @throws Exception if the number of players cannot be zero or lower
     */
     public function dealCards(int $nrOfPlayers, int $nrOfCards): array
     {
-        $result = [];
         if ($nrOfCards > count($this->deck)) {
-            throw new EmptyDeckException('There are not enaugh cards');
+            throw new EmptyDeckException('There are not enough cards');
         }
         if ($nrOfCards < 1) {
             throw new Exception('The number of cards cannot be zero or lower');
@@ -163,10 +151,9 @@ class DeckOfCards
         if ($nrOfPlayers < 1) {
             throw new Exception('The number of players cannot be zero or lower');
         }
-        /**
-         * @var int $cardsEachPlayer
-         */
-        $cardsEachPlayer = $nrOfCards / $nrOfPlayers;
+
+        $cardsEachPlayer = (int)($nrOfCards / $nrOfPlayers);
+        $result = [];
 
         for ($i=1; $i < $nrOfPlayers + 1; $i++) {
             $result["player {$i}"] = new CardHand($this->drawCard($cardsEachPlayer));

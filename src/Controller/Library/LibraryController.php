@@ -98,18 +98,10 @@ class LibraryController extends AbstractController
             $about = strval($request->get("about"));
 
 
-            if ($book->getName() !== $name) {
-                $book->setName($name);
-            }
-            if ($book->getAuthor() !== $author) {
-                $book->setAuthor($author);
-            }
-            if ($book->getIsbn() !== $isbn) {
-                $book->setIsbn($isbn);
-            }
-            if ($book->getAbout() !== $about) {
-                $book->setAbout($about);
-            }
+            $book->setName($name);
+            $book->setAuthor($author);
+            $book->setIsbn($isbn);
+            $book->setAbout($about);
             $entityManager->flush();
 
 

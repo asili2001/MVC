@@ -13,88 +13,86 @@
 
             <h4>Codestyle</h4>
             <p>
-                Codestyle är helt enkelt riktlinjer för hur din kod ska se ut.
-                Det finns olika kodstiler som följs inom programmeringsgemenskapen.
-                Ett exempel på det är indentation som handlar om hur man formaterar och placerar mellanslag i koden.
-                Att följa en kodstil är en viktig praxis för att göra koden mer läsbar, enhetlig och lätt att underhålla.
-                Den underlättar också för de som vidare utvecklar koden.
+                Codestyle är helt enkelt riktlinjer för hur din kod ska se ut.<br>
+                Det finns olika kodstiler som följs inom programmeringsgemenskapen.<br>
+                Ett exempel på det är indentation som handlar om hur man formaterar och placerar mellanslag i koden.<br>
+                Att följa en kodstil är en viktig praxis för att göra koden mer läsbar, enhetlig och lätt att underhålla.<br>
+                Den underlättar också för de som vidare utvecklar koden.<br>
             </p>
 
             <h4>Coverage</h4>
             <p>
-                Coverage avser hur väl din kod är testad.
-                Det mäts i procent och indikerar i vilken utsträckning dina kodfunktioner har genomgått tester.
-                En 100% coverage betyder att alla funktioner i koden har testats.
-                Coverage är något viktigt för den ger en indikation på hur väl din kod är validerad och veriferad.
-                Det hjälper till att åtgerda och upptäckla buggar tidigt i utvecklingsprocessen.
+                Coverage avser hur väl din kod är testad.<br>
+                Det mäts i procent och indikerar i vilken utsträckning dina kodfunktioner har genomgått tester.<br>
+                En 100% coverage betyder att alla funktioner i koden har testats.<br>
+                Coverage är något viktigt för den ger en indikation på hur väl din kod är validerad och veriferad.<br>
+                Det hjälper till att åtgerda och upptäckla buggar tidigt i utvecklingsprocessen.<br>
             </p>
             
             <h4>Complexity</h4>
             <p>
-                Complexity är komplexiteten av koden.
-                Complexity påverkas av flera faktorer. Bland annat if satser, for loopar
-                och andra konstruktioner som gör koden komplex och svår att läsa samt felsökas.
+                Complexity är komplexiteten av koden.<br>
+                Complexity påverkas av flera faktorer. Bland annat if satser, for loopar<br>
+                och andra konstruktioner som gör koden komplex och svår att läsa samt felsökas.<br>
             </p>
             <h4>Cohesion</h4>
             <p>
-                Cohesion är hur väl och nära relaterade kompunent moduler i ett program är till varandra.
+                Cohesion är hur väl och nära relaterade kompunent moduler i ett program är till varandra.<br>
                 Det mäter graden av koppling och beroende mellan olika delar av koden som utför
-                liknande eller relaterade uppgifter.
+                liknande eller relaterade uppgifter.<br>
                 En hög Cohesion betyder att kompunenterna inom en modul är starkt relaterade till varandra och 
-                arbetar tillsammans för att utföra en specifik uppgift.
-                En hög Cohision visar att koden är organiserad och strukuerad på ett sätt som främjar enkelhet.
+                arbetar tillsammans för att utföra en specifik uppgift.<br>
+                En hög Cohision visar att koden är organiserad och strukuerad på ett sätt som främjar enkelhet.<br>
             </p>
             <h4>Coupling</h4>
             <p>
-                Coupling beskriver graden av beroende och koppling mellan olika moduler, klasser eller kompunenter i ett program.
-                Det mäter hur mycket en del av koden är beroende av eller är kopplad till en annan del av koden.
-                Hög koppling innebär att komponenterna eller modulerna är starkt beroende av varandra.
+                Coupling beskriver graden av beroende och koppling mellan olika moduler, klasser eller kompunenter i ett program.<br>
+                Det mäter hur mycket en del av koden är beroende av eller är kopplad till en annan del av koden.<br>
+                Hög koppling innebär att komponenterna eller modulerna är starkt beroende av varandra.<br>
                 Förändringar i en komponent kan ha en direkt inverkan på andra komponenter,
-                vilket kan göra koden mer sårbar och svår att underhålla. 
+                vilket kan göra koden mer sårbar och svår att underhålla. <br>
             </p>
             <h4>CRAP</h4>
             <p>
                 CRAP (Change Risk Anti-patterns) är en metod för att beräkna riskerna för förändringar i koden genom att
-                kombinera komplexitet och testtäckning.
+                kombinera komplexitet och testtäckning.<br>
                 CRAP-metoden använder två huvudsakliga faktorer för att bedöma risknivån för
                 kodförändringar: komplexitet och testtäckning. Komplexitet mäter hur invecklad och svårläst koden är,
-                medan testtäckning indikerar i vilken utsträckning koden har genomgått tester.
+                medan testtäckning indikerar i vilken utsträckning koden har genomgått tester.<br>
             </p>
 
             <h2>Phpmetrics</h2>
             <img src="/img/metrics.jpg" alt="screenshot from PhpMetrics" />
-            Enligt PhpMetrics så har jag 6 Violations i min kod.
-            Jag har problem med:
-            DeckOfCards klassen: "App\Classes\Cards\DeckOfCards"
-            JsonPlayingCardController Controller klassen: "App\Controller\Cards\JsonPlayingCardController",
-            LibraryController Controller klassen: "App\Controller\Library\LibraryController".
-
-            Detta påverkas av flera faktorer som tillexempel Complexity och Codestyle.
+            Enligt PhpMetrics har jag upptäckt 6 överträdelser i min kod.<br>
+            Jag stöter på problem med följande klasser: "DeckOfCards" i "App\Classes\Cards",
+            "JsonPlayingCardController" i "App\Controller\Cards" och "LibraryController" i "App\Controller\Library".<br>
+            Dessa överträdelser påverkas av flera faktorer, såsom komplexitet och kodstil.<br>
 
             <img src="/img/metrics2.jpg" alt="screenshot from PhpMetrics" />
 
-            Jag märker också att det finns 15 klasser som aldrig blev kallade från tests.
-            Detta beror på att jag har bara testat BlackJackGame och Cards klaserna och inte hunnit att testa alla kontroller klasser.
+           Jag har också observerat att det finns 15 klasser som aldrig blir anropade från testerna.<br>
+           Detta beror på att jag bara har hunnit testa "BlackJackGame" och "Cards" klasserna och inte hunnit testa alla controller-klasser ännu.<br>
 
             <h2>Scrutinizer</h2>
             <img src="/img/scrutinizer.jpg" alt="screenshot from scrutinizer" />
-            Enligt Scrutinizer så har jag ett fel med Best Practice, 4 fel med Bug och 5 i Unused Code labels.
+            Enligt Scrutinizer har jag fått ett fel inom Best Practice-kategorin, fyra fel inom Bug-kategorin och fem fel inom Unused Code-kategorin.<br>
 
             Vi tar en titt på best practice:
             <img src="/img/scrutinizer1.jpg" alt="screenshot from scrutinizer" />
-            Då ser vi att jag har gjort ett litet mistag då jag skrev två likamed tecken istället för tre.
-            Skilnaden mellan de är att med tre likamed tecken kan man även kolla på typen av värdet man jämförar.
+            Då ser vi att jag har gjort ett litet misstag när jag skrev två likamed-tecken istället för tre.<br>
+            Skillnaden mellan dem är att med tre likamed-tecken kan man även kontrollera typen av värdet man jämför.<br>
 
             Vi kollar på Bug kategorin:
             <img src="/img/scrutinizer2.jpg" alt="screenshot from scrutinizer" />
-            Vi ser att vi har 2 problem i .php-cs-fixer.dist.php. Denna filen är autogenererad av php-cs-fixer library. Jag tror inte vi kan göra något med den.
-            Vi kan dock se att det finns problem med både CardHand och CardHandTest.
-            CardHand har samma likamed tecken fel. medan CardHandTest har ett namespace conflicts error som kan lätt fixas.
+            Vi upptäcker att det finns 2 problem i filen .php-cs-fixer.dist.php.<br>
+            Denna fil är autogenererad av php-cs-fixer library, och jag tror inte att vi kan göra något åt det.<br>
+            Men vi kan notera att både CardHand och CardHandTest har problem.<br>
+            CardHand har samma fel med likamed-tecken, medan CardHandTest har ett fel med namespace-konflikter som kan enkelt lösas.<br>
 
             Vi tar ett kik på Unused code:
             <img src="/img/scrutinizer3.jpg" alt="screenshot from scrutinizer" />
-            Jag märker efter jag har gått igenom alla oanvända kod att jag har missat att rensa de koden jag implementerade och inte behöver längre.
-            De kan lätt lösas genom att helt enkelt rensa bort de.
+            Efter att jag har granskat all oanvänd kod märker jag att jag har missat att rensa bort den kod jag har implementerat men inte längre behöver.<br>
+            Detta kan enkelt lösas genom att helt enkelt ta bort den.<br>
 
             <h3>scrutinizer Badges</h3>
             <div>
@@ -111,12 +109,53 @@
                     <img src="https://scrutinizer-ci.com/g/asili2001/MVC/badges/code-intelligence.svg?b=main">
                 </a>
             </div>
-            Här ser vi att coverage är bara 26%. Som jag nämnde innan,
-            detta beror på att jag har bara hunnit med att testa klasserna och inte kontrollerna i appen.
+            Här ser vi att täckningen (coverage) är endast 26%. Som jag nämnde tidigare beror
+            detta på att jag hittills bara har hunnit testa klasserna och inte kontrollerna i appen.<br>
 
             <h2>Förbättringar</h2>
-            Jag tänker först att jag rensar bort den oanvända koden som inte har något syfte med att vara med.
-            Detta påverkar Codestyle och Cohesion.
+            För att optimera kodkvaliteten har jag prioriterat att rensa bort oanvänd kod som saknar relevant syfte.<br>
+            Genom att eliminera överflödig kod har jag inte bara förbättrat kodens struktur och enhetlighet, utan
+            även främjat en högre sammanhållning (cohesion) i systemet.<br>
+
+            Vidare har jag noga hanterat buggar som identifierats i koden för att säkerställa att programmet fungerar felfritt och tillförlitligt.<br>
+
+            För att adressera violations i JsonPlayingCardController-klassen har jag refaktorerat koden genom att eliminera redundans och duplicering.<br>
+            Genom att extrahera gemensam funktionalitet till separata funktioner och återanvända dem på lämpliga
+            ställen har jag ökat både kodens effektivitet och läsbarhet.<br><br>
+
+            Likaså har jag tagit itu med utmaningarna i LibraryController genom att minska användningen av onödiga if-satser.<br>
+            Genom att identifiera och eliminera överflödig logik har jag förbättrat kodens klarhet och minskat komplexiteten i systemet.<br>
+
+            <h3>Resultat innan</h3>
+            <img src="/img/metrics3.jpg" alt="screenshot from metrics" />
+            <h3>Resultat efter</h3>
+            <img src="/img/metrics4.jpg" alt="screenshot from metrics" />
+
+            <h2>Diskussion</h2>
+            Både PhpMetrics och Scrutinizer utgör förträffliga lösningar som underlättar för utvecklare att
+            upptäcka subtila fel och tillhandahåller en sporrande mekanism för att upprätthålla en ren och högkvalitativ kodbas.<br>
+            Dessa kraftfulla verktyg ger ovärderlig hjälp för att identifiera och hantera komplexa kodmönster,
+            vilket i sin tur främjar en ökad kodläsbarhet och förbättrad underhållbarhet.<br><br>
+
+            Fördelarna med både PhpMetrics och Scrutinizer är att de erbjuder en omfattande kodanalysfunktion som effektivt
+            hjälper utvecklare att identifiera problemområden och potentiella förbättringar i koden. Genom att erbjuda djupgående
+            insikter och metriker möjliggör verktygen en bättre förståelse av kodkvaliteten och ger vägledning för att förbättra kodbasen över tid.<br><br>
+
+            Nackdelarna med verktygen kan vara att det kan ta tid att lära sig att använda dem effektivt och anpassa dem
+            efter specifika projektkrav. Den initiala inlärningskurvan kan vara en utmaning, och det kan krävas viss konfiguration
+            för att säkerställa korrekta och meningsfulla resultat. Dessutom kan verktygen generera falska positiva felrapporter
+            eller ha en viss prestandapåverkan, vilket kan påverka produktiviteten i vissa fall.<br><br>
+
+            <h3>Att Hålla sin kod clean!</h3>
+            
+            Genom att använda tydliga och beskrivande variabler, funktioner och klassnamn kan koden bli betydligt mer läsbar för andra utvecklare.<br><br>
+
+            Att kommentera och dokumentera koden spelar en avgörande roll för att underlätta förståelsen av kodens syfte och förväntade beteende,
+            både för dig själv och andra utvecklare som arbetar med koden.<br><br>
+
+            Att involvera andra utvecklare i granskningen av koden kan vara ovärderligt för att upptäcka fel och identifiera förbättringsområden
+            som man själv kanske inte hade tänkt på tidigare. Detta bidrar till att förbättra kodkvaliteten och främjar en gemensam standard inom teamet.<br><br>
+
 
         </div>
     </div>

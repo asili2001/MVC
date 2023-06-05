@@ -16,6 +16,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class JsonPlayingCardController extends AbstractController
 {
     use Returner;
+
+
+    private function buildCardData(array $cards): array
+    {
+        $cardData = [];
+        foreach ($cards as $card) {
+            $cardData[] = [
+                "symbol" => $card->getSymbol(),
+                "name" => $card->getName()
+            ];
+        }
+        return $cardData;
+    }
+
+
     #[Route('/api', name: "playingCardHomeJson")]
     public function home(): Response
     {
@@ -39,13 +54,8 @@ class JsonPlayingCardController extends AbstractController
 
         $cards = $deck->getCards();
 
-        $cardData = array();
-        foreach ($cards as $card) {
-            $cardData[] = [
-                "symbol" => $card->getSymbol(),
-                "name" => $card->getName()
-            ];
-        }
+        $cardData = $this->buildCardData($cards);
+
         $statusCode = 200;
         $res = $this->arrReturner(false, $cardData, $statusCode, "Success");
 
@@ -71,13 +81,7 @@ class JsonPlayingCardController extends AbstractController
         $deck->shuffleCards();
         $cards = $deck->getCards();
 
-        $cardData = array();
-        foreach ($cards as $card) {
-            $cardData[] = [
-                "symbol" => $card->getSymbol(),
-                "name" => $card->getName()
-            ];
-        }
+        $cardData = $this->buildCardData($cards);
 
         $statusCode = 200;
         $res = $this->arrReturner(false, $cardData, $statusCode, "Success");
@@ -98,18 +102,12 @@ class JsonPlayingCardController extends AbstractController
          */
         $playingCardsSession = $session->get("playingCards") ?? array();
         $deck = new DeckOfCards($playingCardsSession);
-        $cardData = array();
         $errorMessage = "";
         $statusCode = 200;
 
         try {
             $cards = $deck->drawCard();
-            foreach ($cards as $card) {
-                $cardData[] = [
-                    "symbol" => $card->getSymbol(),
-                    "name" => $card->getName()
-                ];
-            }
+            $cardData = $this->buildCardData($cards);
         } catch (EmptyDeckException $e) {
             $errorMessage = $e->getMessage();
             $statusCode = 404;
@@ -133,18 +131,12 @@ class JsonPlayingCardController extends AbstractController
          */
         $playingCardsSession = $session->get("playingCards") ?? array();
         $deck = new DeckOfCards($playingCardsSession);
-        $cardData = array();
         $errorMessage = "";
         $statusCode = 200;
 
         try {
             $cards = $deck->drawCard($nrOfCards);
-            foreach ($cards as $card) {
-                $cardData[] = [
-                    "symbol" => $card->getSymbol(),
-                    "name" => $card->getName()
-                ];
-            }
+            $cardData = $this->buildCardData($cards);
         } catch (EmptyDeckException $e) {
             $errorMessage = $e->getMessage();
             $statusCode = 404;
