@@ -62,28 +62,28 @@
             </p>
 
             <h2>Phpmetrics</h2>
-            <img src="/img/metrics.jpg" alt="screenshot from PhpMetrics" />
+            <img src="{{asset('img/metrics.jpg')}}" alt="screenshot from PhpMetrics" />
             Enligt PhpMetrics har jag upptäckt 6 överträdelser i min kod.<br>
             Jag stöter på problem med följande klasser: "DeckOfCards" i "App\Classes\Cards",
             "JsonPlayingCardController" i "App\Controller\Cards" och "LibraryController" i "App\Controller\Library".<br>
             Dessa överträdelser påverkas av flera faktorer, såsom komplexitet och kodstil.<br>
 
-            <img src="/img/metrics2.jpg" alt="screenshot from PhpMetrics" />
+            <img src="{{asset('img/metrics2.jpg')}}" alt="screenshot from PhpMetrics" />
 
            Jag har också observerat att det finns 15 klasser som aldrig blir anropade från testerna.<br>
            Detta beror på att jag bara har hunnit testa "BlackJackGame" och "Cards" klasserna och inte hunnit testa alla controller-klasser ännu.<br>
 
             <h2>Scrutinizer</h2>
-            <img src="/img/scrutinizer.jpg" alt="screenshot from scrutinizer" />
+            <img src="{{asset('img/scrutinizer.jpg')}}" alt="screenshot from scrutinizer" />
             Enligt Scrutinizer har jag fått ett fel inom Best Practice-kategorin, fyra fel inom Bug-kategorin och fem fel inom Unused Code-kategorin.<br>
 
             Vi tar en titt på best practice:
-            <img src="/img/scrutinizer1.jpg" alt="screenshot from scrutinizer" />
+            <img src="{{asset('img/scrutinizer1.jpg')}}" alt="screenshot from scrutinizer" />
             Då ser vi att jag har gjort ett litet misstag när jag skrev två likamed-tecken istället för tre.<br>
             Skillnaden mellan dem är att med tre likamed-tecken kan man även kontrollera typen av värdet man jämför.<br>
 
             Vi kollar på Bug kategorin:
-            <img src="/img/scrutinizer2.jpg" alt="screenshot from scrutinizer" />
+            <img src="{{asset('img/scrutinizer2.jpg')}}" alt="screenshot from scrutinizer" />
             Vi upptäcker att det finns 2 problem i filen .php-cs-fixer.dist.php.<br>
             Denna fil är autogenererad av php-cs-fixer library, och jag tror inte att vi kan göra något åt det.<br>
             Men vi kan notera att både CardHand och CardHandTest har problem.<br>
@@ -127,9 +127,9 @@
             Genom att identifiera och eliminera överflödig logik har jag förbättrat kodens klarhet och minskat komplexiteten i systemet.<br>
 
             <h3>Resultat innan</h3>
-            <img src="/img/metrics3.jpg" alt="screenshot from metrics" />
+            <img src="{{asset('img/metrics3.jpg')}}" alt="screenshot from metrics" />
             <h3>Resultat efter</h3>
-            <img src="/img/metrics4.jpg" alt="screenshot from metrics" />
+            <img src="{{asset('img/metrics4.jpg')}}" alt="screenshot from metrics" />
 
             <h2>Diskussion</h2>
             Både PhpMetrics och Scrutinizer utgör förträffliga lösningar som underlättar för utvecklare att

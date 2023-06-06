@@ -321,6 +321,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-Cards-JsonPlayingCardController.html"
         },                {
+            "fqsen": "\\App\\Controller\\Cards\\JsonPlayingCardController\u003A\u003AbuildCardData\u0028\u0029",
+            "name": "buildCardData",
+            "summary": "",
+            "url": "classes/App-Controller-Cards-JsonPlayingCardController.html#method_buildCardData"
+        },                {
             "fqsen": "\\App\\Controller\\Cards\\JsonPlayingCardController\u003A\u003Ahome\u0028\u0029",
             "name": "home",
             "summary": "",
