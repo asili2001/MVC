@@ -2,6 +2,7 @@
 
 namespace App\Classes\Cards;
 
+use App\Classes\SkitGubbe\SkitGubbeHand;
 use App\CustomExceptions\EmptyDeckException;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
@@ -156,9 +157,16 @@ class DeckOfCards
         $result = [];
 
         for ($i=1; $i < $nrOfPlayers + 1; $i++) {
-            $result["player {$i}"] = new CardHand($this->drawCard($cardsEachPlayer));
+            $result["player {$i}"] = new SkitGubbeHand($this->drawCard($cardsEachPlayer));
         }
         return $result;
 
+    }
+
+    public function hideCards(): void
+    {
+        foreach ($this->deck as $card) {
+            $card->hide();
+        }
     }
 }

@@ -1,0 +1,21 @@
+{% extends "base.skitgubbe.html.twig" %}
+
+{% block title %}SkitGubbe{% endblock %}
+
+{% block body %}
+    <div class="skitgubbe">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Result</th>
+            </tr>
+            {% for item in data %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.win ? "Win" : "Lost" }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <a href="{{path('skitGubbePlay')}}" style="text-align: center;display: block;margin: 1rem;">Go Back</a>
+    </div>
+{% endblock %}

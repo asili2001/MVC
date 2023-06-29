@@ -1,0 +1,23 @@
+{% extends "base.skitgubbe.html.twig" %}
+
+{% block title %}SkitGubbe{% endblock %}
+
+{% block body %}
+    <div class="skitgubbe">
+        <div class="content">
+        <h1>Om Spelet</h1>
+        <p>
+        Mitt projekt innefattar utveckligen av ett skitgubbe-spel där spelaren kan spela mot en dator som motståndare. Genom att använda och bygga vidare på tidigare skapade klasser har jag skapat en spelupplevlse som bygger på en Card-klass för att representera spelkorten, en CardHand-klass som fungerar som en behållare eller hand för spelkort, samt en DeckOfCards-klass som representerar högen av kortlekar.
+        <br><br>
+        Datorn som motståndare i spelet spelar baserat på kortet spelaren väljer att spela ut. Den tar beslut beroende på reglerna för spelet och försöker göra strategiska val för att maxemera sina chanser att bli av med sina kort och samtidigt försöka hindra spelaren från att göra samma sak. Detta skapar en dynamisk och utmanade spelupplevlse där spelaren måste överväga sina drag nogrant
+        <br><br>
+        Jag har även gjort så att spelaren kan registrera sig i spelet och spara sina resultat i en databas.
+        <br><br>
+        För att öppna upp för ytterligare möjligheter har jag också utveklad ett API för spelet. API:et gör det möjligt att integrera spelet i olika applikationer och ger andra utveklare möjligheten att använda och bygga vidare på det. Genom att anropa API:et kan applikationer interagera med spelet, hämta spelstatus, dra kort, spela ut kort och hantera spelets logik.
+        <br><br>
+        Detta projekt erbjuder en spännande skitgubbe-spelupplevlse där spelaren kan möta en dator som motståndare. Genom att använda det utveklade API:et kan spelet integreras i olika applikationer och utnyttjas på olika sätt. Jag ser fram emot att se hur mitt projekt kan användas och hur andra utveklare kan dra nytta av det.
+        </p>
+        </div>
+        <a href="{{path('skitGubbePlay')}}" style="text-align: center;display: block;margin: 1rem;">Go Back</a>
+    </div>
+{% endblock %}

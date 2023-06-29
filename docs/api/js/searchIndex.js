@@ -151,6 +151,11 @@ Search.appendIndex(
             "summary": "returns\u0020a\u0020card\u0020from\u0020the\u0020player\u0027s\u0020hand\u0020at\u0020the\u0020specified\u0020index.",
             "url": "classes/App-Classes-Cards-CardHand.html#method_getCards"
         },                {
+            "fqsen": "\\App\\Classes\\Cards\\CardHand\u003A\u003AgetCardNames\u0028\u0029",
+            "name": "getCardNames",
+            "summary": "returns\u0020all\u0020cards\u0020names\u0020from\u0020the\u0020player\u0027s\u0020hand.",
+            "url": "classes/App-Classes-Cards-CardHand.html#method_getCardNames"
+        },                {
             "fqsen": "\\App\\Classes\\Cards\\CardHand\u003A\u003AaddCard\u0028\u0029",
             "name": "addCard",
             "summary": "Adds\u0020a\u0020card\u0020to\u0020the\u0020player\u0027s\u0020hand.",
@@ -160,6 +165,31 @@ Search.appendIndex(
             "name": "drawCard",
             "summary": "This\u0020method\u0020removes\u0020and\u0020returns\u0020a\u0020card\u0020from\u0020the\u0020player\u0027s\u0020hand\u0020at\u0020the\u0020specified\u0020index.",
             "url": "classes/App-Classes-Cards-CardHand.html#method_drawCard"
+        },                {
+            "fqsen": "\\App\\Classes\\Cards\\CardHand\u003A\u003AdrawCardByName\u0028\u0029",
+            "name": "drawCardByName",
+            "summary": "Draws\u0020a\u0020card\u0020by\u0020providing\u0020its\u0020name",
+            "url": "classes/App-Classes-Cards-CardHand.html#method_drawCardByName"
+        },                {
+            "fqsen": "\\App\\Classes\\Cards\\CardHand\u003A\u003AgetByName\u0028\u0029",
+            "name": "getByName",
+            "summary": "Find\u0020and\u0020return\u0020card\u0020from\u0020hand\u0020by\u0020its\u0020name.",
+            "url": "classes/App-Classes-Cards-CardHand.html#method_getByName"
+        },                {
+            "fqsen": "\\App\\Classes\\Cards\\CardHand\u003A\u003AgetAllByName\u0028\u0029",
+            "name": "getAllByName",
+            "summary": "Find\u0020and\u0020return\u0020all\u0020cards\u0020from\u0020hand\u0020with\u0020same\u0020name.",
+            "url": "classes/App-Classes-Cards-CardHand.html#method_getAllByName"
+        },                {
+            "fqsen": "\\App\\Classes\\Cards\\CardHand\u003A\u003AhideCards\u0028\u0029",
+            "name": "hideCards",
+            "summary": "",
+            "url": "classes/App-Classes-Cards-CardHand.html#method_hideCards"
+        },                {
+            "fqsen": "\\App\\Classes\\Cards\\CardHand\u003A\u003AunhideCards\u0028\u0029",
+            "name": "unhideCards",
+            "summary": "",
+            "url": "classes/App-Classes-Cards-CardHand.html#method_unhideCards"
         },                {
             "fqsen": "\\App\\Classes\\Cards\\CardHand\u003A\u003A\u0024hand",
             "name": "hand",
@@ -210,6 +240,11 @@ Search.appendIndex(
             "name": "dealCards",
             "summary": "Removes\u0020deals\u0020and\u0020returns\u0020the\u0020removed\u0020cards\u0020with\u0020its\u0020players.",
             "url": "classes/App-Classes-Cards-DeckOfCards.html#method_dealCards"
+        },                {
+            "fqsen": "\\App\\Classes\\Cards\\DeckOfCards\u003A\u003AhideCards\u0028\u0029",
+            "name": "hideCards",
+            "summary": "",
+            "url": "classes/App-Classes-Cards-DeckOfCards.html#method_hideCards"
         },                {
             "fqsen": "\\App\\Classes\\Cards\\DeckOfCards\u003A\u003A\u0024cards",
             "name": "cards",
@@ -616,6 +651,291 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Repository-BooksRepository.html#method_remove"
         },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\Game",
+            "name": "Game",
+            "summary": "The\u0020Game\u0020class\u0020is\u0020the\u0020primary\u0020component\u0020or\u0020\u0022core\u0022\u0020of\u0020the\u0020SkitGubbe\u0020game,\nwhich\u0020contains\u0020all\u0020the\u0020necessary\u0020functions\u0020for\u0020the\u0020game\u0020to\u0020function\u0020properly.",
+            "url": "classes/App-Classes-SkitGubbe-Game.html"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\Game\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "This\u0020constructor\u0020method\u0020initializes\u0020the\u0020gameArr\u0020state",
+            "url": "classes/App-Classes-SkitGubbe-Game.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\Game\u003A\u003AgetGameData\u0028\u0029",
+            "name": "getGameData",
+            "summary": "The\u0020getGameData\u0020will\u0020return\u0020the\u0020\u0024gameArr\u0020variable",
+            "url": "classes/App-Classes-SkitGubbe-Game.html#method_getGameData"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\Game\u003A\u003Adiscard\u0028\u0029",
+            "name": "discard",
+            "summary": "",
+            "url": "classes/App-Classes-SkitGubbe-Game.html#method_discard"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\Game\u003A\u003AcardExists\u0028\u0029",
+            "name": "cardExists",
+            "summary": "",
+            "url": "classes/App-Classes-SkitGubbe-Game.html#method_cardExists"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\Game\u003A\u003AaddToFloor\u0028\u0029",
+            "name": "addToFloor",
+            "summary": "",
+            "url": "classes/App-Classes-SkitGubbe-Game.html#method_addToFloor"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\Game\u003A\u003AusePlayerFloor\u0028\u0029",
+            "name": "usePlayerFloor",
+            "summary": "",
+            "url": "classes/App-Classes-SkitGubbe-Game.html#method_usePlayerFloor"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\Game\u003A\u003Aavailability\u0028\u0029",
+            "name": "availability",
+            "summary": "It\u0020will\u0020return\u00203\u0020boolean\u0020values.\u0020the\u0020first\u0020will\u0020check\u0020if\u0020the\u0020player\u0020hand\u0020is\u0020empty\u0020from\u0020cards,\nthe\u0020second\u0020will\u0020check\u0020the\u0020visible\u0020cards\u0020and\u0020the\u0020last\u0020bool\u0020checks\u0020the\u0020hidden\u0020cards",
+            "url": "classes/App-Classes-SkitGubbe-Game.html#method_availability"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\Game\u003A\u003AcheckWinner\u0028\u0029",
+            "name": "checkWinner",
+            "summary": "",
+            "url": "classes/App-Classes-SkitGubbe-Game.html#method_checkWinner"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\Game\u003A\u003AsetMessage\u0028\u0029",
+            "name": "setMessage",
+            "summary": "",
+            "url": "classes/App-Classes-SkitGubbe-Game.html#method_setMessage"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\Game\u003A\u003AfillHand\u0028\u0029",
+            "name": "fillHand",
+            "summary": "",
+            "url": "classes/App-Classes-SkitGubbe-Game.html#method_fillHand"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\Game\u003A\u003AhideCards\u0028\u0029",
+            "name": "hideCards",
+            "summary": "",
+            "url": "classes/App-Classes-SkitGubbe-Game.html#method_hideCards"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\Game\u003A\u003A\u0024gameArr",
+            "name": "gameArr",
+            "summary": "The\u0020game\u0020array",
+            "url": "classes/App-Classes-SkitGubbe-Game.html#property_gameArr"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\SkitGubbeHand",
+            "name": "SkitGubbeHand",
+            "summary": "SkitGubbeHand\u0020is\u0020a\u0020type\u0020of\u0020CardHand\u0020Class\u0020thathas\u0020the\ncapability\u0020of\u0020tallying\u0020up\u0020points\u0020according\u0020to\u0020the\nspecific\u0020regulations\u0020of\u0020the\u0020game\u0020of\u0020SkitGubbe.",
+            "url": "classes/App-Classes-SkitGubbe-SkitGubbeHand.html"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\SkitGubbeHand\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Creates\u0020a\u0020hand\u0020using\u0020the\u0020CardHand\u0020class",
+            "url": "classes/App-Classes-SkitGubbe-SkitGubbeHand.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\SkitGubbeHand\u003A\u003AcardPoints\u0028\u0029",
+            "name": "cardPoints",
+            "summary": "",
+            "url": "classes/App-Classes-SkitGubbe-SkitGubbeHand.html#method_cardPoints"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\SkitGubbeHand\u003A\u003AgetNextBigger\u0028\u0029",
+            "name": "getNextBigger",
+            "summary": "returns\u0020the\u0020smallets\u0020card\u0020compare\u0020to\u0020the\u0020input\u0020card",
+            "url": "classes/App-Classes-SkitGubbe-SkitGubbeHand.html#method_getNextBigger"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\SkitGubbeHand\u003A\u003A\u0024allowedNames",
+            "name": "allowedNames",
+            "summary": "",
+            "url": "classes/App-Classes-SkitGubbe-SkitGubbeHand.html#property_allowedNames"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\SkitGubbeHand\u003A\u003A\u0024points",
+            "name": "points",
+            "summary": "100\u0020represents\u0020the\u0020card\u00202\n200\u0020represents\u0020the\u0020card\u002010",
+            "url": "classes/App-Classes-SkitGubbe-SkitGubbeHand.html#property_points"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\JsonSkitGubbeController",
+            "name": "JsonSkitGubbeController",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-JsonSkitGubbeController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\JsonSkitGubbeController\u003A\u003AskitGubbeResetJson\u0028\u0029",
+            "name": "skitGubbeResetJson",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-JsonSkitGubbeController.html#method_skitGubbeResetJson"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\JsonSkitGubbeController\u003A\u003AskitGubbeJson\u0028\u0029",
+            "name": "skitGubbeJson",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-JsonSkitGubbeController.html#method_skitGubbeJson"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\JsonSkitGubbeController\u003A\u003AskitGubbePlayJson\u0028\u0029",
+            "name": "skitGubbePlayJson",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-JsonSkitGubbeController.html#method_skitGubbePlayJson"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\JsonSkitGubbeController\u003A\u003AskitGubbePlayDiscardJson\u0028\u0029",
+            "name": "skitGubbePlayDiscardJson",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-JsonSkitGubbeController.html#method_skitGubbePlayDiscardJson"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\JsonSkitGubbeController\u003A\u003A\u0024skitGubbe",
+            "name": "skitGubbe",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-JsonSkitGubbeController.html#property_skitGubbe"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeController",
+            "name": "SkitGubbeController",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeController\u003A\u003AskitGubbeReset\u0028\u0029",
+            "name": "skitGubbeReset",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeController.html#method_skitGubbeReset"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeController\u003A\u003A\u0024skitGubbe",
+            "name": "skitGubbe",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeController.html#property_skitGubbe"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeController\u003A\u003AskitGubbePlay\u0028\u0029",
+            "name": "skitGubbePlay",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeController.html#method_skitGubbePlay"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeController\u003A\u003AskitGubbePlayDiscard\u0028\u0029",
+            "name": "skitGubbePlayDiscard",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeController.html#method_skitGubbePlayDiscard"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeController\u003A\u003AskitGubbePlaySave\u0028\u0029",
+            "name": "skitGubbePlaySave",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeController.html#method_skitGubbePlaySave"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeController\u003A\u003AskitGubbeResults\u0028\u0029",
+            "name": "skitGubbeResults",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeController.html#method_skitGubbeResults"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait",
+            "name": "SkitGubbeTrait",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003AgameInit\u0028\u0029",
+            "name": "gameInit",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_gameInit"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003AcheckEndGame\u0028\u0029",
+            "name": "checkEndGame",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_checkEndGame"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003AsessionSave\u0028\u0029",
+            "name": "sessionSave",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_sessionSave"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003AstrToIntArr\u0028\u0029",
+            "name": "strToIntArr",
+            "summary": "converts\u0020array\u0020of\u0020string\u0020numbers\u0020to\u0020array\u0020of\u0020int\u0020numbers",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_strToIntArr"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003AidenticalCardsCheck\u0028\u0029",
+            "name": "identicalCardsCheck",
+            "summary": "checks\u0020if\u0020cards\u0020have\u0020same\u0020name\u0020by\u0020the\u0020indexes\u0020array",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_identicalCardsCheck"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003AcheckIntArray\u0028\u0029",
+            "name": "checkIntArray",
+            "summary": "checks\u0020if\u0020all\u0020items\u0020in\u0020array\u0020is\u0020type\u0020of\u0020int",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_checkIntArray"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003AplayCardFromVisible\u0028\u0029",
+            "name": "playCardFromVisible",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_playCardFromVisible"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003AplayComputerTurn\u0028\u0029",
+            "name": "playComputerTurn",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_playComputerTurn"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003AplayComputerCardFromVisible\u0028\u0029",
+            "name": "playComputerCardFromVisible",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_playComputerCardFromVisible"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003AshowResult\u0028\u0029",
+            "name": "showResult",
+            "summary": "show\u0020all\u0020game\u0020results\u0020from\u0020database",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_showResult"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003AsaveResult\u0028\u0029",
+            "name": "saveResult",
+            "summary": "save\u0020a\u0020result\u0020to\u0020database",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_saveResult"
+        },                {
+            "fqsen": "\\App\\Entity\\Skitgubbe",
+            "name": "Skitgubbe",
+            "summary": "",
+            "url": "classes/App-Entity-Skitgubbe.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Skitgubbe\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Skitgubbe.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Skitgubbe\u003A\u003AgetName\u0028\u0029",
+            "name": "getName",
+            "summary": "",
+            "url": "classes/App-Entity-Skitgubbe.html#method_getName"
+        },                {
+            "fqsen": "\\App\\Entity\\Skitgubbe\u003A\u003AsetName\u0028\u0029",
+            "name": "setName",
+            "summary": "",
+            "url": "classes/App-Entity-Skitgubbe.html#method_setName"
+        },                {
+            "fqsen": "\\App\\Entity\\Skitgubbe\u003A\u003AisWin\u0028\u0029",
+            "name": "isWin",
+            "summary": "",
+            "url": "classes/App-Entity-Skitgubbe.html#method_isWin"
+        },                {
+            "fqsen": "\\App\\Entity\\Skitgubbe\u003A\u003AsetWin\u0028\u0029",
+            "name": "setWin",
+            "summary": "",
+            "url": "classes/App-Entity-Skitgubbe.html#method_setWin"
+        },                {
+            "fqsen": "\\App\\Entity\\Skitgubbe\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Skitgubbe.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Skitgubbe\u003A\u003A\u0024name",
+            "name": "name",
+            "summary": "",
+            "url": "classes/App-Entity-Skitgubbe.html#property_name"
+        },                {
+            "fqsen": "\\App\\Entity\\Skitgubbe\u003A\u003A\u0024win",
+            "name": "win",
+            "summary": "",
+            "url": "classes/App-Entity-Skitgubbe.html#property_win"
+        },                {
+            "fqsen": "\\App\\Repository\\SkitgubbeRepository",
+            "name": "SkitgubbeRepository",
+            "summary": "",
+            "url": "classes/App-Repository-SkitgubbeRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\SkitgubbeRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-SkitgubbeRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\SkitgubbeRepository\u003A\u003Asave\u0028\u0029",
+            "name": "save",
+            "summary": "",
+            "url": "classes/App-Repository-SkitgubbeRepository.html#method_save"
+        },                {
+            "fqsen": "\\App\\Repository\\SkitgubbeRepository\u003A\u003Aremove\u0028\u0029",
+            "name": "remove",
+            "summary": "",
+            "url": "classes/App-Repository-SkitgubbeRepository.html#method_remove"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -635,6 +955,11 @@ Search.appendIndex(
             "name": "Cards",
             "summary": "",
             "url": "namespaces/app-classes-cards.html"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe",
+            "name": "SkitGubbe",
+            "summary": "",
+            "url": "namespaces/app-classes-skitgubbe.html"
         },                {
             "fqsen": "\\App\\Controller\\BlackJackGame",
             "name": "BlackJackGame",
@@ -665,6 +990,11 @@ Search.appendIndex(
             "name": "Quotes",
             "summary": "",
             "url": "namespaces/app-controller-quotes.html"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe",
+            "name": "SkitGubbe",
+            "summary": "",
+            "url": "namespaces/app-controller-skitgubbe.html"
         },                {
             "fqsen": "\\App\\CustomExceptions",
             "name": "CustomExceptions",

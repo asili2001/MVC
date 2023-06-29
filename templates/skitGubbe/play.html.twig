@@ -1,0 +1,111 @@
+{% extends "base.skitgubbe.html.twig" %}
+
+{% block title %}SkitGubbe{% endblock %}
+
+{% block body %}
+    <div class="skitgubbe">
+        <div class="result-banner {{ isWinner ? "win" : "" }}" style="{{isWinner is null ? "display: none;" : "display: flex;"}}">
+            <h1>{{ isWinner ? "You Win!!" : "Lost :(" }}</h1>
+            <h3>Save your result. Leave it empty to skip</h3>
+
+            <form method="post" action="{{path('skitGubbePlaySave')}}">
+                <input type="text" placeholder="Your Name" name="name">
+                <input type="submit" value="Submit and start a new game">
+            </form>
+        </div>
+
+        <div class="computer">
+            <div class="cards-hand" style="padding: 3rem;">
+                {% for card in computerHand.getCards() %}
+                    {% if card.isHidden() %}
+                        <div class="card hidden-card" style="background-image: url({{asset('img/playing-cards/playing-card-back.svg')}});"></div>
+                    {% else %}
+                        {% include 'components/playing-card.component.html.twig' with { 'card': card } %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="floor-cards">
+                <div class="hidden-cards">
+                    {% for card in computerHiddenCards.getCards() %}
+                        {% if card.isHidden() %}
+                            <div class="card hidden-card" style="background-image: url({{asset('img/playing-cards/playing-card-back.svg')}});" data-type="select-item"></div>
+                        {% else %}
+                            {% include 'components/playing-card.component.html.twig' with { 'card': card, 'attr': 'data-type=select-item selector-item-name=' ~ card.getName()} %}
+                        {% endif %}
+                    {% endfor %}  
+                </div>
+                <div class="visible-cards">
+                    {% for card in computerVisibleCards.getCards() %}
+                        {% if card.isHidden() %}
+                            <div class="card hidden-card" style="background-image: url({{asset('img/playing-cards/playing-card-back.svg')}});" data-type="select-item"></div>
+                        {% else %}
+                            {% include 'components/playing-card.component.html.twig' with { 'card': card, 'attr': 'data-type=select-item selector-item-name=' ~ card.getName()} %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="board">
+            <div class="cards-hand stack">
+                {% for card in deck.getCards() %}
+                    {% if card.isHidden() %}
+                        <div class="card hidden-card" style="background-image: url({{asset('img/playing-cards/playing-card-back.svg')}});"></div>
+                    {% else %}
+                        {% include 'components/playing-card.component.html.twig' with { 'card': card } %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="cards-hand stack-show">
+                {% for card in floor.getCards() %}
+                    {% if card.isHidden() %}
+                        <div class="card hidden-card" style="background-image: url({{asset('img/playing-cards/playing-card-back.svg')}});"></div>
+                    {% else %}
+                        {% include 'components/playing-card.component.html.twig' with { 'card': card } %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="player">
+            <div class="floor-cards">
+                <div class="hidden-cards" data-type="selector" data-id="playerHandSelect">
+                    {% for card in playerHiddenCards.getCards() %}
+                        {% if card.isHidden() %}
+                            <div class="card hidden-card" style="background-image: url({{asset('img/playing-cards/playing-card-back.svg')}});" data-type="select-item"></div>
+                        {% else %}
+                            {% include 'components/playing-card.component.html.twig' with { 'card': card, 'attr': 'data-type=select-item limit-items=1'} %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="visible-cards" data-type="selector" data-id="playerHandSelect" data-selector-type="sameName">
+                    {% for card in playerVisibleCards.getCards() %}
+                        {% if card.isHidden() %}
+                            <div class="card hidden-card" style="background-image: url({{asset('img/playing-cards/playing-card-back.svg')}});" data-type="select-item"></div>
+                        {% else %}
+                            {% include 'components/playing-card.component.html.twig' with { 'card': card, 'attr': 'data-type=select-item limit-items=4 selector-item-name=' ~ card.getName()} %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+
+            <div class="cards-hand" data-type="selector" data-id="playerHandSelect" data-selector-type="sameName">
+                {% for card in playerHand.getCards() %}
+                    {% if card.isHidden() %}
+                        <div class="card hidden-card" style="background-image: url({{asset('img/playing-cards/playing-card-back.svg')}});" data-type="select-item"></div>
+                    {% else %}
+                        {% include 'components/playing-card.component.html.twig' with { 'card': card, 'attr': 'data-type=select-item limit-items=4 selector-item-name=' ~ card.getName()} %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            
+            <form method="POST" action="{{path('skitGubbePlayDiscard')}}">
+                <input type="hidden" data-type="reciver" data-id="playerHandSelect" name="cardIndexs">
+                <input type="submit">
+            </form>
+
+
+
+        </div>
+    </div>
+{% endblock %}

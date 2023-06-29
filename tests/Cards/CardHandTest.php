@@ -53,4 +53,61 @@ class CardHandTest extends TestCase
         $hand->drawCard(3);
 
     }
+    // test draw card by name
+    public function testDrawCardByName(): void
+    {
+        $hand = new CardHand();
+        $card = new Card("4", "diamonds");
+        $card1 = new Card("5", "diamonds");
+        $hand->addCard($card);
+        $hand->addCard($card1);
+        $this->assertEquals(($hand->drawCardByName("5"))->getName(), "5");
+        
+        // try draw undefined card
+        $this->expectException(Exception::class);
+        $hand->drawCardByName("6");
+
+    }
+
+    // test get all card that have same name in hand
+    public function testgetAllByName(): void
+    {
+        $hand = new CardHand();
+        $card = new Card("4", "diamonds");
+        $card1 = new Card("4", "hearts");
+        $hand->addCard($card);
+        $hand->addCard($card1);
+        $this->assertContainsOnly("int", $hand->getAllByName("4", true));
+        $this->assertContainsOnly("App\Classes\Cards\Card", $hand->getAllByName("4", false));
+
+    }
+
+    // test hide cards
+    public function testhideCards(): void
+    {
+        $hand = new CardHand();
+        $card = new Card("4", "diamonds");
+        $card1 = new Card("5", "diamonds");
+        $hand->addCard($card);
+        $hand->addCard($card1);
+
+        $hand->hideCards();
+
+        $this->assertTrue(($hand->getByName("4"))->isHidden());
+
+    }
+    // test unhide cards
+    public function testunhideCards(): void
+    {
+        $hand = new CardHand();
+        $card = new Card("4", "diamonds");
+        $card1 = new Card("5", "diamonds");
+        $hand->addCard($card);
+        $hand->addCard($card1);
+
+        $hand->hideCards();
+        $hand->unhideCards();
+
+        $this->assertFalse(($hand->getByName("4"))->isHidden());
+    }
 }

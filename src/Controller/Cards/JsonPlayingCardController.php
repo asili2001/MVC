@@ -18,6 +18,10 @@ class JsonPlayingCardController extends AbstractController
     use Returner;
 
 
+    /**
+     * @param array<Card> $cards
+     * @return array<mixed>
+     */
     private function buildCardData(array $cards): array
     {
         $cardData = [];
@@ -104,7 +108,7 @@ class JsonPlayingCardController extends AbstractController
         $deck = new DeckOfCards($playingCardsSession);
         $errorMessage = "";
         $statusCode = 200;
-
+        $cardData = [];
         try {
             $cards = $deck->drawCard();
             $cardData = $this->buildCardData($cards);
@@ -133,7 +137,7 @@ class JsonPlayingCardController extends AbstractController
         $deck = new DeckOfCards($playingCardsSession);
         $errorMessage = "";
         $statusCode = 200;
-
+        $cardData = [];
         try {
             $cards = $deck->drawCard($nrOfCards);
             $cardData = $this->buildCardData($cards);

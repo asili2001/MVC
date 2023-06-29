@@ -200,6 +200,8 @@ form input.btn {
   background-image: url("../../public/img/playing-cards/playing-card-back.svg");
   background-size: 100%;
   background-color: #ffbf6b;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .card .card-left img,
@@ -387,6 +389,176 @@ form input.btn {
   background-color: #efefef;
   align-items: center;
   justify-content: space-between;
+}
+
+.skitgubbe {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(109deg, #00F0FF, #A5A8FF);
+}
+
+.skitgubbe .computer, .skitgubbe .player {
+  height: 40%;
+}
+
+.skitgubbe .board {
+  height: 20%;
+}
+
+.skitgubbe .card {
+  height: 8em;
+  width: 6em;
+  position: relative;
+  box-shadow: 0 0 5px black;
+}
+
+.skitgubbe .card .card-middle img.symbol {
+  width: 0.5rem;
+}
+
+.skitgubbe .card .card-middle {
+  gap: 0.3rem;
+  padding: 0.1rem;
+}
+
+.skitgubbe .card .card-middle h1 {
+  font-size: 3rem;
+}
+
+.skitgubbe .card .card-left img,
+.skitgubbe .card .card-right img {
+  height: 1em;
+}
+
+.skitgubbe .card[selected] {
+  box-shadow: 0 0 5px 5px #ff1000;
+}
+
+.skitgubbe .card:nth-child(even) {
+  transform: rotate(5deg);
+}
+
+.skitgubbe .card:nth-child(odd) {
+  transform: rotate(-5deg);
+}
+
+.skitgubbe .card:not(:first-child) {
+  margin-left: -50px;
+}
+
+.skitgubbe .visible-cards .card:nth-child(even), .skitgubbe .hidden-cards .card:nth-child(even) {
+  transform: unset;
+}
+
+.skitgubbe .visible-cards .card:nth-child(odd), .skitgubbe .hidden-cards .card:nth-child(odd) {
+  transform: unset;
+}
+
+.skitgubbe .visible-cards .card:not(:first-child), .skitgubbe .hidden-cards .card:not(:first-child) {
+  margin-left: 1rem;
+}
+
+.skitgubbe .floor-cards {
+  position: relative;
+  height: 10rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skitgubbe .floor-cards .hidden-cards, .skitgubbe .floor-cards .visible-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: absolute;
+}
+
+.skitgubbe .floor-cards .hidden-cards {
+  bottom: 0.5rem;
+}
+
+.skitgubbe .cards-hand {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.skitgubbe .cards-hand.stack .card:not(:first-child) {
+  margin-left: -96px;
+}
+
+.skitgubbe .cards-hand.stack-show .card:not(:first-child) {
+  margin-left: -80px;
+}
+
+.skitgubbe .board {
+  display: flex;
+  flex-direction: row;
+}
+
+.skitgubbe .result-banner {
+  position: fixed;
+  height: 10rem;
+  width: 100%;
+  top: 50%;
+  transform: translate(0%, -50%);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #ff4d00;
+}
+
+.skitgubbe .result-banner.win {
+  background-color: #00ff87;
+}
+
+.skitgubbe .result-banner input {
+  height: 2rem;
+  width: 20rem;
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.skitgubbe-header {
+  width: 100%;
+  height: 2rem;
+  background-color: #a7f8ff;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+input {
+  height: 2rem;
+  width: 20rem;
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
 }
 
 @keyframes flip {
