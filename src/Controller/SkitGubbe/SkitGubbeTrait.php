@@ -235,7 +235,7 @@ trait SkitGubbeTrait
         if ($cardsAvailability[1]) {
             $fromVisible = false;
             $cardCount = count($computerHiddenCards->getCardNames());
-            $index = ($cardCount > 1) ? rand(0, $cardCount) : 0;
+            $index = ($cardCount > 1) ? rand(0, $cardCount - 1) : 0;
         }
 
         $this->skitGubbe->usePlayerFloor("computerHand", $index, $fromVisible);
