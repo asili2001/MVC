@@ -16,7 +16,6 @@ use App\Entity\Users as UsersTable;
 trait SkitGubbeTrait
 {
     protected $isApi = false;
-    protected Game $skitGubbe;
 
     private function gameInit(Request $request, $useApi = false): void
     {
