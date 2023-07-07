@@ -25,6 +25,8 @@ class SkitGubbeController extends AbstractController
         playComputerCardFromVisible as private;
         showResult as private;
         saveResult as private;
+        createUser as private;
+        loginUser as private;
     }
     /**
      * @var SkitGubbeGame\Game $skitGubbe
@@ -43,7 +45,74 @@ class SkitGubbeController extends AbstractController
     #[Route('/proj', name: "skitGubbe")]
     public function skitGubbe(Request $request): Response
     {
-        return $this->redirectToRoute("skitGubbePlay");
+        $session = $request->getSession();
+        $ifLoggedIn = $session->get("auth", null);
+        if (!is_null($ifLoggedIn)) {
+            return $this->redirectToRoute("skitGubbePlay");
+        }
+
+        $data = [
+            "message" => ""
+        ];
+        return $this->render('skitGubbe/auth.html.twig', $data);
+        // return $this->redirectToRoute("skitGubbePlay");
+    }
+
+    #[Route('/proj/auth', name: "skitGubbeAuth", methods: ["post"])]
+    public function skitGubbeAuth(Request $request, ManagerRegistry $doctrine)
+    {
+        $name = $request->get('name');
+        $pass = $request->get('pass');
+        $submit = $request->get('submit');
+
+        $session = $request->getSession();
+        $ifLoggedIn = $session->get("auth", null);
+        if (!is_null($ifLoggedIn)) {
+            return $this->redirectToRoute("skitGubbePlay");
+        }
+
+        $res = null;
+
+        $data = [
+            "message" => ""
+        ];
+        
+        if ($submit && $submit === "Login") {
+            $res = $this->loginUser($request, $doctrine, $name, $pass);
+        } elseif ($submit && $submit === "Signup") {
+            $res = $this->createUser($request, $doctrine, $name, $pass);
+        } else {
+            $data["message"] = "Error, please try again";
+            return $this->render('skitGubbe/auth.html.twig', $data);
+        }
+        
+        if ($res === "SUCCESS" || $res === "ALREADY_LOGGED_IN") {
+            return $this->redirectToRoute("skitGubbePlay");
+        }
+
+        switch ($res) {
+            case 'EMPTY_VALUES':
+                $data["message"] = "Please fill in all the inputs";
+                break;
+            
+            case 'USER_ALREADY_REGISTERED':
+                $data["message"] = "User already exists";
+                break;
+
+            case 'USER_NOT_REGISTERED':
+                $data["message"] = "User does not exists";
+                break;
+
+            case 'WRONG_PASS':
+                $data["message"] = "Wrong password";
+                break;
+            }
+
+            return $this->render('skitGubbe/auth.html.twig', $data);
+
+        // var_dump($res);
+        // return $this->render('skitGubbe/auth.html.twig');
+        // return $this->redirectToRoute("skitGubbePlay");
     }
 
 
@@ -58,7 +127,13 @@ class SkitGubbeController extends AbstractController
     #[Route('/proj/play', name: 'skitGubbePlay')]
     public function skitGubbePlay(Request $request): Response
     {
-        $this->gameInit($request);
+        $session = $request->getSession();
+        $ifLoggedIn = $session->get("auth", null);
+        if (is_null($ifLoggedIn)) {
+            return $this->redirectToRoute("skitGubbe");
+        }
+
+        $this->gameInit($request, false);
 
         $gameData = $this->skitGubbe->getGameData();
          /**
@@ -129,17 +204,27 @@ class SkitGubbeController extends AbstractController
     #[Route('/proj/play/discard', name: 'skitGubbePlayDiscard', methods: ["post"])]
     public function skitGubbePlayDiscard(Request $request): Response
     {
-        $this->gameInit($request);
+        $session = $request->getSession();
+        $ifLoggedIn = $session->get("auth", null);
+        if (is_null($ifLoggedIn)) {
+            return $this->redirectToRoute("skitGubbe");
+        }
+
+
+        $this->gameInit($request, false);
         $this->skitGubbe->setMessage("");
         $cardIndexs = is_string($request->get('cardIndexs')) ? $request->get('cardIndexs') : "";
         $cardIndexs = explode(",", $cardIndexs);
+
+        // we do rsort to sort the indexes from smallest to biggest
+        // this will make it easy to remove the cards by index without the need to repositioning the hand cards
         rsort($cardIndexs);
-        var_dump($cardIndexs);
         if (!$this->checkIntArray($cardIndexs)) {
             $this->skitGubbe->setMessage("Indexes have to be type of INT");
             $this->sessionSave($request);
             return $this->redirectToRoute('skitGubbePlay');
         }
+
         $identicalCards = $this->identicalCardsCheck($cardIndexs);
         $playerDiscard = null;
 
@@ -153,7 +238,7 @@ class SkitGubbeController extends AbstractController
         for ($i=0; $i < count($cardIndexs); $i++) {
             $cardIndex = (int)$cardIndexs[$i];
             $this->gameInit($request);
-            $this->checkEndGame(false);
+            $this->checkEndGame();
             
             $cardsAvailability = $this->skitGubbe->availability("player");
             
@@ -190,6 +275,12 @@ class SkitGubbeController extends AbstractController
     #[Route('/proj/play/save', name: 'skitGubbePlaySave', methods: ["post"])]
     public function skitGubbePlaySave(Request $request, ManagerRegistry $doctrine): Response
     {
+        $session = $request->getSession();
+        $ifLoggedIn = $session->get("auth", null);
+        if (is_null($ifLoggedIn)) {
+            return $this->redirectToRoute("skitGubbe");
+        }
+
         $playerName = is_string($request->get('name')) ? $request->get('name') : "";
         $this->gameInit($request);
 
@@ -201,6 +292,12 @@ class SkitGubbeController extends AbstractController
     #[Route('/proj/results', name: 'skitGubbeResults')]
     public function skitGubbeResults(Request $request, ManagerRegistry $doctrine): Response
     {
+        $session = $request->getSession();
+        $ifLoggedIn = $session->get("auth", null);
+        if (is_null($ifLoggedIn)) {
+            return $this->redirectToRoute("skitGubbe");
+        }
+
         $result = ["data" => $this->showResult($doctrine)];
 
         return $this->render('skitGubbe/results.html.twig', $result);

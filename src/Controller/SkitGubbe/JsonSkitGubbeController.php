@@ -119,7 +119,7 @@ class JsonSkitGubbeController extends AbstractController
     #[Route('api/proj/play/discard/{cardIndexs}', name: 'skitGubbePlayDiscardJson')]
     public function skitGubbePlayDiscardJson(Request $request, string $cardIndexs): Response
     {
-        $this->gameInit($request);
+        $this->gameInit($request, true);
         $this->skitGubbe->setMessage("");
         $cardIndexs = explode(",", $cardIndexs);
         rsort($cardIndexs);
@@ -141,7 +141,7 @@ class JsonSkitGubbeController extends AbstractController
 
         for ($i=0; $i < count($cardIndexs); $i++) {
             $cardIndex = (int)$cardIndexs[$i];
-            $this->gameInit($request);
+            $this->gameInit($request, true);
             $this->checkEndGame();
 
             $cardsAvailability = $this->skitGubbe->availability("player");

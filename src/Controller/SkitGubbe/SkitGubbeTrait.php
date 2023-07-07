@@ -7,14 +7,16 @@ use App\Classes\Cards\CardHand;
 use App\Classes\Cards\DeckOfCards;
 use App\Classes\SkitGubbe\SkitGubbeHand;
 use Doctrine\Persistence\ManagerRegistry;
-use Exception;
 use Symfony\Component\HttpFoundation\Request;
 use App\Classes\SkitGubbe as SkitGubbeGame;
-use App\Entity\Skitgubbe as dbRes;
+use App\Entity\Skitgubbe as ResultTable;
+use App\Entity\Users as UsersTable;
 
 trait SkitGubbeTrait
 {
-    private function gameInit(Request $request): void
+    protected $isApi = false;
+
+    private function gameInit(Request $request, $useApi = false): void
     {
         $session = $request->getSession();
         /**
@@ -22,19 +24,23 @@ trait SkitGubbeTrait
          */
         $gameSession = $session->get("skitgubbe", []);
 
+        $this->isApi = $useApi;
+
         $this->skitGubbe = new SkitGubbeGame\Game($gameSession, 30);
         $this->skitGubbe->checkWinner();
         $session->set("skitgubbe", $this->skitGubbe->getGameData());
     }
 
-    private function checkEndGame(bool $redirectToApi = true): void
+    private function checkEndGame(): void
     {
         $this->skitGubbe->checkWinner();
 
-        $redirect = $redirectToApi ? "skitGubbePlayJson" : "skitGubbePlay";
+        $redirect = "skitGubbePlayJson";
+
+        if (!$this->isApi) $redirect = "skitGubbePlay";
 
         if (!is_null($this->skitGubbe->getGameData()["isWinner"])) {
-            die($this->redirectToRoute($redirect));
+            exit($this->redirectToRoute($redirect));
         }
     }
 
@@ -241,6 +247,75 @@ trait SkitGubbeTrait
         $this->skitGubbe->usePlayerFloor("computerHand", $index, $fromVisible);
     }
 
+    private function createUser(Request $request, ManagerRegistry $doctrine, string $name, string $pass): string
+    {
+        $session = $request->getSession();
+        $ifLoggedIn = $session->get("auth", null);
+
+        if (!is_null($ifLoggedIn)) {
+            return "ALREADY_LOGGED_IN";
+        }
+        
+        if (empty($name) || empty($pass)) {
+            return "EMPTY_VALUES";
+        }
+
+        $entityManager = $doctrine->getManager();
+        $userExists = $entityManager->getRepository(UsersTable::class)->findOneBy(["name" => $name]);
+
+        $res = new UsersTable();
+
+        if ($userExists) {
+            return "USER_ALREADY_REGISTERED";
+        }
+        
+        $res->setName($name);
+        $res->setPass($pass);
+
+        $entityManager->persist($res);
+
+        $entityManager->flush();
+
+        $session->set("auth", ["name" => $name]);
+        return "SUCCESS";
+    }
+    private function loginUser(Request $request, ManagerRegistry $doctrine, string $name, string $pass): string
+    {
+        $session = $request->getSession();
+        $ifLoggedIn = $session->get("auth", null);
+
+        if (!is_null($ifLoggedIn)) {
+            return "ALREADY_LOGGED_IN";
+        }
+        
+        if (empty($name) || empty($pass)) {
+            return "EMPTY_VALUES";
+        }
+
+        $entityManager = $doctrine->getManager();
+        $userExists = $entityManager->getRepository(UsersTable::class)->findOneBy(["name" => $name]);
+
+        if (!$userExists) {
+            return "USER_NOT_REGISTERED";
+        }
+
+        if ($userExists->getPass() !== $pass) {
+            return "WRONG_PASS";
+        }
+
+        $session->set("auth", ["name" => $name]);
+        return "SUCCESS";
+    }
+
+    private function checkAuth(Request $request)
+    {
+        $session = $request->getSession();
+        $ifLoggedIn = $session->get("auth", null);
+        if (!is_null($ifLoggedIn)) {
+            return $this->redirectToRoute("skitGubbePlay");
+        }
+    }
+
     /**
      * show all game results from database
      * @return array<mixed>
@@ -266,7 +341,7 @@ trait SkitGubbeTrait
         $isWinner = $gameData["isWinner"];
 
         if (!empty($name)) {
-            $res = new dbRes();
+            $res = new ResultTable();
             $res->setName($name);
             $res->setWin($isWinner);
 
