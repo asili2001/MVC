@@ -50,6 +50,15 @@ MVC är en kurs som ingår i webbprogrammeringsprogrammet på Blekinge tekniska 
     
     php bin/console doctrine:migrations:migrate
 
+Får du error (table skitgubbe already exists) kan du droppa databasen först.
+
+    php bin/console doctrine:schema:drop --force
+    php bin/console doctrine:migrations:migrate
+</li>
+<li>
+    Slutligen, köra följande komando för att radera all cache.
+
+    php bin/console cache:clear
 </li>
 <li>
     Starta igång: För att starta igång måste vi starta serven <br/>
@@ -57,7 +66,7 @@ MVC är en kurs som ingår i webbprogrammeringsprogrammet på Blekinge tekniska 
     
     php -S localhost:8888 public/
 
-8888 är porten som servern kör på
+8888 är porten som servern körs på.
 
 </li>
 </ul>
