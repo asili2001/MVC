@@ -6,10 +6,8 @@
     <div class="skitgubbe">
         <div class="result-banner {{ isWinner ? "win" : "" }}" style="{{isWinner is null ? "display: none;" : "display: flex;"}}">
             <h1>{{ isWinner ? "You Win!!" : "Lost :(" }}</h1>
-            <h3>Save your result. Leave it empty to skip</h3>
 
             <form method="post" action="{{path('skitGubbePlaySave')}}">
-                <input type="text" placeholder="Your Name" name="name">
                 <input type="submit" value="Submit and start a new game">
             </form>
         </div>

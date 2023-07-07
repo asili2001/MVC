@@ -59,11 +59,16 @@ class SkitGubbeController extends AbstractController
     }
 
     #[Route('/proj/auth', name: "skitGubbeAuth", methods: ["post"])]
-    public function skitGubbeAuth(Request $request, ManagerRegistry $doctrine)
+    public function skitGubbeAuth(Request $request, ManagerRegistry $doctrine): Response
     {
-        $name = $request->get('name');
-        $pass = $request->get('pass');
+        $data = [
+            "message" => ""
+        ];
+
+        $name = is_string($request->get('name')) ? $request->get('name') : "";
+        $pass = is_string($request->get('pass')) ? $request->get('pass') : "";
         $submit = $request->get('submit');
+        
 
         $session = $request->getSession();
         $ifLoggedIn = $session->get("auth", null);
@@ -73,10 +78,7 @@ class SkitGubbeController extends AbstractController
 
         $res = null;
 
-        $data = [
-            "message" => ""
-        ];
-        
+
         if ($submit && $submit === "Login") {
             $res = $this->loginUser($request, $doctrine, $name, $pass);
         } elseif ($submit && $submit === "Signup") {
@@ -85,7 +87,7 @@ class SkitGubbeController extends AbstractController
             $data["message"] = "Error, please try again";
             return $this->render('skitGubbe/auth.html.twig', $data);
         }
-        
+
         if ($res === "SUCCESS" || $res === "ALREADY_LOGGED_IN") {
             return $this->redirectToRoute("skitGubbePlay");
         }
@@ -94,7 +96,7 @@ class SkitGubbeController extends AbstractController
             case 'EMPTY_VALUES':
                 $data["message"] = "Please fill in all the inputs";
                 break;
-            
+
             case 'USER_ALREADY_REGISTERED':
                 $data["message"] = "User already exists";
                 break;
@@ -106,9 +108,9 @@ class SkitGubbeController extends AbstractController
             case 'WRONG_PASS':
                 $data["message"] = "Wrong password";
                 break;
-            }
+        }
 
-            return $this->render('skitGubbe/auth.html.twig', $data);
+        return $this->render('skitGubbe/auth.html.twig', $data);
 
         // var_dump($res);
         // return $this->render('skitGubbe/auth.html.twig');
@@ -136,41 +138,41 @@ class SkitGubbeController extends AbstractController
         $this->gameInit($request, false);
 
         $gameData = $this->skitGubbe->getGameData();
-         /**
-         * @var CardHand $computerHand
-         */
+        /**
+        * @var CardHand $computerHand
+        */
         $computerHand = $gameData["computerHand"];
-         /**
-         * @var CardHand $playerHand
-         */
+        /**
+        * @var CardHand $playerHand
+        */
         $playerHand = $gameData["playerHand"];
-         /**
-         * @var CardHand $floor
-         */
+        /**
+        * @var CardHand $floor
+        */
         $floor = $gameData["floor"];
-         /**
-         * @var CardHand $basket
-         */
+        /**
+        * @var CardHand $basket
+        */
         $basket = $gameData["basket"];
-         /**
-         * @var CardHand $deck
-         */
+        /**
+        * @var CardHand $deck
+        */
         $deck = $gameData["deck"];
-         /**
-         * @var CardHand $computerVisibleCards
-         */
+        /**
+        * @var CardHand $computerVisibleCards
+        */
         $computerVisibleCards = $gameData["computerVisibleCards"];
-         /**
-         * @var CardHand $computerHiddenCards
-         */
+        /**
+        * @var CardHand $computerHiddenCards
+        */
         $computerHiddenCards = $gameData["computerHiddenCards"];
-         /**
-         * @var CardHand $playerVisibleCards
-         */
+        /**
+        * @var CardHand $playerVisibleCards
+        */
         $playerVisibleCards = $gameData["playerVisibleCards"];
-         /**
-         * @var CardHand $playerHiddenCards
-         */
+        /**
+        * @var CardHand $playerHiddenCards
+        */
         $playerHiddenCards = $gameData["playerHiddenCards"];
 
         // hide cards
@@ -239,26 +241,26 @@ class SkitGubbeController extends AbstractController
             $cardIndex = (int)$cardIndexs[$i];
             $this->gameInit($request);
             $this->checkEndGame();
-            
+
             $cardsAvailability = $this->skitGubbe->availability("player");
-            
+
             if ($cardsAvailability[0]) {
                 $this->playCardFromVisible($cardIndex);
                 $cardIndex = 0; // Set card index to 0 to be used from the hand.
             }
-            
+
             $tryGetCard = $this->skitGubbe->cardExists("playerHand", $cardIndex);
-            
+
             if (!$tryGetCard) {
                 $this->skitGubbe->setMessage("Card not exists");
                 $this->sessionSave($request);
                 return $this->redirectToRoute('skitGubbePlay');
             }
-            
+
             $playerDiscard = $this->skitGubbe->discard("playerHand", $cardIndex, false);
-            
+
             $this->sessionSave($request);
-            
+
         }
 
         $this->skitGubbe->fillHand("playerHand");
@@ -281,10 +283,9 @@ class SkitGubbeController extends AbstractController
             return $this->redirectToRoute("skitGubbe");
         }
 
-        $playerName = is_string($request->get('name')) ? $request->get('name') : "";
         $this->gameInit($request);
 
-        $this->saveResult($doctrine, $playerName);
+        $this->saveResult($request, $doctrine);
 
         return $this->redirectToRoute('skitGubbeReset');
     }

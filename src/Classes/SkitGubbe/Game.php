@@ -101,7 +101,7 @@ class Game
     public function discard(string $hand, int $cardIndex, bool $fill = true): string
     {
         $gameData = $this->gameArr;
-        
+
         /**
          * @var cardHand $playerHand
          */

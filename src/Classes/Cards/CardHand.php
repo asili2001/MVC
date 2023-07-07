@@ -92,7 +92,7 @@ class CardHand
     /**
      Draws a card by providing its name
      * @param string $cardName The name of card
-     * @return Card<Card> The removed card as a Card object, or an array of Cards if multiple cards were drawn.
+     * @return array<Card> | Card The removed card as a Card object, or an array of Cards if multiple cards were drawn.
      * @throws Exception If the card is not found in the hand. or if Internal Error.
      */
     public function drawCardByName(string $cardName): array | Card

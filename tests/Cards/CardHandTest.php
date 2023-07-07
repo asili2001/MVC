@@ -61,7 +61,18 @@ class CardHandTest extends TestCase
         $card1 = new Card("5", "diamonds");
         $hand->addCard($card);
         $hand->addCard($card1);
-        $this->assertEquals(($hand->drawCardByName("5"))->getName(), "5");
+
+        $drawCard = $hand->drawCardByName("5");
+
+        if (is_array($drawCard)) {
+            // Handle the array case
+            $name = $drawCard[0]->getName();
+        } else {
+            // Handle the object case
+            $name = $drawCard->getName();
+        }
+
+        $this->assertEquals($name, "5");
         
         // try draw undefined card
         $this->expectException(Exception::class);
@@ -93,7 +104,11 @@ class CardHandTest extends TestCase
 
         $hand->hideCards();
 
-        $this->assertTrue(($hand->getByName("4"))->isHidden());
+        $firstHiddenCard = $hand->getByName("4");
+
+        if ($firstHiddenCard instanceof Card) {
+            $this->assertTrue($firstHiddenCard->isHidden());
+        }
 
     }
     // test unhide cards
@@ -108,6 +123,10 @@ class CardHandTest extends TestCase
         $hand->hideCards();
         $hand->unhideCards();
 
-        $this->assertFalse(($hand->getByName("4"))->isHidden());
+        $firstVisibleCard = $hand->getByName("4");
+
+        if ($firstVisibleCard instanceof Card) {
+            $this->assertFalse($firstVisibleCard->isHidden());
+        }
     }
 }

@@ -44,9 +44,10 @@ class SkitGubbeTest extends TestCase
         $skitGubbeGameData = new Game([], 30);
         $this->assertInstanceOf("\App\Classes\SkitGubbe\Game", $skitGubbeGameData);
 
+        $cardCount = count($skitGubbeGameData->getGameData()["deck"]?->getCards() ?? []);
         // the reason we are verifing its 4 is because the other 18 cards has been dealed between the computer and the user.
         // 6 in floor (computer), 6 in floor (player), 3 in computer hand and 3 in player hand. total is 18
-        $this->assertEquals(count(($skitGubbeGameData->getGameData())["deck"]->getCards()), 4);
+        $this->assertEquals($cardCount, 4);
     }
 
     public function testGetGameData(): void
@@ -62,7 +63,9 @@ class SkitGubbeTest extends TestCase
 
         // discard without fill
         $skitgubbe->discard("playerHand", 0, false);
-        $this->assertEquals(count($skitgubbe->getGameData()["playerHand"]->getCards()), 2);
+        $playerHandCardCount = count($skitgubbe->getGameData()["playerHand"]?->getCards() ?? []);
+
+        $this->assertEquals($playerHandCardCount, 2);
 
         $skitgubbe->getGameData()["playerHand"]->addCard($cardA);
 
