@@ -5,6 +5,7 @@ namespace App\Controller\SkitGubbe;
 use App\Classes\Cards\Card;
 use App\Classes\Cards\CardHand;
 use App\Classes\Cards\DeckOfCards;
+use App\Classes\SkitGubbe\Game;
 use App\Classes\SkitGubbe\SkitGubbeHand;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,6 +16,7 @@ use App\Entity\Users as UsersTable;
 trait SkitGubbeTrait
 {
     protected $isApi = false;
+    protected Game $skitGubbe;
 
     private function gameInit(Request $request, $useApi = false): void
     {

@@ -791,6 +791,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-SkitGubbe-SkitGubbeController.html#property_skitGubbe"
         },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeController\u003A\u003AskitGubbeAuth\u0028\u0029",
+            "name": "skitGubbeAuth",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeController.html#method_skitGubbeAuth"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeController\u003A\u003AskitGubbeAbout\u0028\u0029",
+            "name": "skitGubbeAbout",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeController.html#method_skitGubbeAbout"
+        },                {
             "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeController\u003A\u003AskitGubbePlay\u0028\u0029",
             "name": "skitGubbePlay",
             "summary": "",
@@ -861,6 +871,21 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_playComputerCardFromVisible"
         },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003AcreateUser\u0028\u0029",
+            "name": "createUser",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_createUser"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003AloginUser\u0028\u0029",
+            "name": "loginUser",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_loginUser"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003AcheckAuth\u0028\u0029",
+            "name": "checkAuth",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_checkAuth"
+        },                {
             "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003AshowResult\u0028\u0029",
             "name": "showResult",
             "summary": "show\u0020all\u0020game\u0020results\u0020from\u0020database",
@@ -870,6 +895,11 @@ Search.appendIndex(
             "name": "saveResult",
             "summary": "save\u0020a\u0020result\u0020to\u0020database",
             "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_saveResult"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003A\u0024isApi",
+            "name": "isApi",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#property_isApi"
         },                {
             "fqsen": "\\App\\Entity\\Skitgubbe",
             "name": "Skitgubbe",
@@ -935,6 +965,71 @@ Search.appendIndex(
             "name": "remove",
             "summary": "",
             "url": "classes/App-Repository-SkitgubbeRepository.html#method_remove"
+        },                {
+            "fqsen": "\\App\\Entity\\Users",
+            "name": "Users",
+            "summary": "",
+            "url": "classes/App-Entity-Users.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Users\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Users.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Users\u003A\u003AgetName\u0028\u0029",
+            "name": "getName",
+            "summary": "",
+            "url": "classes/App-Entity-Users.html#method_getName"
+        },                {
+            "fqsen": "\\App\\Entity\\Users\u003A\u003AsetName\u0028\u0029",
+            "name": "setName",
+            "summary": "",
+            "url": "classes/App-Entity-Users.html#method_setName"
+        },                {
+            "fqsen": "\\App\\Entity\\Users\u003A\u003AgetPass\u0028\u0029",
+            "name": "getPass",
+            "summary": "",
+            "url": "classes/App-Entity-Users.html#method_getPass"
+        },                {
+            "fqsen": "\\App\\Entity\\Users\u003A\u003AsetPass\u0028\u0029",
+            "name": "setPass",
+            "summary": "",
+            "url": "classes/App-Entity-Users.html#method_setPass"
+        },                {
+            "fqsen": "\\App\\Entity\\Users\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Users.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Users\u003A\u003A\u0024name",
+            "name": "name",
+            "summary": "",
+            "url": "classes/App-Entity-Users.html#property_name"
+        },                {
+            "fqsen": "\\App\\Entity\\Users\u003A\u003A\u0024pass",
+            "name": "pass",
+            "summary": "",
+            "url": "classes/App-Entity-Users.html#property_pass"
+        },                {
+            "fqsen": "\\App\\Repository\\UsersRepository",
+            "name": "UsersRepository",
+            "summary": "",
+            "url": "classes/App-Repository-UsersRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\UsersRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-UsersRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\UsersRepository\u003A\u003Asave\u0028\u0029",
+            "name": "save",
+            "summary": "",
+            "url": "classes/App-Repository-UsersRepository.html#method_save"
+        },                {
+            "fqsen": "\\App\\Repository\\UsersRepository\u003A\u003Aremove\u0028\u0029",
+            "name": "remove",
+            "summary": "",
+            "url": "classes/App-Repository-UsersRepository.html#method_remove"
         },                {
             "fqsen": "\\",
             "name": "\\",
