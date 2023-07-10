@@ -374,9 +374,14 @@ class Game
          */
         $deck = $gameData["deck"];
         // draw new card from deck
+        // $playerCardsCount = count($playerHand->getCardNames());
         if (count($deck->getCards()) >= 1) {
-            for ($i=count($playerHand->getCardNames()); $i < 3; $i++) {
+            for ($i = count($playerHand->getCardNames()); $i < 3; $i++) {
                 $playerHand->addCard($deck->drawCard()[0]);
+            
+                if (count($deck->getCards()) < 1) {
+                    break;
+                }
             }
         }
     }
