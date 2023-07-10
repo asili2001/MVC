@@ -44,7 +44,13 @@ class SkitGubbeTest extends TestCase
         $skitGubbeGameData = new Game([], 30);
         $this->assertInstanceOf("\App\Classes\SkitGubbe\Game", $skitGubbeGameData);
 
-        $cardCount = count($skitGubbeGameData->getGameData()["deck"]?->getCards() ?? []);
+        /**
+         * @var SkitGubbeHand $theDeck
+         */
+        $theDeck = $skitGubbeGameData->getGameData()["deck"];
+
+        $cards = $theDeck->getCards();
+        $cardCount = count($cards);
         // the reason we are verifing its 4 is because the other 18 cards has been dealed between the computer and the user.
         // 6 in floor (computer), 6 in floor (player), 3 in computer hand and 3 in player hand. total is 18
         $this->assertEquals($cardCount, 4);
@@ -53,7 +59,13 @@ class SkitGubbeTest extends TestCase
     public function testGetGameData(): void
     {
         $skitgubbe = new Game([]);
-        $this->assertInstanceOf("\App\Classes\SkitGubbe\SkitGubbeHand", $skitgubbe->getGameData()["computerHand"]);
+        
+        /**
+         * @var SkitGubbeHand $computerHand
+         */
+        $computerHand = $skitgubbe->getGameData()["computerHand"];
+
+        $this->assertInstanceOf("\App\Classes\SkitGubbe\SkitGubbeHand", $computerHand);
     }
 
     public function testDiscard(): void
@@ -63,26 +75,32 @@ class SkitGubbeTest extends TestCase
 
         // discard without fill
         $skitgubbe->discard("playerHand", 0, false);
-        $playerHandCardCount = count($skitgubbe->getGameData()["playerHand"]?->getCards() ?? []);
+
+        /**
+         * @var SkitGubbeHand $playerHand
+         */
+        $playerHand = $skitgubbe->getGameData()["playerHand"];
+
+        $playerHandCardCount = count($playerHand->getCards());
 
         $this->assertEquals($playerHandCardCount, 2);
 
-        $skitgubbe->getGameData()["playerHand"]->addCard($cardA);
+        $playerHand->addCard($cardA);
 
-        $playerHandFirstCard = $skitgubbe->getGameData()["playerHand"]->getCards(0)[0]->getName();
+        $playerHandFirstCard = $playerHand->getCards(0)[0]->getName();
 
-        $this->assertEquals($skitgubbe->getGameData()["playerHand"]->getCards(2)[0]->getName(), "A");
+        $this->assertEquals($playerHand->getCards(2)[0]->getName(), "A");
 
         $skitgubbe->discard("playerHand", 2, true);
         
-        $playerHandFirstCardAfter = $skitgubbe->getGameData()["playerHand"]->getCards(0)[0]->getName();
+        $playerHandFirstCardAfter = $playerHand->getCards(0)[0]->getName();
 
         // check if first card is same
         $this->assertEquals($playerHandFirstCard, $playerHandFirstCardAfter);
 
         // try draw undefined card
         $this->expectException(Exception::class);
-        $skitgubbe->getGameData()["playerHand"]->getCards(3);
+        $playerHand->getCards(3);
 
     }
 
@@ -90,7 +108,13 @@ class SkitGubbeTest extends TestCase
     {
         $skitgubbe = new Game([]);
         $cardA = new Card("A", "hearts");
-        $skitgubbe->getGameData()["playerHand"]->addCard($cardA);
+
+        /**
+         * @var SkitGubbeHand $playerHand
+         */
+        $playerHand = $skitgubbe->getGameData()["playerHand"];
+
+        $playerHand->addCard($cardA);
 
         $this->assertTrue($skitgubbe->cardExists("playerHand", 3));
 
@@ -104,29 +128,52 @@ class SkitGubbeTest extends TestCase
         $skitgubbe = new Game([]);
 
         // player with visible cards
-        $playerVisibleFirstCard = $skitgubbe->getGameData()["playerVisibleCards"]->getCards(0)[0]->getName();
+        /**
+         * @var SkitGubbeHand $playerVisibleCards
+         */
+        $playerVisibleCards = $skitgubbe->getGameData()["playerVisibleCards"];
+
+        $playerVisibleFirstCard = $playerVisibleCards->getCards(0)[0]->getName();
 
         $skitgubbe->usePlayerFloor("playerHand", 0, true);
 
-        $playerHandLastCard = $skitgubbe->getGameData()["playerHand"]->getCards(3)[0]->getName();
+        /**
+         * @var SkitGubbeHand $playerHand
+         */
+        $playerHand = $skitgubbe->getGameData()["playerHand"];
+
+        $playerHandLastCard = $playerHand->getCards(3)[0]->getName();
 
         $this->assertEquals($playerVisibleFirstCard, $playerHandLastCard);
     
         // player with hidden cards
-        $playerHiddenFirstCard = $skitgubbe->getGameData()["playerHiddenCards"]->getCards(0)[0]->getName();
+        /**
+         * @var SkitGubbeHand $playerHiddenCards
+         */
+        $playerHiddenCards = $skitgubbe->getGameData()["playerHiddenCards"];
+        $playerHiddenFirstCard = $playerHiddenCards->getCards(0)[0]->getName();
 
         $skitgubbe->usePlayerFloor("playerHand", 0, false);
 
-        $playerHandLastCard = $skitgubbe->getGameData()["playerHand"]->getCards(4)[0]->getName();
+        $playerHandLastCard = $playerHand->getCards(4)[0]->getName();
 
         $this->assertEquals($playerHiddenFirstCard, $playerHandLastCard);
 
         // computer, but use hidden cards
-        $computerVisibleFirstCard = $skitgubbe->getGameData()["computerHiddenCards"]->getCards(0)[0]->getName();
+        /**
+         * @var SkitGubbeHand $computerHiddenCards
+         */
+        $computerHiddenCards = $skitgubbe->getGameData()["computerHiddenCards"];
+        $computerVisibleFirstCard = $computerHiddenCards->getCards(0)[0]->getName();
 
         $skitgubbe->usePlayerFloor("computerHand", 0, false);
 
-        $computerHandLastCard = $skitgubbe->getGameData()["computerHand"]->getCards(3)[0]->getName();
+        /**
+         * @var SkitGubbeHand $computerHand
+         */
+        $computerHand = $skitgubbe->getGameData()["computerHand"];
+
+        $computerHandLastCard = $computerHand->getCards(3)[0]->getName();
 
         $this->assertEquals($computerVisibleFirstCard, $computerHandLastCard);
 
@@ -241,9 +288,13 @@ class SkitGubbeTest extends TestCase
         $skitGubbe->usePlayerFloor("playerHand", 0, false);
 
         // hand
-        $handCards = $skitGubbe->getGameData()["playerHand"]->getCards();
+        /**
+         * @var SkitGubbeHand $playerHand
+         */
+        $playerHand = $skitGubbe->getGameData()["playerHand"];
+        $handCards = $playerHand->getCards();
         foreach ($handCards as $_) {
-            $skitGubbe->getGameData()["playerHand"]->drawCard(0);
+            $playerHand->drawCard(0);
         }
 
         $this->assertSame($skitGubbe->availability("player"), [true, true, true]);
@@ -264,14 +315,22 @@ class SkitGubbeTest extends TestCase
         $skitGubbe->usePlayerFloor("computerHand", 0, false);
 
         // hand
-        $handCards = $skitGubbe->getGameData()["computerHand"]->getCards();
+        /**
+         * @var SkitGubbeHand $computerHand
+         */
+        $computerHand = $skitGubbe->getGameData()["computerHand"];
+        $handCards = $computerHand->getCards();
         foreach ($handCards as $_) {
-            $skitGubbe->getGameData()["computerHand"]->drawCard(0);
+            $computerHand->drawCard(0);
         }
 
         // add a card to player hand
         $cardA = new Card("A", "hearts");
-        $skitGubbe->getGameData()["playerHand"]->addCard($cardA);
+        /**
+         * @var SkitGubbeHand $playerHand
+         */
+        $playerHand = $skitGubbe->getGameData()["playerHand"];
+        $playerHand->addCard($cardA);
 
         // check winner again
         $skitGubbe->checkWinner();
@@ -295,8 +354,12 @@ class SkitGubbeTest extends TestCase
 
         // discard a card
         $skitGubbe->discard("playerHand", 0, false);
-        $this->assertEquals(count($skitGubbe->getGameData()["playerHand"]->getCards()), 2);
+        /**
+         * @var SkitGubbeHand $playerHand
+         */
+        $playerHand = $skitGubbe->getGameData()["playerHand"];
+        $this->assertEquals(count($playerHand->getCards()), 2);
         $skitGubbe->fillHand("playerHand");
-        $this->assertEquals(count($skitGubbe->getGameData()["playerHand"]->getCards()), 3);
+        $this->assertEquals(count($playerHand->getCards()), 3);
     }
 }

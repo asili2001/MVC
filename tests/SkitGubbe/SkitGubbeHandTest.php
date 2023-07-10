@@ -45,7 +45,8 @@ class SkitGubbeHandTest extends TestCase
          * @var Card $nextBigger2
          */
         $nextBigger2 = $hand->getNextBigger($cardA);
-        $nextBigger2Index = $hand->getNextBigger($cardA, true);
+        $nextBiggerIndex = $hand->getNextBiggerIndex($cardA);
+        $nextBigger1Index = $hand->getNextBiggerIndex($card3);
 
         
         $this->assertEquals($nextBigger->getName(), "K");
@@ -53,6 +54,7 @@ class SkitGubbeHandTest extends TestCase
         $this->assertEquals($nextBigger1->getName(), "3");
         // if there is no bigger, return first card
         $this->assertEquals($nextBigger2->getName(), "9");
-        $this->assertEquals($nextBigger2Index, 0);
+        $this->assertEquals($nextBiggerIndex, 0);
+        $this->assertEquals($nextBigger1Index, 2);
     }
 }

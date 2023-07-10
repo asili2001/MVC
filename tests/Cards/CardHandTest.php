@@ -88,8 +88,8 @@ class CardHandTest extends TestCase
         $card1 = new Card("4", "hearts");
         $hand->addCard($card);
         $hand->addCard($card1);
-        $this->assertContainsOnly("int", $hand->getAllByName("4", true));
-        $this->assertContainsOnly("App\Classes\Cards\Card", $hand->getAllByName("4", false));
+        $this->assertContainsOnly("int", $hand->getAllIndexByName("4"));
+        $this->assertContainsOnly("App\Classes\Cards\Card", $hand->getAllByName("4"));
 
     }
 

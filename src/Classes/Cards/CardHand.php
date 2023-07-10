@@ -97,7 +97,7 @@ class CardHand
      */
     public function drawCardByName(string $cardName): array | Card
     {
-        $index = $this->getByName($cardName, true);
+        $index = $this->getIndexByName($cardName);
 
         if (!is_int($index)) {
             throw new Exception('Internal Error');
@@ -114,19 +114,30 @@ class CardHand
     /**
      * Find and return card from hand by its name.
      * @param string $name Name to find
-     * @param boolean $getIndex If true, return index else return the card object
-     * @return Card|int|null It returns card if $getIndex param is set to false,
-     * else it returns the index of the card. if not found, it returns null
+     * @return Card|null It returns card.
+     * if not found, it returns null
      */
-    public function getByName(string $name, bool $getIndex = false): Card | int | null
+    public function getByName(string $name): Card | null
+    {
+        foreach ($this->hand as $card) {
+            if ($card->getName() == $name) {
+                return $card;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Find and return card index from hand by its name.
+     * @param string $name Name to find
+     * @return int|null It returns card index.
+     * if not found, it returns null
+     */
+    public function getIndexByName(string $name): int | null
     {
         foreach ($this->hand as $key => $val) {
             if ($val->getName() == $name) {
-                if ($getIndex) {
-                    return $key;
-                }
-
-                return $val;
+                return $key;
             }
         }
         return null;
@@ -135,23 +146,31 @@ class CardHand
     /**
      * Find and return all cards from hand with same name.
      * @param string $name Name to find
-     * @param boolean $getIndex If true, return index else return the card object
-     * @return array<Card>|array<int> It returns array of cards if $getIndex param is set to false,
-     * else it returns array of card indexes .
+     * @return array<Card> It returns array of cards
      */
-    public function getAllByName(string $name, bool $getIndex = false): array
+    public function getAllByName(string $name): array
+    {
+        $res = [];
+
+        foreach ($this->hand as $card) {
+            if ($card->getName() == $name) {
+                array_push($res, $card);
+            }
+        }
+        return $res;
+    }
+    /**
+     * Find and return all cards from hand with same name.
+     * @param string $name Name to find
+     * @return array<int> It returns array of cards indexs
+     */
+    public function getAllIndexByName(string $name): array
     {
         $res = [];
 
         foreach ($this->hand as $key => $val) {
             if ($val->getName() == $name) {
-                if ($getIndex) {
-                    array_push($res, (int)$key);
-                }
-                if (!$getIndex) {
-                    array_push($res, $val);
-                }
-
+                array_push($res, (int)$key);
             }
         }
         return $res;

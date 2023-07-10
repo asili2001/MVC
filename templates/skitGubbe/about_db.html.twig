@@ -1,0 +1,28 @@
+{% extends "base.skitgubbe.html.twig" %}
+
+{% block title %}SkitGubbe{% endblock %}
+
+{% block body %}
+    <div class="skitgubbe">
+        <div class="content">
+        <h1>Om ORM</h1>
+        <img src="{{asset('img/skitgubbe/er.png')}}" alt="ER diagram">
+        <h2>Beskrivning</h2>
+        <p>
+            I "users" tabellen lagras användarens inloggningsuppgifter, vilket möjliggör inloggning samt sparande av deras resultat i "skitgubbe" tabellen.<br><br>
+
+            "skitgubbe" tabellen används för att spara användarens resultat. Attributet "win" har typen "boolean".<br>
+            Om värdet är "false" betyder det att användaren har förlorat, medan "true" indikerar att användaren har vunnit.<br><br>
+            
+            Relationen mellan dessa tabeller är användarens namn, som fungerar som ett unikt attribut.<br><br>
+            
+            För detta projekt har jag valt att använda SQLite som databashanterare, eftersom det är enkelt och passar perfekt för detta scenario där det inte sker mycket datahantering.
+            <br><br>
+            På grund av projektets omfattning och tidskrav har jag tyvärr inte haft möjlighet att genomföra enhetstester för databasen.<br>
+            Dock, med tanke på att det handlar om en enkel databasimplementation, förväntar jag mig inte att det ska orsaka några problem.<br>
+            Jag planerar att genomföra testerna vid en senare tidpunkt för att säkerställa funktionaliteten.
+        </p>
+        </div>
+        <a href="{{path('skitGubbePlay')}}" style="text-align: center;display: block;margin: 1rem;">Go Back</a>
+    </div>
+{% endblock %}

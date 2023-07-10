@@ -202,21 +202,28 @@ specific regulations of the game of blackjack.</p>
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Classes-Cards-CardHand.html#method_drawCardByName">drawCardByName()</a>
     <span>
-                                &nbsp;: <a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>&lt;string|int, <a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>&gt;    </span>
+                                &nbsp;: array&lt;string|int, <a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>&gt;    </span>
 </dt>
 <dd>Draws a card by providing its name</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Classes-Cards-CardHand.html#method_getAllByName">getAllByName()</a>
     <span>
-                                &nbsp;: array&lt;string|int, <a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>&gt;|array&lt;string|int, int&gt;    </span>
+                                &nbsp;: array&lt;string|int, <a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>&gt;    </span>
+</dt>
+<dd>Find and return all cards from hand with same name.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Classes-Cards-CardHand.html#method_getAllIndexByName">getAllIndexByName()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, int&gt;    </span>
 </dt>
 <dd>Find and return all cards from hand with same name.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Classes-Cards-CardHand.html#method_getByName">getByName()</a>
     <span>
-                                &nbsp;: <a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>|int|null    </span>
+                                &nbsp;: <a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>|null    </span>
 </dt>
 <dd>Find and return card from hand by its name.</dd>
 
@@ -233,6 +240,13 @@ specific regulations of the game of blackjack.</p>
                                 &nbsp;: array&lt;string|int, <a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>&gt;    </span>
 </dt>
 <dd>returns a card from the player&#039;s hand at the specified index.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Classes-Cards-CardHand.html#method_getIndexByName">getIndexByName()</a>
+    <span>
+                                &nbsp;: int|null    </span>
+</dt>
+<dd>Find and return card index from hand by its name.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Classes-BlackJackGame-BlackJackHand.html#method_getPoints">getPoints()</a>
@@ -545,7 +559,7 @@ specific regulations of the game of blackjack.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">drawCardByName</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$cardName</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>&lt;string|int, <a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">drawCardByName</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$cardName</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>&gt;</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -580,9 +594,9 @@ specific regulations of the game of blackjack.</p>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>&lt;string|int, <a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>&gt;</span>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>&gt;</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>The removed card as a Card object, or an array of Cards if multiple cards were drawn.</p>
+            <section class="phpdocumentor-description"><p>| Card The removed card as a Card object, or an array of Cards if multiple cards were drawn.</p>
 </section>
 
     
@@ -600,7 +614,7 @@ specific regulations of the game of blackjack.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Classes/Cards/CardHand.php"><a href="files/src-classes-cards-cardhand.html"><abbr title="src/Classes/Cards/CardHand.php">CardHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">142</span>
+    <span class="phpdocumentor-element-found-in__line">151</span>
 
     </aside>
 
@@ -608,7 +622,7 @@ specific regulations of the game of blackjack.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getAllByName</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$getIndex</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>&gt;|array&lt;string|int, int&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">getAllByName</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>&gt;</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -622,12 +636,50 @@ specific regulations of the game of blackjack.</p>
 </section>
 
             </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>&gt;</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>It returns array of cards</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getAllIndexByName">
+        getAllIndexByName()
+        <a href="classes/App-Classes-Cards-CardHand.html#method_getAllIndexByName" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Classes/Cards/CardHand.php"><a href="files/src-classes-cards-cardhand.html"><abbr title="src/Classes/Cards/CardHand.php">CardHand.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">167</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Find and return all cards from hand with same name.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getAllIndexByName</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$getIndex</span>
-                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
+                <span class="phpdocumentor-signature__argument__name">$name</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>If true, return index else return the card object</p>
+                    <section class="phpdocumentor-description"><p>Name to find</p>
 </section>
 
             </dd>
@@ -636,10 +688,9 @@ specific regulations of the game of blackjack.</p>
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>&gt;|array&lt;string|int, int&gt;</span>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>It returns array of cards if $getIndex param is set to false,
-else it returns array of card indexes .</p>
+            <section class="phpdocumentor-description"><p>It returns array of cards indexs</p>
 </section>
 
     
@@ -657,7 +708,7 @@ else it returns array of card indexes .</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Classes/Cards/CardHand.php"><a href="files/src-classes-cards-cardhand.html"><abbr title="src/Classes/Cards/CardHand.php">CardHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">121</span>
+    <span class="phpdocumentor-element-found-in__line">120</span>
 
     </aside>
 
@@ -665,7 +716,7 @@ else it returns array of card indexes .</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getByName</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$getIndex</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>|int|null</span></code>
+                    <span class="phpdocumentor-signature__name">getByName</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>|null</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -679,24 +730,15 @@ else it returns array of card indexes .</p>
 </section>
 
             </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$getIndex</span>
-                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>If true, return index else return the card object</p>
-</section>
-
-            </dd>
             </dl>
 
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>|int|null</span>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/App-Classes-Cards-Card.html"><abbr title="\App\Classes\Cards\Card">Card</abbr></a>|null</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>It returns card if $getIndex param is set to false,
-else it returns the index of the card. if not found, it returns null</p>
+            <section class="phpdocumentor-description"><p>It returns card.
+if not found, it returns null</p>
 </section>
 
     
@@ -821,6 +863,54 @@ else it returns the index of the card. if not found, it returns null</p>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_getIndexByName">
+        getIndexByName()
+        <a href="classes/App-Classes-Cards-CardHand.html#method_getIndexByName" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Classes/Cards/CardHand.php"><a href="files/src-classes-cards-cardhand.html"><abbr title="src/Classes/Cards/CardHand.php">CardHand.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">136</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Find and return card index from hand by its name.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getIndexByName</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int|null</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$name</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Name to find</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">int|null</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>It returns card index.
+if not found, it returns null</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_getPoints">
         getPoints()
         <a href="classes/App-Classes-BlackJackGame-BlackJackHand.html#method_getPoints" class="headerlink"><i class="fas fa-link"></i></a>
@@ -863,7 +953,7 @@ else it returns the index of the card. if not found, it returns null</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Classes/Cards/CardHand.php"><a href="files/src-classes-cards-cardhand.html"><abbr title="src/Classes/Cards/CardHand.php">CardHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">160</span>
+    <span class="phpdocumentor-element-found-in__line">179</span>
 
     </aside>
 
@@ -896,7 +986,7 @@ else it returns the index of the card. if not found, it returns null</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Classes/Cards/CardHand.php"><a href="files/src-classes-cards-cardhand.html"><abbr title="src/Classes/Cards/CardHand.php">CardHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">166</span>
+    <span class="phpdocumentor-element-found-in__line">185</span>
 
     </aside>
 

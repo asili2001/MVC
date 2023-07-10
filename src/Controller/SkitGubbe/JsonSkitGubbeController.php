@@ -34,23 +34,37 @@ class JsonSkitGubbeController extends AbstractController
      */
     private $skitGubbe;
 
-    #[Route('/api/proj/play/new', name: 'skitGubbeResetJson')]
+    #[Route('/proj/api/play/new', name: 'skitGubbeResetJson')]
     public function skitGubbeResetJson(Request $request): Response
     {
         $request->getSession()->remove("skitgubbe");
         return $this->redirectToRoute("skitGubbePlayJson");
     }
 
-    #[Route('/api/skitgubbe', name: "skitGubbeJson")]
-    public function skitGubbeJson(Request $request): Response
+    #[Route('/proj/api/minigame', name: 'skitGubbeMiniGameJson')]
+    public function skitGubbeMiniJson(Request $request): Response
     {
+        $session = $request->getSession();
+        $session->set("minigame", true);
+        $request->getSession()->remove("skitgubbe");
         return $this->redirectToRoute("skitGubbePlayJson");
     }
 
-    #[Route('api/proj/play', name: 'skitGubbePlayJson')]
+    #[Route('/proj/api', name: "skitGubbeJson")]
+    public function skitGubbeJson(): Response
+    {
+        return $this->render('skitGubbe/api_home.html.twig');
+    }
+
+    #[Route('/proj/api/play', name: 'skitGubbePlayJson')]
     public function skitGubbePlayJson(Request $request): Response
     {
-        $this->gameInit($request);
+        $session = $request->getSession();
+        /**
+         * @var boolean $miniGameSess
+         */
+        $miniGameSess = $session->get("minigame", false);
+        $this->gameInit($request, $miniGameSess, true);
 
         $gameData = $this->skitGubbe->getGameData();
 
@@ -116,11 +130,19 @@ class JsonSkitGubbeController extends AbstractController
         );
         return $response;
     }
-    #[Route('api/proj/play/discard/{cardIndexs}', name: 'skitGubbePlayDiscardJson')]
-    public function skitGubbePlayDiscardJson(Request $request, string $cardIndexs): Response
+    #[Route('/proj/api/play/discard', name: 'skitGubbePlayDiscardJson', methods: ["POST"])]
+    public function skitGubbePlayDiscardJson(Request $request): Response
     {
-        $this->gameInit($request, true);
+        $session = $request->getSession();
+
+        /**
+         * @var boolean $miniGameSess
+         */
+        $miniGameSess = $session->get("minigame", false);
+
+        $this->gameInit($request, $miniGameSess, true);
         $this->skitGubbe->setMessage("");
+        $cardIndexs = is_string($request->get('cardIndexs')) ? $request->get('cardIndexs') : "";
         $cardIndexs = explode(",", $cardIndexs);
         rsort($cardIndexs);
 
@@ -139,9 +161,14 @@ class JsonSkitGubbeController extends AbstractController
             return $this->redirectToRoute('skitGubbePlayJson');
         }
 
-        for ($i=0; $i < count($cardIndexs); $i++) {
+        $countCardIndexes = count($cardIndexs);
+        for ($i=0; $i < $countCardIndexes; $i++) {
             $cardIndex = (int)$cardIndexs[$i];
-            $this->gameInit($request, true);
+            /**
+             * @var boolean $miniGameSess
+             */
+            $miniGameSess = $session->get("minigame", false);
+            $this->gameInit($request, $miniGameSess, true);
             $this->checkEndGame();
 
             $cardsAvailability = $this->skitGubbe->availability("player");

@@ -57,9 +57,9 @@ class SkitGubbeHand extends CardHand
     /**
      * returns the smallets card compare to the input card
      *
-     * @return Card|int The card.
+     * @return Card The card.
     */
-    public function getNextBigger(Card $card, bool $getIndex = false): Card | int
+    public function getNextBigger(Card $card): Card
     {
         $cardPoints = $this->cardPoints($card);
         $nextBigger = null;
@@ -75,12 +75,42 @@ class SkitGubbeHand extends CardHand
 
         // if there is no bigger card.
         if (!$nextBigger) {
-            if ($getIndex) {
-                return 0;
-            }
             return $this->getCards()[0];
         }
-        $res =  $this->getByName((string)array_search($nextBigger, $this->points), $getIndex);
+
+        $res = $this->getByName((string)array_search($nextBigger, $this->points));
+
+        if (is_null($res)) {
+            throw new Exception("Invalid Card");
+        }
+
+        return $res;
+    }
+    /**
+     * returns the smallets card compare to the input card
+     *
+     * @return int The card index.
+    */
+    public function getNextBiggerIndex(Card $card): int
+    {
+        $cardPoints = $this->cardPoints($card);
+        $nextBigger = null;
+
+        foreach ($this->getCardNames() as $value) {
+            $number = $this->points[$value] ?? null;
+            if ($number >= $cardPoints) {
+                if ($nextBigger === null || $number < $nextBigger) {
+                    $nextBigger = $number;
+                }
+            }
+        }
+
+        // if there is no bigger card.
+        if (!$nextBigger) {
+            return 0;
+        }
+
+        $res = $this->getIndexByName((string)array_search($nextBigger, $this->points));
 
         if (is_null($res)) {
             throw new Exception("Invalid Card");

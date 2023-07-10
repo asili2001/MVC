@@ -62,11 +62,11 @@ class Game
             $deck->dealCards(1, $deleteCards);
         }
         $playersDeal = array_values($deck->dealCards(2, 6));
-        $HiddenCardsDeal = array_values($deck->dealCards(2, 6));
+        $hiddenCardsDeal = array_values($deck->dealCards(2, 6));
         $visibleCardsDeal = array_values($deck->dealCards(2, 6));
 
         // hide the Hidden cards
-        foreach($HiddenCardsDeal as $cards) {
+        foreach($hiddenCardsDeal as $cards) {
             $cards = $this->hideCards($cards);
         }
 
@@ -81,9 +81,9 @@ class Game
             "deck" => $deck,
             "message" => "",
             "computerVisibleCards" => $visibleCardsDeal[0],
-            "computerHiddenCards" => $HiddenCardsDeal[0],
+            "computerHiddenCards" => $hiddenCardsDeal[0],
             "playerVisibleCards" => $visibleCardsDeal[1],
-            "playerHiddenCards" => $HiddenCardsDeal[1],
+            "playerHiddenCards" => $hiddenCardsDeal[1],
             "isWinner" => null
         ];
         $this->gameArr = $gameData;
@@ -98,7 +98,7 @@ class Game
         return $this->gameArr;
     }
 
-    public function discard(string $hand, int $cardIndex, bool $fill = true): string
+    public function discard(string $hand, int $cardIndex, bool $fill): string
     {
         $gameData = $this->gameArr;
 
@@ -152,70 +152,108 @@ class Game
     public function addToFloor(Card $card, string $player): string
     {
         /**
-         * @var cardHand $floor
+         * @var SkitGubbeHand $floor
          */
         $floor = $this->gameArr["floor"];
 
         /**
-         * @var cardHand $basket
+         * @var SkitGubbeHand $basket
          */
         $basket = $this->gameArr["basket"];
 
         /**
-         * @var cardHand $playerHand
+         * @var SkitGubbeHand $playerHand
          */
         $playerHand = $this->gameArr[$player];
 
         $floor->addCard($card);
         $floorCards = $floor->getCards();
+        $lastCardIndex = count($floorCards) - 1;
+        $lastCard = $floorCards[$lastCardIndex];
 
-        // check if card is 2. send a response of "ANOTHER_CARD".
-        if ($floorCards[count($floorCards) - 1]->getName() == 2) {
+        if ($lastCard->getName() == 2) {
             return "ANOTHER_CARD";
         }
 
-        // check if card is 10. move the cards from floor to basket
-        if ($floorCards[count($floorCards) - 1]->getName() == 10) {
-            foreach ($floorCards as $floorCard) {
-                $basket->addCard($floorCard);
-            }
-            $this->gameArr["floor"] = new SkitGubbeHand([]);
+        if ($lastCard->getName() == 10) {
+            $this->moveFloorToBasket($floorCards, $basket);
             return "CLEAR_FLOOR";
         }
 
-        // check if the card is not equal or bigger then the last floor card
-        $tmpHand = new SkitGubbeHand();
-        if (
-            count($floorCards) >= 2 &&
-            ($floorCards[count($floorCards) - 2]->getName() != "10" &&
-            $floorCards[count($floorCards) - 2]->getName() != "2") &&
-            $tmpHand->cardPoints($floorCards[count($floorCards) - 1]) < $tmpHand->cardPoints($floorCards[count($floorCards) - 2])
-        ) {
-            foreach ($floorCards as $floorCard) {
-                $playerHand->addCard($floorCard);
-            }
-            $this->gameArr["floor"] = new SkitGubbeHand([]);
+        if ($this->isWeakCard($floorCards, $lastCardIndex)) {
+            $this->moveFloorToPlayer($floorCards, $playerHand);
             return "WEAK_CARD";
         }
 
-        // if last 4 cards has same name. move the cards from floor to basket
-        $lastSameCards = count($floorCards) >= 4 &&
-            ($floorCards[count($floorCards) - 1]->getName() === $floorCards[count($floorCards) - 2]->getName()) &&
-            ($floorCards[count($floorCards) - 2]->getName() === $floorCards[count($floorCards) - 3]->getName()) &&
-            ($floorCards[count($floorCards) - 3]->getName() === $floorCards[count($floorCards) - 4]->getName());
-
-        if ($lastSameCards) {
-            foreach ($floorCards as $floorCard) {
-                $basket->addCard($floorCard);
-            }
-            $this->gameArr["floor"] = new SkitGubbeHand([]);
+        if ($this->hasLastFourSameCards($floorCards, $lastCardIndex)) {
+            $this->moveFloorToBasket($floorCards, $basket);
             return "CLEAR_FLOOR";
-        };
+        }
 
         return "ADDED_TO_FLOOR";
     }
 
-    public function usePlayerFloor(string $player, int $index, bool $fromVisible = true): void
+    /**
+     * move all cards from floor to basket
+     * @param array<Card> $floorCards
+     * @param CardHand $basket
+     */
+    private function moveFloorToBasket(array $floorCards, CardHand $basket): void
+    {
+        foreach ($floorCards as $floorCard) {
+            $basket->addCard($floorCard);
+        }
+        $this->gameArr["floor"] = new SkitGubbeHand([]);
+    }
+
+    /**
+     * move all cards from floor to player hand
+     * @param array<Card> $floorCards
+     * @param CardHand $playerHand
+     */
+    private function moveFloorToPlayer(array $floorCards, cardHand $playerHand): void
+    {
+        foreach ($floorCards as $floorCard) {
+            $playerHand->addCard($floorCard);
+        }
+        $this->gameArr["floor"] = new SkitGubbeHand([]);
+    }
+
+    /**
+     * check if the card is weak
+     * @param array<Card> $floorCards
+     * @param int $lastCardIndex
+     */
+    private function isWeakCard(array $floorCards, int $lastCardIndex): bool
+    {
+        $tmpHand = new SkitGubbeHand();
+
+        return (
+            count($floorCards) >= 2 &&
+            ($floorCards[$lastCardIndex - 1]->getName() != "10" &&
+            $floorCards[$lastCardIndex - 1]->getName() != "2") &&
+            $tmpHand->cardPoints($floorCards[$lastCardIndex]) < $tmpHand->cardPoints($floorCards[$lastCardIndex - 1])
+        );
+    }
+
+    /**
+     * check if the fllor have 4 of same cards
+     * @param array<Card> $floorCards
+     * @param int $lastCardIndex
+     */
+    private function hasLastFourSameCards(array $floorCards, int $lastCardIndex): bool
+    {
+        return (
+            count($floorCards) >= 4 &&
+            ($floorCards[$lastCardIndex]->getName() === $floorCards[$lastCardIndex - 1]->getName()) &&
+            ($floorCards[$lastCardIndex - 1]->getName() === $floorCards[$lastCardIndex - 2]->getName()) &&
+            ($floorCards[$lastCardIndex - 2]->getName() === $floorCards[$lastCardIndex - 3]->getName())
+        );
+    }
+
+
+
+    public function usePlayerFloor(string $player, int $index, bool $fromVisible): void
     {
 
         /**

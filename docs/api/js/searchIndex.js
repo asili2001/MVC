@@ -176,10 +176,20 @@ Search.appendIndex(
             "summary": "Find\u0020and\u0020return\u0020card\u0020from\u0020hand\u0020by\u0020its\u0020name.",
             "url": "classes/App-Classes-Cards-CardHand.html#method_getByName"
         },                {
+            "fqsen": "\\App\\Classes\\Cards\\CardHand\u003A\u003AgetIndexByName\u0028\u0029",
+            "name": "getIndexByName",
+            "summary": "Find\u0020and\u0020return\u0020card\u0020index\u0020from\u0020hand\u0020by\u0020its\u0020name.",
+            "url": "classes/App-Classes-Cards-CardHand.html#method_getIndexByName"
+        },                {
             "fqsen": "\\App\\Classes\\Cards\\CardHand\u003A\u003AgetAllByName\u0028\u0029",
             "name": "getAllByName",
             "summary": "Find\u0020and\u0020return\u0020all\u0020cards\u0020from\u0020hand\u0020with\u0020same\u0020name.",
             "url": "classes/App-Classes-Cards-CardHand.html#method_getAllByName"
+        },                {
+            "fqsen": "\\App\\Classes\\Cards\\CardHand\u003A\u003AgetAllIndexByName\u0028\u0029",
+            "name": "getAllIndexByName",
+            "summary": "Find\u0020and\u0020return\u0020all\u0020cards\u0020from\u0020hand\u0020with\u0020same\u0020name.",
+            "url": "classes/App-Classes-Cards-CardHand.html#method_getAllIndexByName"
         },                {
             "fqsen": "\\App\\Classes\\Cards\\CardHand\u003A\u003AhideCards\u0028\u0029",
             "name": "hideCards",
@@ -681,6 +691,26 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Classes-SkitGubbe-Game.html#method_addToFloor"
         },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\Game\u003A\u003AmoveFloorToBasket\u0028\u0029",
+            "name": "moveFloorToBasket",
+            "summary": "move\u0020all\u0020cards\u0020from\u0020floor\u0020to\u0020basket",
+            "url": "classes/App-Classes-SkitGubbe-Game.html#method_moveFloorToBasket"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\Game\u003A\u003AmoveFloorToPlayer\u0028\u0029",
+            "name": "moveFloorToPlayer",
+            "summary": "move\u0020all\u0020cards\u0020from\u0020floor\u0020to\u0020player\u0020hand",
+            "url": "classes/App-Classes-SkitGubbe-Game.html#method_moveFloorToPlayer"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\Game\u003A\u003AisWeakCard\u0028\u0029",
+            "name": "isWeakCard",
+            "summary": "check\u0020if\u0020the\u0020card\u0020is\u0020weak",
+            "url": "classes/App-Classes-SkitGubbe-Game.html#method_isWeakCard"
+        },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\Game\u003A\u003AhasLastFourSameCards\u0028\u0029",
+            "name": "hasLastFourSameCards",
+            "summary": "check\u0020if\u0020the\u0020fllor\u0020have\u00204\u0020of\u0020same\u0020cards",
+            "url": "classes/App-Classes-SkitGubbe-Game.html#method_hasLastFourSameCards"
+        },                {
             "fqsen": "\\App\\Classes\\SkitGubbe\\Game\u003A\u003AusePlayerFloor\u0028\u0029",
             "name": "usePlayerFloor",
             "summary": "",
@@ -736,6 +766,11 @@ Search.appendIndex(
             "summary": "returns\u0020the\u0020smallets\u0020card\u0020compare\u0020to\u0020the\u0020input\u0020card",
             "url": "classes/App-Classes-SkitGubbe-SkitGubbeHand.html#method_getNextBigger"
         },                {
+            "fqsen": "\\App\\Classes\\SkitGubbe\\SkitGubbeHand\u003A\u003AgetNextBiggerIndex\u0028\u0029",
+            "name": "getNextBiggerIndex",
+            "summary": "returns\u0020the\u0020smallets\u0020card\u0020compare\u0020to\u0020the\u0020input\u0020card",
+            "url": "classes/App-Classes-SkitGubbe-SkitGubbeHand.html#method_getNextBiggerIndex"
+        },                {
             "fqsen": "\\App\\Classes\\SkitGubbe\\SkitGubbeHand\u003A\u003A\u0024allowedNames",
             "name": "allowedNames",
             "summary": "",
@@ -755,6 +790,11 @@ Search.appendIndex(
             "name": "skitGubbeResetJson",
             "summary": "",
             "url": "classes/App-Controller-SkitGubbe-JsonSkitGubbeController.html#method_skitGubbeResetJson"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\JsonSkitGubbeController\u003A\u003AskitGubbeMiniJson\u0028\u0029",
+            "name": "skitGubbeMiniJson",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-JsonSkitGubbeController.html#method_skitGubbeMiniJson"
         },                {
             "fqsen": "\\App\\Controller\\SkitGubbe\\JsonSkitGubbeController\u003A\u003AskitGubbeJson\u0028\u0029",
             "name": "skitGubbeJson",
@@ -786,6 +826,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-SkitGubbe-SkitGubbeController.html#method_skitGubbeReset"
         },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeController\u003A\u003AskitGubbeMini\u0028\u0029",
+            "name": "skitGubbeMini",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeController.html#method_skitGubbeMini"
+        },                {
             "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeController\u003A\u003A\u0024skitGubbe",
             "name": "skitGubbe",
             "summary": "",
@@ -796,10 +841,20 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-SkitGubbe-SkitGubbeController.html#method_skitGubbeAuth"
         },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeController\u003A\u003AgetResponseData\u0028\u0029",
+            "name": "getResponseData",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeController.html#method_getResponseData"
+        },                {
             "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeController\u003A\u003AskitGubbeAbout\u0028\u0029",
             "name": "skitGubbeAbout",
             "summary": "",
             "url": "classes/App-Controller-SkitGubbe-SkitGubbeController.html#method_skitGubbeAbout"
+        },                {
+            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeController\u003A\u003AskitGubbeAboutDb\u0028\u0029",
+            "name": "skitGubbeAboutDb",
+            "summary": "",
+            "url": "classes/App-Controller-SkitGubbe-SkitGubbeController.html#method_skitGubbeAboutDb"
         },                {
             "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeController\u003A\u003AskitGubbePlay\u0028\u0029",
             "name": "skitGubbePlay",
@@ -880,11 +935,6 @@ Search.appendIndex(
             "name": "loginUser",
             "summary": "",
             "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_loginUser"
-        },                {
-            "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003AcheckAuth\u0028\u0029",
-            "name": "checkAuth",
-            "summary": "",
-            "url": "classes/App-Controller-SkitGubbe-SkitGubbeTrait.html#method_checkAuth"
         },                {
             "fqsen": "\\App\\Controller\\SkitGubbe\\SkitGubbeTrait\u003A\u003AshowResult\u0028\u0029",
             "name": "showResult",

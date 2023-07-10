@@ -16,7 +16,7 @@ trait SkitGubbeTrait
 {
     protected bool $isApi = false;
 
-    private function gameInit(Request $request, bool $useApi = false): void
+    private function gameInit(Request $request, bool $miniGame, bool $useApi): void
     {
         $session = $request->getSession();
         /**
@@ -26,7 +26,9 @@ trait SkitGubbeTrait
 
         $this->isApi = $useApi;
 
-        $this->skitGubbe = new SkitGubbeGame\Game($gameSession, 30);
+        $cardsToDelete = $miniGame ? 30 : 0;
+
+        $this->skitGubbe = new SkitGubbeGame\Game($gameSession, $cardsToDelete);
         $this->skitGubbe->checkWinner();
         $session->set("skitgubbe", $this->skitGubbe->getGameData());
     }
@@ -72,6 +74,7 @@ trait SkitGubbeTrait
      * @param array<string> $cardIndexs
      * @return bool
      */
+
     private function identicalCardsCheck(array $cardIndexs): bool
     {
         $cardIndexs = $this->strToIntArr($cardIndexs);
@@ -79,52 +82,29 @@ trait SkitGubbeTrait
         $hand = "playerHand";
 
         if ($cardsAvailability[0]) {
-            $hand = "playerVisibleCards";
-
-            if ($cardsAvailability[1]) {
-                $hand = "playerHiddenCards";
-            }
+            $hand = $cardsAvailability[1] ? "playerHiddenCards" : "playerVisibleCards";
         }
-
 
         $gameData = $this->skitGubbe->getGameData();
         /**
-         * @var CardHand $handObj
+         * @var SkitGubbeHand $handObj
          */
         $handObj = $gameData[$hand];
-        /**
-         * @var DeckOfCards $deck
-         */
-        $deck = $gameData["deck"];
         $handCards = $handObj->getCards();
 
-        $cardName = !isset($cardIndexs[0]) || is_null($handCards[$cardIndexs[0]]->getName()) ? "" : $handCards[$cardIndexs[0]]->getName();
-
-        $allSameAsFirst = $handObj->getAllByName($cardName, true);
-        $cardNames = [];
-        $cardNamesDiff = [];
-        $deck = $deck->getCards();
-        $identical = true;
-
-
-        if (count($cardIndexs) > 1 && count($deck) >= count($cardIndexs)) {
-
-            if (empty(array_intersect($allSameAsFirst, $cardIndexs))) {
-                $identical = false;
-            }
-            for ($i=0; $i < count($handCards); $i++) {
-                try {
-                    array_push($cardNames, $handCards[$i]->getName());
-                    array_push($cardNamesDiff, $handCards[$cardIndexs[0]]->getName());
-                    array_push($cardNamesDiff, $handCards[$cardIndexs[1]]->getName());
-                } catch (\Throwable $th) {
-                    $this->skitGubbe->setMessage("Card Not Found");
-                }
-            }
-
+        if (count($cardIndexs) <= 1 || count((array) $gameData["deck"]) < count($cardIndexs)) {
+            return true; // Not enough cards to compare or only one card selected
         }
 
-        return $identical;
+        $cardName = $handCards[$cardIndexs[0]]->getName() ?? "";
+
+        foreach ($cardIndexs as $cardIndex) {
+            if (!isset($handCards[$cardIndex]) || $handCards[$cardIndex]->getName() !== $cardName) {
+                return false; // Cards are not identical
+            }
+        }
+
+        return true; // All selected cards are identical
     }
 
     /**
@@ -133,15 +113,15 @@ trait SkitGubbeTrait
      */
     private function checkIntArray(array $array): bool
     {
-        $all_numeric = true;
+        $allNumeric = true;
         foreach ($array as $key) {
             if (!(is_numeric($key))) {
-                $all_numeric = false;
+                $allNumeric = false;
                 break;
             }
         }
 
-        return $all_numeric;
+        return $allNumeric;
     }
 
 
@@ -161,7 +141,7 @@ trait SkitGubbeTrait
     {
         $computerDiscard = null;
         $lastFloorCard = null;
-        $computerCardToPlayIndex = null;
+        $compCardToPlayIndex = null;
 
         do {
             $this->checkEndGame();
@@ -188,33 +168,33 @@ trait SkitGubbeTrait
             }
 
             /**
-             * @var int $computerCardToPlayIndex
+             * @var int $compCardToPlayIndex
              */
-            $computerCardToPlayIndex = $computerHand->getNextBigger($lastFloorCard, true);
+            $compCardToPlayIndex = $computerHand->getNextBiggerIndex($lastFloorCard);
 
             /**
              * @var Card $computerCardToPlay
              */
-            $computerCardToPlay = $computerHand->getNextBigger($lastFloorCard, false);
+            $computerCardToPlay = $computerHand->getNextBigger($lastFloorCard);
 
             /**
-             * @var string $computerCardsToPlayName
+             * @var string $compCardsToPlayName
              */
-            $computerCardsToPlayName = $computerCardToPlay->getName();
+            $compCardsToPlayName = $computerCardToPlay->getName();
 
             /**
              * @var array<int> $computerCardsToPlay
              */
-            $computerCardsToPlay = $computerHand->getAllByName($computerCardsToPlayName, true);
+            $computerCardsToPlay = $computerHand->getAllIndexByName($compCardsToPlayName);
 
             rsort($computerCardsToPlay);
 
-            if ($computerCardsToPlayName != "A" && $computerCardsToPlayName != "10" && $computerCardsToPlayName != "2") {
+            if ($compCardsToPlayName != "A" && $compCardsToPlayName != "10" && $compCardsToPlayName != "2") {
                 foreach ($computerCardsToPlay as $value) {
-                    $computerDiscard = $this->skitGubbe->discard("computerHand", $value);
+                    $computerDiscard = $this->skitGubbe->discard("computerHand", $value, true);
                 }
             } else {
-                $computerDiscard = $this->skitGubbe->discard("computerHand", $computerCardToPlayIndex);
+                $computerDiscard = $this->skitGubbe->discard("computerHand", $compCardToPlayIndex, true);
             }
 
         } while ($computerDiscard === "ANOTHER_CARD" || $computerDiscard === "CLEAR_FLOOR");
@@ -237,7 +217,7 @@ trait SkitGubbeTrait
         /**
          * @var int $index
          */
-        $index = $computerVisibleCards->getNextBigger($lastFloorCard, true);
+        $index = $computerVisibleCards->getNextBiggerIndex($lastFloorCard);
         $cardsAvailability = $this->skitGubbe->availability("computer");
 
         if ($cardsAvailability[1]) {
@@ -281,6 +261,7 @@ trait SkitGubbeTrait
         $session->set("auth", ["name" => $name]);
         return "SUCCESS";
     }
+
     private function loginUser(Request $request, ManagerRegistry $doctrine, string $name, string $pass): string
     {
         $session = $request->getSession();
